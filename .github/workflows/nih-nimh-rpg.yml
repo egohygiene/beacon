@@ -1,0 +1,33 @@
+name: NIH/NIMH template
+
+on:
+  pull_request:
+    paths:
+      - "templates/nih-nimh-rpg/**"
+      - ".github/workflows/nih-nimh-rpg.yml"
+  push:
+    branches: [main]
+    paths:
+      - "templates/nih-nimh-rpg/**"
+      - ".github/workflows/nih-nimh-rpg.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install deterministic build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y \
+            latexmk \
+            poppler-utils \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-recommended
+      - name: Build and validate the profile
+        run: make -C templates/nih-nimh-rpg check

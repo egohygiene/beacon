@@ -245,16 +245,21 @@ issues: []
 
 <!-- roadmap-step
 id: BEA-Q06
-status: planned
-depends_on: [BEA-Q03]
+status: active
+depends_on: [BEA-Q01]
 issues: []
 -->
 #### BEA-Q06 — Create a current NIH/NIMH proposal profile and workspace
 
-**State:** `planned`  
-**Depends on:** `BEA-Q03`
+**State:** `active`  
+**Depends on:** `BEA-Q01` for profile authorship; `BEA-Q03` for final CLI integration
 
 **Outcome:** A researcher can begin a high-quality NIMH concept proposal immediately, then pin a mechanism/NOFO and produce a compliant attachment bundle without relying on the stale 2019 intake.
+
+**Current slice:** The original `nih-nimh-rpg` multi-attachment LaTeX package is
+being introduced as the first active root template. The two duplicated 2019 NIH
+reference directories are removed in the same migration so `.staging` shrinks
+as each reference is deliberately dispositioned.
 
 **Profile design:**
 

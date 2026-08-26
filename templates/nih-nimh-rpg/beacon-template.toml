@@ -1,0 +1,47 @@
+schema_version = 1
+id = "nih-nimh-rpg"
+name = "NIH/NIMH Research Project Grant"
+version = "0.1.0"
+description = "A current-source, multi-attachment LaTeX workspace for NIH/NIMH research project grant concepts."
+category = "grant-proposal"
+license = "MIT"
+source = "original Beacon implementation informed by official NIH/NIMH guidance"
+
+[[outputs]]
+format = "pdf"
+renderer = "latexmk"
+template = "attachments/project-summary-abstract.tex"
+
+[[outputs]]
+format = "pdf"
+renderer = "latexmk"
+template = "attachments/project-narrative.tex"
+
+[[outputs]]
+format = "pdf"
+renderer = "latexmk"
+template = "attachments/specific-aims.tex"
+
+[[outputs]]
+format = "pdf"
+renderer = "latexmk"
+template = "attachments/research-strategy.tex"
+
+[[outputs]]
+format = "pdf"
+renderer = "latexmk"
+template = "attachments/bibliography-references.tex"
+
+[metadata]
+required = ["project_title", "principal_investigator"]
+optional = ["applicant_organization", "activity_code", "funding_opportunity", "due_date", "program_officer"]
+
+[capabilities]
+bibliography = true
+citations = true
+compliance_checks = true
+figures = true
+multi_attachment = true
+nih_submission = false
+pdf = true
+tables = true
