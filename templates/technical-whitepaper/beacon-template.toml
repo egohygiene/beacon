@@ -27,6 +27,37 @@ script = "scripts/bootstrap.py"
 required = ["destination", "title", "author"]
 optional = ["project-id", "theme"]
 
+[execution]
+program = "make"
+arguments = ["--directory={{project}}", "check-content", "BUILD_DIR={{output}}", "THEME={{theme}}"]
+default_output = "build"
+default_theme = "organization"
+artifacts = ["whitepaper.pdf", "web/index.html"]
+
+[execution.theme_values]
+organization = "themes/organization.json"
+product = "themes/product.json"
+
+[[execution.requirements]]
+command = "make"
+
+[[execution.requirements]]
+command = "python3"
+
+[[execution.requirements]]
+command = "pandoc"
+
+[[execution.requirements]]
+command = "pdflatex"
+
+[[execution.requirements]]
+command = "pdfinfo"
+version_arguments = ["-v"]
+
+[[execution.requirements]]
+command = "pdffonts"
+version_arguments = ["-v"]
+
 [capabilities]
 abstract = true
 accessibility_checks = true

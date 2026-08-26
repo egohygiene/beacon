@@ -4,6 +4,11 @@ This directory contains Beacon's active, first-party template packages. Every
 package is independently buildable, versioned, documented, and described by a
 `beacon-template.toml` manifest.
 
+Each manifest also declares the profile's executable adapter: required host
+tools, supported theme values, a tokenized build/check command, default output,
+and artifacts eligible for publication packaging. The root CLI validates and
+orchestrates that contract while the profile continues to own rendering logic.
+
 ## Active packages
 
 | Package | Status | Purpose |

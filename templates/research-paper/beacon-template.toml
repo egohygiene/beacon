@@ -32,6 +32,47 @@ script = "scripts/bootstrap.py"
 required = ["destination", "title", "author"]
 optional = ["project-id", "theme"]
 
+[execution]
+program = "make"
+arguments = ["--directory={{profile}}", "check-content", "PROJECT={{project}}", "BUILD_DIR={{output}}", "THEME={{theme}}"]
+default_output = "build"
+default_theme = "neutral"
+artifacts = ["paper.pdf", "web/index.html", "provenance.json", "arxiv"]
+
+[execution.theme_values]
+neutral = "neutral"
+egohygiene = "egohygiene"
+
+[[execution.requirements]]
+command = "make"
+
+[[execution.requirements]]
+command = "python3"
+
+[[execution.requirements]]
+command = "latexmk"
+
+[[execution.requirements]]
+command = "pdflatex"
+
+[[execution.requirements]]
+command = "bibtex"
+
+[[execution.requirements]]
+command = "pandoc"
+
+[[execution.requirements]]
+command = "pdfinfo"
+version_arguments = ["-v"]
+
+[[execution.requirements]]
+command = "pdffonts"
+version_arguments = ["-v"]
+
+[[execution.requirements]]
+command = "rsvg-convert"
+alternatives = ["inkscape"]
+
 [capabilities]
 abstract = true
 acknowledgements = true

@@ -39,4 +39,17 @@ jobs:
             texlive-latex-recommended \
             texlive-pictures
       - name: Build and validate the profile
-        run: make --directory="templates/research-paper" check THEME="${{ matrix.theme }}"
+        run: make --directory="templates/research-paper" reproducibility bootstrap-check THEME="${{ matrix.theme }}"
+      - name: Prove the shared Beacon execution adapter
+        shell: bash
+        run: |
+          set -euo pipefail
+          workspace="$(mktemp -d)"
+          trap 'rm -rf "$workspace"' EXIT
+          cargo run --quiet --locked -- doctor research-paper
+          cargo run --quiet --locked -- init research-paper "$workspace/project" \
+            --title "Beacon Research Adapter" \
+            --author "Beacon Maintainers" \
+            --theme "${{ matrix.theme }}"
+          cargo run --quiet --locked -- package "$workspace/project"
+          test -f "$workspace/project/dist/research-paper-0.1.0/beacon-package.json"

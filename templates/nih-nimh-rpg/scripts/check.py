@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import subprocess
 import sys
@@ -13,7 +14,6 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD = ROOT / "build"
 
 ATTACHMENTS = (
     "project-summary-abstract",
@@ -82,6 +82,13 @@ def source_files() -> list[Path]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--build-dir", default="build")
+    arguments = parser.parse_args()
+    build = Path(arguments.build_dir)
+    if not build.is_absolute():
+        build = ROOT / build
+
     errors: list[str] = []
     warnings: list[str] = []
 
@@ -100,7 +107,7 @@ def main() -> int:
     }
 
     for attachment in ATTACHMENTS:
-        pdf_path = BUILD / f"{attachment}.pdf"
+        pdf_path = build / f"{attachment}.pdf"
         if not pdf_path.is_file() or pdf_path.stat().st_size == 0:
             errors.append(f"missing or empty PDF: {pdf_path.relative_to(ROOT)}")
             continue

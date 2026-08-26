@@ -11,3 +11,5 @@
   first-party templates.
 - Added a standalone initializer with project identity, theme, and provenance
   customization through the shared Beacon core.
+- Declared host-tool, theme, build/check, and package-artifact contracts for the
+  shared execution CLI.

@@ -1,9 +1,9 @@
 # Beacon CLI
 
-The Beacon CLI is the deterministic registry and initialization layer shared by
-the active publication profiles. It consumes each profile's
-`beacon-template.toml`; it does not replace that profile's build or validation
-pipeline.
+The Beacon CLI is the deterministic registry, initialization, and execution
+layer shared by the active publication profiles. It consumes each profile's
+`beacon-template.toml`; profile-owned Make and Python adapters remain
+authoritative for rendering and document-specific checks.
 
 ## Discover and inspect profiles
 
@@ -74,6 +74,55 @@ cargo run --locked -- \
 ```
 
 Do not enable this flag for an unreviewed template package.
+
+## Diagnose, plan, build, and package
+
+Check every tool required by the active registry, or limit the check to one
+profile:
+
+```bash
+cargo run --locked -- doctor
+cargo run --locked -- doctor research-paper
+```
+
+An initialized project's `[beacon]` envelope pins the profile and version.
+Beacon resolves that pin before it executes anything:
+
+```bash
+cargo run --locked -- plan "../antidote-paper"
+cargo run --locked -- build "../antidote-paper" \
+  --theme "egohygiene" \
+  --output-directory "build/publication"
+cargo run --locked -- package "../antidote-paper" \
+  --theme "egohygiene" \
+  --output-directory "build/publication" \
+  --package-directory "dist/antidote-draft"
+```
+
+Relative output and package paths resolve from the project directory. `plan` is
+non-executing and prints the resolved profile, version, theme, paths, command,
+and artifacts. `build` then:
+
+1. renders into a temporary sibling directory;
+2. runs the profile's checks as part of the adapter command;
+3. verifies every artifact declared by the profile;
+4. replaces only output previously marked as Beacon-owned;
+5. atomically finalizes the verified output.
+
+`package` performs the same verified build and stages declared files under
+`artifacts/`. It writes a deterministic `beacon-package.json` plus
+`SHA256SUMS`. It does not publish, upload, or submit anything, and it refuses a
+non-empty package destination.
+
+The package manifest is documented by
+[`contracts/package-manifest.schema.json`](../contracts/package-manifest.schema.json).
+
+The execution adapter is declarative: a bare program, argument templates,
+required host tools (including explicit alternatives), supported theme values,
+default output, and artifact paths.
+External registries may be inspected and planned without trust. `doctor`,
+`build`, and `package` require `--allow-executable-adapter` because those
+commands execute programs declared by the registry.
 
 ## Project manifest envelope
 

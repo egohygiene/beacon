@@ -30,4 +30,14 @@ jobs:
             texlive-latex-base \
             texlive-latex-recommended
       - name: Build and validate the profile
-        run: make -C templates/nih-nimh-rpg check
+        shell: bash
+        run: |
+          set -euo pipefail
+          workspace="$(mktemp -d)"
+          trap 'rm -rf "$workspace"' EXIT
+          cargo run --quiet --locked -- doctor nih-nimh-rpg
+          cargo run --quiet --locked -- init nih-nimh-rpg "$workspace/project" \
+            --title "Beacon NIH Adapter" \
+            --author "Beacon Maintainers"
+          cargo run --quiet --locked -- package "$workspace/project"
+          test -f "$workspace/project/dist/nih-nimh-rpg-0.1.0/beacon-package.json"

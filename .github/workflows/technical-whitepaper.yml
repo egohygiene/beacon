@@ -21,9 +21,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        theme:
-          - themes/organization.json
-          - themes/product.json
+        include:
+          - theme: organization
+            theme_path: themes/organization.json
+          - theme: product
+            theme_path: themes/product.json
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install deterministic build dependencies
@@ -39,4 +41,17 @@ jobs:
             texlive-latex-recommended \
             texlive-pictures
       - name: Build and validate the profile
-        run: make --directory="templates/technical-whitepaper" check THEME="${{ matrix.theme }}"
+        run: make --directory="templates/technical-whitepaper" reproducibility THEME="${{ matrix.theme_path }}"
+      - name: Prove the shared Beacon execution adapter
+        shell: bash
+        run: |
+          set -euo pipefail
+          workspace="$(mktemp -d)"
+          trap 'rm -rf "$workspace"' EXIT
+          cargo run --quiet --locked -- doctor technical-whitepaper
+          cargo run --quiet --locked -- init technical-whitepaper "$workspace/project" \
+            --title "Beacon Whitepaper Adapter" \
+            --author "Beacon Maintainers" \
+            --theme "${{ matrix.theme }}"
+          cargo run --quiet --locked -- package "$workspace/project"
+          test -f "$workspace/project/dist/technical-whitepaper-0.1.0/beacon-package.json"

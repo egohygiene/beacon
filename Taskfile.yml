@@ -32,3 +32,8 @@ tasks:
     desc: Validate every built-in publication profile
     cmds:
       - cargo run --quiet --locked -- validate
+
+  doctor:
+    desc: Check host tools required by every publication profile
+    cmds:
+      - cargo run --quiet --locked -- doctor

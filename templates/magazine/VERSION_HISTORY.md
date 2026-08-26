@@ -13,3 +13,5 @@
   content.
 - Declare the profile-owned adapter for safe discovery and initialization by
   the shared Beacon core.
+- Declare host-tool, theme, build/check, and package-artifact contracts for the
+  shared execution CLI.

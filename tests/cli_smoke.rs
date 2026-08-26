@@ -98,6 +98,41 @@ fn initializes_every_active_profile() {
 }
 
 #[test]
+fn plans_every_initialized_profile_without_executing_it() {
+    let temporary = TempDir::new().expect("failed to create temporary directory");
+    for profile in PROFILES {
+        let destination = temporary.path().join(profile);
+        let destination_text = destination.to_string_lossy().into_owned();
+        let initialize = run_beacon(&[
+            "init",
+            profile,
+            &destination_text,
+            "--title",
+            "Beacon Planning Smoke",
+            "--author",
+            "Beacon Maintainers",
+        ]);
+        assert!(
+            initialize.status.success(),
+            "{profile} init failed: {}",
+            String::from_utf8_lossy(&initialize.stderr)
+        );
+
+        let plan = run_beacon(&["plan", &destination_text]);
+        assert!(
+            plan.status.success(),
+            "{profile} plan failed: {}",
+            String::from_utf8_lossy(&plan.stderr)
+        );
+        let stdout = String::from_utf8_lossy(&plan.stdout);
+        assert!(stdout.contains(&format!("profile: {profile}")));
+        assert!(stdout.contains("profile-version: 0.1.0"));
+        assert!(stdout.contains("command: make"));
+        assert!(stdout.contains("artifacts:"));
+    }
+}
+
+#[test]
 fn refuses_to_overwrite_existing_project_content() {
     let temporary = TempDir::new().expect("failed to create temporary directory");
     let destination = temporary.path().join("existing-project");
