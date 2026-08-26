@@ -9,3 +9,5 @@
 - Defined the Identity input and Relay artifact boundary.
 - Replaced the staged Makoto and Sullivan report references with original,
   first-party templates.
+- Added a standalone initializer with project identity, theme, and provenance
+  customization through the shared Beacon core.

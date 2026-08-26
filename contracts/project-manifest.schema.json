@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://egohygiene.dev/beacon/contracts/project-manifest.schema.json",
+  "title": "Beacon project manifest",
+  "description": "Common envelope for profile-owned beacon-project.toml files.",
+  "type": "object",
+  "required": ["beacon"],
+  "properties": {
+    "beacon": {
+      "type": "object",
+      "required": ["schema_version", "profile", "profile_version"],
+      "properties": {
+        "schema_version": { "type": "integer", "const": 1 },
+        "profile": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "profile_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "theme": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

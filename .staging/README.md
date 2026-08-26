@@ -1,90 +1,36 @@
-# beacon
+# Beacon reference intake
 
-🔭 A local-first project bootstrapper and template library for reproducible
-research and technical documents.
+This directory contains governed source references that have not yet been
+transformed into active Beacon profiles or components. Nothing below
+`.staging/` participates in the runtime registry, normal builds, or releases.
 
-`beacon` is currently incubated inside Empathy as an independently extractable
-holon. It owns reusable template contracts, template packages, deterministic
-project generation, and the CLI surface used to inspect, validate, and
-instantiate those packages.
+## Current contents
 
-## Boundary
+The remaining `latex/` tree spans books, title pages, newsletters, conference
+materials, journal classes, and other document families. It is design and
+implementation research—not a collection to publish unchanged and not
+disposable bulk.
 
-`beacon/` owns reusable project-template contracts, template packages,
-validation rules, the Beacon CLI, and eventually a lightweight local authoring
-experience. A generated project owns its manuscript, bibliography, figures,
-data, research notes, build configuration, and publication history.
+Useful patterns will be transformed into original Beacon components or
+profile-specific adapters with:
 
-Renderflow remains a rendering engine and reference implementation. Beacon owns
-how a project template is described, discovered, validated, and instantiated.
+- recorded source, license, checksum, and disposition;
+- stable semantic APIs instead of copied theme internals;
+- accessible defaults and deterministic fixtures;
+- Identity, profile, project, and page-level style overrides;
+- artwork slots appropriate for projects such as the Ego Hygiene book;
+- representative digital and print build evidence.
 
-## Current vertical slice
+See [`../docs/latex-component-library.md`](../docs/latex-component-library.md)
+for the intended architecture and intake workflow.
 
-The current foundation provides:
+## Removal rule
 
-- a versioned, renderer-aware template manifest contract;
-- a canonical `research-paper` package derived from Renderflow's research
-  templates;
-- explicit provenance and extraction notes;
-- deterministic template validation using Python's standard library;
-- a Rust CLI with `list`, `inspect`, `validate`, and `init` commands;
-- generated-project provenance through `beacon-project.toml`;
-- safe initialization that refuses non-empty destinations;
-- unit and binary-level smoke coverage for the built-in research template;
-- first-class integration with Empathy's root `task check` contract.
+A staged source may be removed only after its useful behavior and provenance
+have been reviewed and its transformation, supersession, rejection, or later
+retention decision is recorded. Git history remains the recoverable source of
+removed intake.
 
-Git/GitHub repository creation, local LLM assistance, graphical authoring, and
-additional template-library ingestion intentionally remain future work.
-
-## Commands
-
-From `beacon/`:
-
-```bash
-cargo run --quiet -- --templates-directory "templates" list
-cargo run --quiet -- --templates-directory "templates" inspect research-paper
-cargo run --quiet -- --templates-directory "templates" validate research-paper
-cargo run --quiet -- --templates-directory "templates" init research-paper ./paper \
-  --title "Research Paper" \
-  --author "Author"
-```
-
-## Generated research workspace
-
-The canonical research-paper template currently produces:
-
-```text
-paper/
-├── beacon-project.toml
-├── paper.md
-├── references.bib
-├── templates/
-│   ├── template.html
-│   └── template.tex
-├── figures/
-├── data/
-└── research/
-    ├── notes/
-    └── sources/
-```
-
-## Validation
-
-From the Empathy repository root:
-
-```bash
-task beacon:check
-task beacon:smoke
-task check
-```
-
-`beacon:check` validates template packages, formatting, Clippy, and the full
-Rust test suite. `beacon:smoke` exercises project generation through the compiled
-CLI against the real built-in research template. Root `task check` includes the
-complete Beacon check as part of Empathy's repository contract.
-
-## Design principle
-
-Beacon templates are packages, not loose files. Every template package must be
-self-describing, versioned, renderer-aware, independently validatable, and safe
-to copy into a generated project without hidden repository-relative state.
+The former staged Beacon CLI, contracts, tests, toolchain, and validator were
+promoted and adapted at the repository root through issue `#12`. Their history
+is summarized in [`../docs/core-provenance.md`](../docs/core-provenance.md).

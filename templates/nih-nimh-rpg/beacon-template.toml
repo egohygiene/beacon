@@ -36,6 +36,12 @@ template = "attachments/bibliography-references.tex"
 required = ["project_title", "principal_investigator"]
 optional = ["applicant_organization", "activity_code", "funding_opportunity", "due_date", "program_officer"]
 
+[initializer]
+runtime = "python3"
+script = "scripts/bootstrap.py"
+required = ["destination", "title", "author"]
+optional = ["project-id"]
+
 [capabilities]
 bibliography = true
 citations = true

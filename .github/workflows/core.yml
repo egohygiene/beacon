@@ -1,0 +1,68 @@
+---
+name: Beacon core
+
+on:
+  pull_request:
+    paths:
+      - "Cargo.lock"
+      - "Cargo.toml"
+      - "Taskfile.yml"
+      - "contracts/**"
+      - "rust-toolchain.toml"
+      - "src/**"
+      - "templates/*/beacon-template.toml"
+      - "templates/*/scripts/bootstrap.py"
+      - "templates/*/scaffold/beacon-project.toml"
+      - "tests/**"
+      - ".github/workflows/core.yml"
+  push:
+    branches: [main]
+    paths:
+      - "Cargo.lock"
+      - "Cargo.toml"
+      - "Taskfile.yml"
+      - "contracts/**"
+      - "rust-toolchain.toml"
+      - "src/**"
+      - "templates/*/beacon-template.toml"
+      - "templates/*/scripts/bootstrap.py"
+      - "templates/*/scaffold/beacon-project.toml"
+      - "tests/**"
+      - ".github/workflows/core.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "beacon-core-${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install the pinned Rust toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install "1.97.1" \
+            --profile "minimal" \
+            --component "clippy,rustfmt"
+
+      - name: Check formatting
+        run: cargo fmt --all --check
+
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features --locked -- -D warnings
+
+      - name: Run unit and CLI smoke tests
+        run: cargo test --all-targets --all-features --locked
+
+      - name: Validate the built-in registry
+        run: cargo run --quiet --locked -- validate

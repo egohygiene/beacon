@@ -29,6 +29,12 @@ artifact = "web/index.html"
 required = ["id", "title", "edition_number", "date", "version", "language", "description", "creators", "rights", "pages"]
 optional = ["subtitle", "edition_name"]
 
+[initializer]
+runtime = "python3"
+script = "scripts/bootstrap.py"
+required = ["destination", "title", "publisher", "edition"]
+optional = []
+
 [capabilities]
 accessible_web = true
 article_pages = true

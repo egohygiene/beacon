@@ -194,8 +194,10 @@ def main() -> int:
         errors.append("manifest id must be research-paper")
     if beacon.get("profile") != manifest.get("id"):
         errors.append("project profile does not match manifest")
-    if beacon.get("template_version") != manifest.get("version"):
-        errors.append("project template version does not match manifest")
+    if beacon.get("schema_version") != 1:
+        errors.append("beacon.schema_version must be 1")
+    if beacon.get("profile_version") != manifest.get("version"):
+        errors.append("project profile version does not match manifest")
     if theme not in ALLOWED_THEMES:
         errors.append(f"unsupported theme: {theme}")
     if paper.get("stage") not in ALLOWED_STAGES:

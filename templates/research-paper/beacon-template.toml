@@ -26,6 +26,12 @@ entrypoint = "main.tex"
 required = ["id", "title", "authors", "abstract", "keywords", "date", "version", "language", "source_repository"]
 optional = ["subtitle", "orcid", "email", "affiliation", "credit_roles", "arxiv_category", "doi"]
 
+[initializer]
+runtime = "python3"
+script = "scripts/bootstrap.py"
+required = ["destination", "title", "author"]
+optional = ["project-id", "theme"]
+
 [capabilities]
 abstract = true
 acknowledgements = true

@@ -23,6 +23,18 @@ Artifacts are written below `build/<theme>/`.
 
 ## Start a product magazine
 
+From the Beacon repository root, use the shared safe initializer:
+
+```bash
+cargo run --locked -- init magazine "../my-product-magazine" \
+  --title "My Product Magazine" \
+  --author "My Product" \
+  --publisher "My Product" \
+  --edition "01"
+```
+
+The profile-owned adapter remains independently callable from this directory:
+
 ```sh
 python3 scripts/bootstrap.py \
   --destination="../../../../my-product-magazine" \

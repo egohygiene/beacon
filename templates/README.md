@@ -13,6 +13,11 @@ package is independently buildable, versioned, documented, and described by a
 | [`research-paper`](research-paper/) | experimental | Neutral academic papers with PDF, accessible web, and arXiv-source outputs |
 | [`technical-whitepaper`](technical-whitepaper/) | experimental | Evidence-led technical whitepapers with PDF and accessible web outputs |
 
-Content under `.staging/` is reference intake, not part of this registry. A
-staged template is removed after it has been deliberately re-authored,
-validated, or rejected; staged files are never promoted by bulk copy.
+Content under `.staging/` is governed reference intake, not part of this
+registry. Useful visual behavior will be transformed into original publication
+profiles or reusable LaTeX components with consistent override contracts. A
+staged source is removed only after its provenance and transformation,
+supersession, or retention decision is recorded; staged files are never
+promoted by bulk copy.
+
+See the [LaTeX component-library direction](../docs/latex-component-library.md).

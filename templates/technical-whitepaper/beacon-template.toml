@@ -21,6 +21,12 @@ template = "templates/whitepaper.html"
 required = ["title", "subtitle", "authors", "abstract", "date", "version", "language", "source_repository", "source_revision"]
 optional = ["keywords", "reviewers", "contact"]
 
+[initializer]
+runtime = "python3"
+script = "scripts/bootstrap.py"
+required = ["destination", "title", "author"]
+optional = ["project-id", "theme"]
+
 [capabilities]
 abstract = true
 accessibility_checks = true

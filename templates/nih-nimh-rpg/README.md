@@ -13,6 +13,17 @@ program officer, and mechanism-specific Research Strategy page limit.
 
 ## Start writing
 
+From the Beacon repository root, initialize a customized project safely:
+
+```bash
+cargo run --locked -- init nih-nimh-rpg "../my-nimh-proposal" \
+  --title "Proposed Project Title" \
+  --author "Principal Investigator Name" \
+  --project-id "proposed-project"
+```
+
+The package can still be copied manually when the Beacon core is unavailable:
+
 ```bash
 cp -R templates/nih-nimh-rpg my-nimh-proposal
 cd my-nimh-proposal
@@ -74,3 +85,5 @@ make          # build all five authored attachments
 make check    # build, inspect PDF structure, and evaluate readiness gates
 make clean    # remove generated files
 ```
+
+See [`VERSION_HISTORY.md`](VERSION_HISTORY.md) for the package contract history.

@@ -1,0 +1,34 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+tasks:
+  default:
+    desc: List Beacon tasks
+    cmds:
+      - task --list
+    silent: true
+
+  check:
+    desc: Run the same Beacon core contract as CI
+    cmds:
+      - cargo fmt --all --check
+      - cargo clippy --all-targets --all-features --locked -- -D warnings
+      - cargo test --all-targets --all-features --locked
+      - cargo run --locked -- validate
+
+  smoke:
+    desc: Exercise every built-in profile through the compiled CLI
+    cmds:
+      - cargo test --locked --test cli_smoke
+
+  list:
+    desc: List built-in publication profiles
+    cmds:
+      - cargo run --quiet --locked -- list
+
+  validate:
+    desc: Validate every built-in publication profile
+    cmds:
+      - cargo run --quiet --locked -- validate
