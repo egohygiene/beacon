@@ -30,6 +30,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends --yes \
+            lmodern \
             pandoc \
             poppler-utils \
             texlive-fonts-recommended \
