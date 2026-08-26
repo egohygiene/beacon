@@ -40,6 +40,19 @@ overwrite a non-empty destination. Executable initializers from a custom
 registry are denied unless the caller explicitly supplies
 `--allow-executable-initializer` after inspecting that package.
 
+Initialized projects contain their own Makefile, Taskfile, build/check adapter,
+styles, templates, themes, and profile manifest. They continue to build without
+a Beacon checkout:
+
+```bash
+make check
+task check
+```
+
+Both developer entrypoints call the same project-owned implementation. See the
+[`standalone project task contract`](docs/project-task-contract.md) for command
+parity, overrides, and profile-specific capabilities.
+
 Builds are transactional and profile-checked. Packages contain only the
 profile's declared artifacts, a machine-readable manifest, and SHA-256
 checksums. See [`docs/cli.md`](docs/cli.md) for the command, output-safety, and
@@ -73,6 +86,8 @@ See [`docs/latex-component-library.md`](docs/latex-component-library.md).
   execution planning, transactional builds, and artifact packaging.
 - Profiles own document-specific source, build, check, and renderer adapters.
 - Projects own authored content and selected style overrides.
+- Initialized projects own the complete local build kit; Beacon invokes it but
+  is not required by it.
 - Renderflow, Relay, Identity, Dreamscape, and organization synchronization are
   optional integrations rather than local runtime requirements.
 - External publication and grant submission remain human-approved actions.

@@ -36,8 +36,8 @@ required = ["destination", "title", "publisher", "edition"]
 optional = []
 
 [execution]
-program = "make"
-arguments = ["--directory={{profile}}", "check", "PROJECT={{project}}", "BUILD_DIR={{output}}", "THEME={{theme}}"]
+program = "python3"
+arguments = ["{{project}}/scripts/tasks.py", "check", "--project={{project}}", "--build-dir={{output}}", "--theme={{theme}}"]
 default_output = "build"
 default_theme = "neutral"
 artifacts = ["magazine.pdf", "magazine-print.pdf", "web/index.html", "publication-manifest.json", "provenance.json"]
@@ -45,9 +45,6 @@ artifacts = ["magazine.pdf", "magazine-print.pdf", "web/index.html", "publicatio
 [execution.theme_values]
 neutral = "neutral"
 egohygiene = "egohygiene"
-
-[[execution.requirements]]
-command = "make"
 
 [[execution.requirements]]
 command = "python3"
@@ -80,10 +77,14 @@ deterministic_builds = true
 digital_review_pdf = true
 full_page_artwork = true
 identity_themes = true
+make_entrypoint = true
 page_level_sources = true
 print_bleed = true
 print_marks = true
 print_ready_pdf = true
+project_owned_execution = true
 provenance = true
 relay_adapter = true
+standalone_build_kit = true
 stable_web_route = true
+taskfile_entrypoint = true

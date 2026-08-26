@@ -43,13 +43,10 @@ required = ["destination", "title", "author"]
 optional = ["project-id"]
 
 [execution]
-program = "make"
-arguments = ["--directory={{project}}", "check", "BUILD_DIR={{output}}"]
+program = "python3"
+arguments = ["{{project}}/scripts/tasks.py", "check", "--build-dir={{output}}"]
 default_output = "build"
 artifacts = ["project-summary-abstract.pdf", "project-narrative.pdf", "specific-aims.pdf", "research-strategy.pdf", "bibliography-references.pdf"]
-
-[[execution.requirements]]
-command = "make"
 
 [[execution.requirements]]
 command = "python3"
@@ -76,7 +73,11 @@ bibliography = true
 citations = true
 compliance_checks = true
 figures = true
+make_entrypoint = true
 multi_attachment = true
 nih_submission = false
 pdf = true
+project_owned_execution = true
+standalone_build_kit = true
 tables = true
+taskfile_entrypoint = true

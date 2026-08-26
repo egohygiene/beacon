@@ -15,10 +15,35 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCAFFOLD = ROOT / "scaffold"
+BUILD_KIT_ENTRIES = (
+    "Makefile",
+    "PROVENANCE.md",
+    "SOURCES.md",
+    "Taskfile.yml",
+    "VERSION_HISTORY.md",
+    "beacon-template.toml",
+    "latex",
+    "scripts/build.py",
+    "scripts/check.py",
+    "scripts/tasks.py",
+    "themes",
+    "web",
+)
 
 
 def slug(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-") or "research-paper"
+
+
+def copy_entry(relative_path: str, destination: Path) -> None:
+    """Copy one project-owned build-kit entry into an initialized workspace."""
+    source = ROOT / relative_path
+    target = destination / relative_path
+    if source.is_dir():
+        shutil.copytree(source, target)
+    else:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
 
 
 def main() -> int:
@@ -35,6 +60,8 @@ def main() -> int:
         raise SystemExit(f"destination is not empty: {destination}")
     destination.mkdir(parents=True, exist_ok=True)
     shutil.copytree(SCAFFOLD, destination, dirs_exist_ok=True)
+    for relative_path in BUILD_KIT_ENTRIES:
+        copy_entry(relative_path, destination)
 
     today = dt.date.today()
     raw_replacements = {

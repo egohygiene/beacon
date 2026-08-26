@@ -3,8 +3,8 @@
 This package gives a standalone research project one canonical LaTeX manuscript
 and three synchronized outputs: a publication-quality PDF, an accessible web
 projection, and a clean arXiv source archive. The manuscript, bibliography,
-figures, notes, and source records remain owned by the paper repository; Beacon
-provides the versioned profile and build runner.
+figures, notes, source records, and complete build kit remain owned by the paper
+repository. Beacon provides the versioned profile and optional orchestration.
 
 ## Start a paper
 
@@ -29,19 +29,14 @@ python3 scripts/bootstrap.py \
   --theme="egohygiene"
 ```
 
-Then build it without copying Beacon's runner or styles into the paper repo:
+The initializer copies the governed runner, styles, themes, templates, and
+checks into the paper repository. Build there through either developer
+interface:
 
-```sh
-python3 scripts/build.py \
-  --project="../../../../antidote" \
-  --output="../../../../antidote/build" \
-  --theme="egohygiene"
-
-python3 scripts/check.py \
-  --project="../../../../antidote" \
-  --build-dir="../../../../antidote/build" \
-  --theme="egohygiene" \
-  --compile-arxiv
+```bash
+cd "../antidote"
+make check THEME="egohygiene"
+task check THEME="egohygiene"
 ```
 
 The result is:
@@ -51,9 +46,10 @@ The result is:
 - `build/arxiv/<paper-id>-<version>.tar.gz`
 - `build/provenance.json`
 
-`make check` builds and validates the included reference paper. Set
-`THEME="egohygiene"` to exercise the organization projection. Run
-`make check-links` before a submission or release to verify external links.
+Make and Task both delegate to the initialized project's `scripts/tasks.py`.
+Set `THEME="egohygiene"` to exercise the organization projection. Run
+`make check-links` or `task check-links` before a submission or release to
+verify external links.
 
 ## Project contract
 

@@ -11,3 +11,4 @@
   customization through the shared Beacon core.
 - Added configurable build output plus shared doctor, build/check, and package
   adapter metadata.
+- Added project-owned Make and Task entrypoints over one shared task adapter.

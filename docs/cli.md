@@ -2,8 +2,8 @@
 
 The Beacon CLI is the deterministic registry, initialization, and execution
 layer shared by the active publication profiles. It consumes each profile's
-`beacon-template.toml`; profile-owned Make and Python adapters remain
-authoritative for rendering and document-specific checks.
+`beacon-template.toml`; initialized projects own the Python execution adapter,
+Makefile, Taskfile, rendering assets, and document-specific checks.
 
 ## Discover and inspect profiles
 
@@ -51,8 +51,10 @@ The initializer:
 1. validates the selected profile manifest;
 2. rejects files, symbolic links, protected paths, and non-empty destinations;
 3. materializes the profile through a temporary sibling workspace;
-4. requires a common `beacon-project.toml` envelope;
-5. renames the completed workspace into place only after initialization passes.
+4. materializes the project-local Make, Task, adapter, renderer, and profile
+   contract files;
+5. requires a common `beacon-project.toml` envelope;
+6. renames the completed workspace into place only after initialization passes.
 
 ## Executable initializer trust
 
@@ -119,10 +121,15 @@ The package manifest is documented by
 
 The execution adapter is declarative: a bare program, argument templates,
 required host tools (including explicit alternatives), supported theme values,
-default output, and artifact paths.
+default output, and artifact paths. Built-in profiles execute the initialized
+project's local `scripts/tasks.py`; Beacon does not require Make or Task and does
+not reach back into profile assets after initialization.
 External registries may be inspected and planned without trust. `doctor`,
 `build`, and `package` require `--allow-executable-adapter` because those
 commands execute programs declared by the registry.
+
+For direct project use and Make/Task command parity, see the
+[`standalone project task contract`](project-task-contract.md).
 
 ## Project manifest envelope
 

@@ -15,3 +15,7 @@
 - Escaped quoted metadata correctly when generating project TOML.
 - Declared host-tool, theme, build/check, and package-artifact contracts for the
   shared execution CLI.
+- Added project-owned Make and Task entrypoints over one shared task adapter.
+- Made initialized papers independent of the Beacon checkout by copying their
+  renderer, checks, styles, themes, web template, profile manifest, and source
+  documentation.

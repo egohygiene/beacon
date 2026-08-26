@@ -94,6 +94,18 @@ fn initializes_every_active_profile() {
         let manifest = fs::read_to_string(project_manifest).expect("failed to read manifest");
         assert!(manifest.contains(&format!("profile = \"{profile}\"")));
         assert!(manifest.contains("profile_version = \"0.1.0\""));
+        for relative in [
+            "Makefile",
+            "Taskfile.yml",
+            "beacon-template.toml",
+            "scripts/check.py",
+            "scripts/tasks.py",
+        ] {
+            assert!(
+                destination.join(relative).is_file(),
+                "{profile} standalone build kit is missing {relative}"
+            );
+        }
     }
 }
 
@@ -127,7 +139,9 @@ fn plans_every_initialized_profile_without_executing_it() {
         let stdout = String::from_utf8_lossy(&plan.stdout);
         assert!(stdout.contains(&format!("profile: {profile}")));
         assert!(stdout.contains("profile-version: 0.1.0"));
-        assert!(stdout.contains("command: make"));
+        assert!(stdout.contains("command: python3"));
+        assert!(stdout.contains("scripts/tasks.py"));
+        assert!(stdout.contains(&destination_text));
         assert!(stdout.contains("artifacts:"));
     }
 }

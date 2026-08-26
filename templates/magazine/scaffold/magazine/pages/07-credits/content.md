@@ -8,7 +8,7 @@ compatibility evidence without copying its content or artwork
 **Type and layout:** Original Beacon implementation using open TeX tooling and
 system font fallbacks
 
-**Rebuild:** Run `make check-all` from the profile directory
+**Rebuild:** Run `make check` or `task check` from the project directory
 
 **Rights:** Template source is MIT licensed. Consumer prose, artwork, prompts,
 fonts, and third-party assets retain their own declared rights.
