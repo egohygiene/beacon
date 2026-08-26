@@ -1,0 +1,35 @@
+schema_version = 1
+
+[beacon]
+profile = "research-paper"
+template_version = "0.1.0"
+theme = "@@THEME@@"
+
+[paper]
+id = "@@PROJECT_ID@@"
+title = "@@TITLE@@"
+subtitle = "Working research manuscript"
+version = "0.1.0"
+date = "@@DATE@@"
+language = "en-US"
+stage = "draft"
+entrypoint = "paper/paper.tex"
+bibliography = "paper/references.bib"
+keywords = ["TODO", "research"]
+abstract = "TODO: State the problem, approach, principal result, and implication without overstating the evidence."
+
+[[paper.authors]]
+name = "@@AUTHOR@@"
+affiliation = "TODO: Affiliation"
+credit_roles = ["Conceptualization", "Writing - original draft"]
+
+[provenance]
+source_repository = "https://example.org/replace-me"
+source_path = "."
+source_revision = "working-tree"
+license = "TODO: Choose a manuscript license"
+source_date_epoch = "@@SOURCE_DATE_EPOCH@@"
+
+[publication]
+arxiv_category = ""
+doi = ""

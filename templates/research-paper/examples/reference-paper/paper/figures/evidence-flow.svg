@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title description">
+  <title id="title">Beacon research-paper artifact flow</title>
+  <desc id="description">Project-owned manuscript inputs pass through Beacon validation to four synchronized publication artifacts.</desc>
+  <rect width="960" height="420" rx="24" fill="#f3f6f8"/>
+  <rect x="45" y="75" width="250" height="270" rx="18" fill="#ffffff" stroke="#17324d" stroke-width="4"/>
+  <text x="170" y="122" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700" fill="#17324d">Paper repository</text>
+  <text x="170" y="172" text-anchor="middle" font-family="sans-serif" font-size="19" fill="#17212b">paper.tex</text>
+  <text x="170" y="215" text-anchor="middle" font-family="sans-serif" font-size="19" fill="#17212b">references.bib</text>
+  <text x="170" y="258" text-anchor="middle" font-family="sans-serif" font-size="19" fill="#17212b">SVG figures</text>
+  <text x="170" y="301" text-anchor="middle" font-family="sans-serif" font-size="19" fill="#17212b">notes + sources</text>
+  <path d="M315 210 H425" stroke="#176b73" stroke-width="8" fill="none"/>
+  <path d="M425 210 l-24 -18 v36 z" fill="#176b73"/>
+  <rect x="445" y="145" width="170" height="130" rx="18" fill="#17324d"/>
+  <text x="530" y="197" text-anchor="middle" font-family="sans-serif" font-size="23" font-weight="700" fill="#ffffff">Beacon</text>
+  <text x="530" y="232" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#ffffff">build + validate</text>
+  <path d="M635 210 H700" stroke="#176b73" stroke-width="8" fill="none"/>
+  <path d="M700 210 l-24 -18 v36 z" fill="#176b73"/>
+  <rect x="720" y="48" width="195" height="68" rx="14" fill="#ffffff" stroke="#176b73" stroke-width="3"/>
+  <rect x="720" y="133" width="195" height="68" rx="14" fill="#ffffff" stroke="#176b73" stroke-width="3"/>
+  <rect x="720" y="218" width="195" height="68" rx="14" fill="#ffffff" stroke="#176b73" stroke-width="3"/>
+  <rect x="720" y="303" width="195" height="68" rx="14" fill="#ffffff" stroke="#176b73" stroke-width="3"/>
+  <text x="817" y="90" text-anchor="middle" font-family="sans-serif" font-size="19" font-weight="700" fill="#17324d">PDF</text>
+  <text x="817" y="175" text-anchor="middle" font-family="sans-serif" font-size="19" font-weight="700" fill="#17324d">Accessible HTML</text>
+  <text x="817" y="260" text-anchor="middle" font-family="sans-serif" font-size="19" font-weight="700" fill="#17324d">Provenance</text>
+  <text x="817" y="345" text-anchor="middle" font-family="sans-serif" font-size="19" font-weight="700" fill="#17324d">arXiv source</text>
+</svg>

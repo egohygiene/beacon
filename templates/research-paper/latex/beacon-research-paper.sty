@@ -1,0 +1,120 @@
+% Copyright 2026 Ego Hygiene
+% SPDX-License-Identifier: MIT
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beacon-research-paper}[2026/08/26 v0.1.0 Beacon research paper]
+
+\newif\ifBeaconEgoHygiene
+\DeclareOption{neutral}{\BeaconEgoHygienefalse}
+\DeclareOption{egohygiene}{\BeaconEgoHygienetrue}
+\ExecuteOptions{neutral}
+\ProcessOptions\relax
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage[letterpaper,top=0.78in,bottom=0.82in,left=0.88in,right=0.88in]{geometry}
+\RequirePackage{xcolor}
+\ifBeaconEgoHygiene
+  \RequirePackage{beacon-theme-egohygiene}
+\else
+  \RequirePackage{beacon-theme-neutral}
+\fi
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{caption}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{needspace}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{hyperref}
+
+\providecommand{\BeaconPaperTitle}{Untitled research paper}
+\providecommand{\BeaconPaperSubtitle}{}
+\providecommand{\BeaconPaperVersion}{0.0.0}
+\providecommand{\BeaconPaperDate}{}
+\providecommand{\BeaconPaperAuthors}{}
+\providecommand{\BeaconPaperAffiliations}{}
+\providecommand{\BeaconPaperAbstract}{}
+\providecommand{\BeaconPaperKeywords}{}
+\providecommand{\BeaconPaperRepository}{}
+\providecommand{\BeaconPaperRevision}{working-tree}
+\providecommand{\BeaconContributorStatement}{}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=BeaconPrimary,
+  citecolor=BeaconAccent,
+  urlcolor=BeaconAccent
+}
+\AtBeginDocument{\hypersetup{
+  pdftitle={\BeaconPaperTitle},
+  pdfauthor={\BeaconPaperAuthors},
+  pdfkeywords={\BeaconPaperKeywords}
+}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\footnotesize\color{BeaconMuted}\BeaconPaperTitle}
+\fancyhead[R]{\sffamily\footnotesize\color{BeaconMuted}v\BeaconPaperVersion}
+\fancyfoot[L]{\sffamily\footnotesize\color{BeaconMuted}\BeaconThemeName}
+\fancyfoot[R]{\sffamily\footnotesize\color{BeaconMuted}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+  {\Needspace{5\baselineskip}\sffamily\Large\bfseries\color{BeaconPrimary}}
+  {\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\Needspace{3\baselineskip}\sffamily\large\bfseries\color{BeaconAccent}}
+  {\thesubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{1.45em}{0.55em}
+\titlespacing*{\subsection}{0pt}{1.05em}{0.35em}
+\setlist{leftmargin=1.45em,itemsep=0.22em,topsep=0.38em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.16}
+\captionsetup{font={small,sf},labelfont={bf,color=BeaconPrimary}}
+
+\newcommand{\BeaconMakeTitle}{%
+  \thispagestyle{empty}%
+  {\sffamily\small\bfseries\color{BeaconAccent}\MakeUppercase{Research paper}\hfill v\BeaconPaperVersion\par}%
+  \vspace{0.13in}\noindent\textcolor{BeaconAccent}{\rule{\textwidth}{2.2pt}}\par
+  \vspace{0.48in}%
+  {\sffamily\fontsize{27}{32}\selectfont\bfseries\color{BeaconPrimary}\raggedright\BeaconPaperTitle\par}%
+  \ifx\BeaconPaperSubtitle\empty\else
+    \vspace{0.14in}{\sffamily\Large\color{BeaconAccent}\BeaconPaperSubtitle\par}%
+  \fi
+  \vspace{0.34in}%
+  {\sffamily\large\bfseries\BeaconPaperAuthors\par}%
+  \vspace{0.08in}{\sffamily\small\color{BeaconMuted}\BeaconPaperAffiliations\par}%
+  \vspace{0.1in}{\sffamily\small\BeaconPaperDate\par}%
+  \vspace{0.35in}%
+  \noindent\colorbox{BeaconSurface}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{%
+    \vspace{0.09in}{\sffamily\bfseries\color{BeaconPrimary}Abstract}\par
+    \vspace{0.03in}\color{BeaconInk}\BeaconPaperAbstract\vspace{0.09in}}}\par
+  \vspace{0.18in}%
+  {\small\raggedright\textbf{Keywords:} \BeaconPaperKeywords\par}%
+  \vspace{0.2in}%
+}
+
+\newcommand{\BeaconFigure}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{paper/figures/#1.pdf}
+    \caption{#2}\label{fig:#1}
+    \par\smallskip{\footnotesize\color{BeaconMuted}\textit{Figure description:} #3\par}
+  \end{figure}%
+}
+
+\newenvironment{BeaconKeyPoints}{%
+  \begin{quote}\color{BeaconInk}\sffamily\small\textbf{Key points}\par\begin{itemize}
+}{\end{itemize}\end{quote}}

@@ -1,0 +1,42 @@
+name: Research paper
+
+on:
+  pull_request:
+    paths:
+      - "templates/research-paper/**"
+      - ".github/workflows/research-paper.yml"
+  push:
+    branches: [main]
+    paths:
+      - "templates/research-paper/**"
+      - ".github/workflows/research-paper.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        theme: [neutral, egohygiene]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install deterministic build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes \
+            latexmk \
+            librsvg2-bin \
+            lmodern \
+            pandoc \
+            poppler-utils \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-pictures
+      - name: Build and validate the profile
+        run: make --directory="templates/research-paper" check THEME="${{ matrix.theme }}"
