@@ -1,0 +1,26 @@
+schema_version = 1
+stage = "draft"
+document_version = "0.1.0"
+default_theme = "themes/organization.json"
+source_date_epoch = 1787616000
+
+[review]
+editorial = "pending"
+technical = "pending"
+evidence = "pending"
+accessibility = "pending"
+
+[publication]
+enabled = false
+relay_profile = "document-site"
+relay_dependency = "egohygiene/relay#4"
+identity_dependency = "egohygiene/identity#2"
+pdf_artifact = "build/whitepaper.pdf"
+web_artifact = "build/web/index.html"
+
+[quality]
+minimum_external_contrast = 4.5
+require_embedded_fonts = true
+require_immutable_revision_for_publication = true
+require_live_link_check_for_publication = true
+require_reproducible_build_for_publication = true

@@ -1,0 +1,25 @@
+schema_version = 1
+
+[[sources]]
+id = "SRC-001"
+kind = "official-documentation"
+title = "Pandoc User's Guide"
+url = "https://pandoc.org/MANUAL.html"
+accessed = "2026-08-26"
+citation_key = "pandoc-manual"
+
+[[sources]]
+id = "SRC-002"
+kind = "standard"
+title = "Web Content Accessibility Guidelines (WCAG) 2.2"
+url = "https://www.w3.org/TR/WCAG22/"
+accessed = "2026-08-26"
+citation_key = "wcag22"
+
+[[sources]]
+id = "SRC-003"
+kind = "official-documentation"
+title = "SOURCE_DATE_EPOCH specification"
+url = "https://reproducible-builds.org/docs/source-date-epoch/"
+accessed = "2026-08-26"
+citation_key = "source-date-epoch"

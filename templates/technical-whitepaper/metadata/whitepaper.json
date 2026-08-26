@@ -1,0 +1,20 @@
+{
+  "title": "Evidence-first technical whitepapers",
+  "subtitle": "A reusable publication contract for Beacon",
+  "author": [
+    "Beacon Maintainers"
+  ],
+  "abstract": "This reference whitepaper demonstrates how Beacon keeps narrative, claims, evidence, citations, diagrams, limitations, review state, and publication metadata aligned while producing a polished PDF and an accessible web document from one semantic source.",
+  "date": "2026-08-26",
+  "version": "0.1.0",
+  "lang": "en-US",
+  "keywords": [
+    "technical communication",
+    "evidence",
+    "reproducible publishing"
+  ],
+  "source_repository": "https://github.com/egohygiene/beacon",
+  "source_revision": "main",
+  "contact": "Beacon repository maintainers",
+  "reference-section-title": "References"
+}
