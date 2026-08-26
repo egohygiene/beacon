@@ -1,0 +1,38 @@
+schema_version = 1
+id = "technical-whitepaper"
+name = "Technical Whitepaper"
+version = "0.1.0"
+description = "An evidence-led technical whitepaper workspace with deterministic PDF and accessible web outputs."
+category = "whitepaper"
+license = "MIT"
+source = "original Beacon implementation informed by staged report-layout references"
+
+[[outputs]]
+format = "pdf"
+renderer = "pandoc"
+template = "templates/whitepaper.tex"
+
+[[outputs]]
+format = "html"
+renderer = "pandoc"
+template = "templates/whitepaper.html"
+
+[metadata]
+required = ["title", "subtitle", "authors", "abstract", "date", "version", "language", "source_repository", "source_revision"]
+optional = ["keywords", "reviewers", "contact"]
+
+[capabilities]
+abstract = true
+accessibility_checks = true
+bibliography = true
+citations = true
+claims_ledger = true
+diagrams = true
+html = true
+identity_themes = true
+limitations = true
+link_checks = true
+pdf = true
+relay_adapter = true
+reproducibility_checks = true
+version_history = true

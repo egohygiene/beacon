@@ -1,0 +1,42 @@
+name: Technical whitepaper
+
+on:
+  pull_request:
+    paths:
+      - "templates/technical-whitepaper/**"
+      - ".github/workflows/technical-whitepaper.yml"
+  push:
+    branches: [main]
+    paths:
+      - "templates/technical-whitepaper/**"
+      - ".github/workflows/technical-whitepaper.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        theme:
+          - themes/organization.json
+          - themes/product.json
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install deterministic build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes \
+            lmodern \
+            pandoc \
+            poppler-utils \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-pictures
+      - name: Build and validate the profile
+        run: make --directory="templates/technical-whitepaper" check THEME="${{ matrix.theme }}"

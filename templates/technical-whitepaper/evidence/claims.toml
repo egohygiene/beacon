@@ -1,0 +1,28 @@
+schema_version = 1
+
+[[claims]]
+id = "CLM-001"
+statement = "A single semantic manuscript can produce both PDF and standalone HTML outputs through Pandoc."
+status = "supported"
+section = "Evidence and claims"
+evidence_ids = ["SRC-001"]
+citation_keys = ["pandoc-manual"]
+limitations = "Format-specific presentation still requires maintained PDF and HTML templates."
+
+[[claims]]
+id = "CLM-002"
+statement = "Non-text content needs a text alternative that serves the equivalent purpose."
+status = "supported"
+section = "Evidence and claims"
+evidence_ids = ["SRC-002"]
+citation_keys = ["wcag22"]
+limitations = "An alternative is necessary but does not by itself establish full document accessibility."
+
+[[claims]]
+id = "CLM-003"
+statement = "A stable SOURCE_DATE_EPOCH helps build systems avoid timestamps that vary between otherwise identical builds."
+status = "supported"
+section = "Evidence and claims"
+evidence_ids = ["SRC-003"]
+citation_keys = ["source-date-epoch"]
+limitations = "Every tool in the build chain must also avoid or normalize other nondeterministic inputs."

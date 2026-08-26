@@ -9,6 +9,7 @@ package is independently buildable, versioned, documented, and described by a
 | Package | Status | Purpose |
 | --- | --- | --- |
 | [`nih-nimh-rpg`](nih-nimh-rpg/) | experimental | NIH/NIMH research-project-grant concept and attachment authoring |
+| [`technical-whitepaper`](technical-whitepaper/) | experimental | Evidence-led technical whitepapers with PDF and accessible web outputs |
 
 Content under `.staging/` is reference intake, not part of this registry. A
 staged template is removed after it has been deliberately re-authored,
