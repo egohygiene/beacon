@@ -302,7 +302,7 @@ fit gates are selected.
 id: BEA-Q07
 status: planned
 depends_on: [BEA-Q04, BEA-Q05, BEA-Q06]
-issues: [1, 2]
+issues: [2]
 -->
 #### BEA-Q07 — Release the proven publication toolkit
 
@@ -318,7 +318,8 @@ issues: [1, 2]
 - define compatibility and migration policy;
 - stage PDF, HTML, source, manifest, readiness, and checksum artifacts;
 - connect reusable CI/release behavior to Relay without making local use depend on Actions;
-- extend the proven package model into whitepaper and dossier/PDF-A work from issues `#1` and `#2`.
+- carry the completed whitepaper package from issue `#1` into the release and
+  extend the proven package model into dossier/PDF-A work from issue `#2`.
 
 **Exit criteria:**
 
@@ -405,7 +406,7 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | --- | --- |
 | Beacon `#5` | First product umbrella; reconcile against `BEA-Q03` rather than duplicate |
 | Empathy `#71` | Completed extraction; future paper upgrades belong to `egohygiene/antidote` |
-| Beacon `#1` | Follow the proven research profile; do not create a separate platform |
+| Beacon `#1` | Complete in PRs `#9` and `#15`; Reflector compatibility may refine the consumer adapter without reopening the base profile |
 | Beacon `#2` | Extend the proven package/release model after the first consumers |
 | Beacon `#3` | Profile implementation merged in PR `#11`; retain for Identity and first-consumer adoption without choosing a comics repository |
 | Reflector `#201` | Closed reference evidence; extract selectively from completed `template/` |

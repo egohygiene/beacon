@@ -13,3 +13,5 @@
   customization through the shared Beacon core.
 - Declared host-tool, theme, build/check, and package-artifact contracts for the
   shared execution CLI.
+- Documented the verified, checksummed package as the Relay handoff boundary and
+  separated that Beacon-owned contract from downstream deployment ownership.
