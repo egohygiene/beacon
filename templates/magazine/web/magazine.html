@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="BEACON_LANG">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BEACON_DESCRIPTION">
+  <meta name="generator" content="Beacon magazine profile 0.1.0">
+  <title>BEACON_TITLE - BEACON_EDITION_LABEL</title>
+  <style>
+    :root {
+      --primary: #BEACON_PRIMARY;
+      --accent: #BEACON_ACCENT;
+      --highlight: #BEACON_HIGHLIGHT;
+      --surface: #BEACON_SURFACE;
+      --paper: #BEACON_PAPER;
+      --ink: #BEACON_INK;
+      --muted: #BEACON_MUTED;
+      --page-ratio: 2 / 3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface);
+      font: 17px/1.62 ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    }
+    a { color: var(--accent); text-underline-offset: 0.18em; }
+    a:focus-visible { outline: 3px solid var(--highlight); outline-offset: 3px; }
+    .skip-link {
+      position: fixed;
+      top: -5rem;
+      left: 1rem;
+      z-index: 20;
+      padding: 0.7rem 1rem;
+      color: white;
+      background: var(--primary);
+    }
+    .skip-link:focus { top: 1rem; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      color: white;
+      background: color-mix(in srgb, var(--primary) 94%, transparent);
+      border-bottom: 2px solid var(--highlight);
+      backdrop-filter: blur(12px);
+    }
+    .site-header-inner {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+      padding: 0.85rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font: 700 0.82rem/1.2 ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .site-header a { color: white; }
+    .download-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .reader {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+      padding: clamp(1.5rem, 5vw, 4rem) 0 5rem;
+    }
+    .contents {
+      margin: 0 auto 2.5rem;
+      padding: 1rem 1.2rem;
+      max-width: 860px;
+      background: var(--paper);
+      border: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+      border-radius: 0.8rem;
+      font: 600 0.88rem/1.5 ui-sans-serif, system-ui, sans-serif;
+    }
+    .contents h2 { margin: 0 0 0.55rem; color: var(--primary); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .contents ol { margin: 0; padding-left: 1.25rem; columns: 2; }
+    .contents li { margin: 0.25rem 1rem 0.25rem 0; break-inside: avoid; }
+    .magazine-page {
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 800px);
+      min-height: min(1200px, calc((100vw - 2rem) * 1.5));
+      margin: 0 auto clamp(2rem, 6vw, 5rem);
+      padding: clamp(2rem, 7vw, 4rem);
+      overflow: hidden;
+      background: var(--paper);
+      border-radius: 0.4rem;
+      box-shadow: 0 1.4rem 4rem rgb(18 17 30 / 0.16);
+    }
+    .magazine-page::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: auto -10% -15% 35%;
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--highlight) 45%, transparent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4rem color-mix(in srgb, var(--accent) 6%, transparent), 0 0 0 9rem color-mix(in srgb, var(--highlight) 4%, transparent);
+    }
+    .page-cover, .page-back-cover, .layout-quote {
+      color: white;
+      background: radial-gradient(circle at 70% 40%, color-mix(in srgb, var(--accent) 80%, white) 0, var(--primary) 32%, #080b14 100%);
+    }
+    .page-cover::before, .page-back-cover::before, .layout-quote::before { border-color: rgb(255 255 255 / 0.3); box-shadow: 0 0 0 4rem rgb(255 255 255 / 0.035), 0 0 0 9rem rgb(255 255 255 / 0.025); }
+    .layout-opener, .layout-diagram, .page-credits { background: var(--surface); }
+    .layout-split { border-top: clamp(7rem, 22vw, 14rem) solid var(--primary); }
+    .layout-full-bleed-artwork { padding: 0; background: var(--primary); }
+    .artwork { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .artwork-contain { object-fit: contain; }
+    .page-overlay { position: relative; z-index: 2; }
+    .layout-full-bleed-artwork .page-overlay { margin: clamp(1.5rem, 6vw, 3.5rem); padding: 1.2rem; color: white; background: rgb(0 0 0 / 0.68); border-radius: 0.4rem; }
+    .kicker, .deck, .page-number, .edition-meta, .credits-meta, .back-cover-meta, h1, h2, h3, nav {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    .kicker { margin: 0 0 1rem; color: var(--accent); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+    .page-cover .kicker, .page-back-cover .kicker, .layout-quote .kicker { color: rgb(255 255 255 / 0.76); }
+    .magazine-page h1 { max-width: 12ch; margin: 0; color: var(--primary); font: 800 clamp(2.5rem, 9vw, 5.8rem)/0.98 ui-serif, Georgia, serif; letter-spacing: -0.045em; }
+    .page-cover h1, .page-back-cover h1, .layout-quote h1 { color: white; }
+    .deck { max-width: 38rem; margin: 1rem 0 2rem; color: var(--accent); font-size: clamp(1.05rem, 2.4vw, 1.45rem); font-weight: 600; line-height: 1.42; }
+    .page-cover .deck, .page-back-cover .deck, .layout-quote .deck { color: rgb(255 255 255 / 0.76); }
+    .page-body { max-width: 68ch; }
+    .layout-feature .page-body, .layout-split .page-body { columns: 2 16rem; column-gap: 2rem; }
+    .page-body p:first-child { margin-top: 0; }
+    .page-body blockquote { margin: 1.5rem 0; padding: 0.1rem 0 0.1rem 1.2rem; color: var(--accent); border-left: 4px solid var(--highlight); font-size: 1.35rem; line-height: 1.4; }
+    .page-cover .page-body, .page-back-cover .page-body, .layout-quote .page-body { color: rgb(255 255 255 / 0.88); }
+    .page-cover .page-body { margin-top: clamp(5rem, 20vw, 12rem); font-family: ui-sans-serif, system-ui, sans-serif; }
+    .layout-quote .page-body blockquote, .page-back-cover .page-body blockquote { color: white; border-color: var(--highlight); font-size: clamp(1.7rem, 5vw, 3rem); }
+    .flow-diagram { display: grid; gap: 0.7rem; margin: 2rem 0; max-width: 30rem; }
+    .flow-diagram div { padding: 0.8rem 1rem; text-align: center; color: var(--primary); background: var(--paper); border: 2px solid var(--accent); border-radius: 0.5rem; font: 750 0.92rem/1.3 ui-sans-serif, system-ui, sans-serif; }
+    .flow-diagram span { color: var(--highlight); text-align: center; font-size: 1.4rem; }
+    .page-number { position: absolute; right: clamp(1.5rem, 5vw, 3rem); bottom: clamp(1.5rem, 5vw, 3rem); color: var(--muted); font-size: 0.78rem; }
+    .page-cover .page-number, .page-back-cover .page-number, .layout-quote .page-number { color: rgb(255 255 255 / 0.6); }
+    .back-cover-meta { margin-top: 2rem; font-size: 0.82rem; line-height: 1.45; }
+    .back-cover-meta dt { margin-top: 0.7rem; color: rgb(255 255 255 / 0.58); font-weight: 700; text-transform: uppercase; }
+    .back-cover-meta dd { margin: 0.1rem 0 0; }
+    .back-cover-meta a { color: white; overflow-wrap: anywhere; }
+    .publication-codes { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+    .publication-code { width: auto; max-width: 9rem; max-height: 5rem; padding: 0.4rem; background: white; }
+    .edition-meta { margin-top: 2rem; color: rgb(255 255 255 / 0.7); font-size: 0.82rem; }
+    .manifest-note { width: min(800px, calc(100% - 2rem)); margin: 0 auto 4rem; color: var(--muted); font: 0.84rem/1.5 ui-sans-serif, system-ui, sans-serif; }
+    @media (max-width: 620px) {
+      .site-header-inner { align-items: flex-start; flex-direction: column; }
+      .contents ol { columns: 1; }
+      .magazine-page { min-height: 0; aspect-ratio: auto; }
+      .layout-feature .page-body, .layout-split .page-body { columns: 1; }
+    }
+    @media print {
+      @page { size: 8in 12in; margin: 0; }
+      body { background: white; }
+      .site-header, .contents, .manifest-note, .skip-link { display: none; }
+      .reader { width: auto; padding: 0; }
+      .magazine-page { width: 8in; height: 12in; min-height: 12in; margin: 0; border-radius: 0; box-shadow: none; break-after: page; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to magazine</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <span>BEACON_PUBLISHER / BEACON_TITLE / BEACON_EDITION_LABEL</span>
+      <nav class="download-links" aria-label="Magazine downloads">
+        <a href="../magazine.pdf">Digital PDF</a>
+        <a href="../magazine-print.pdf">Print PDF</a>
+      </nav>
+    </div>
+  </header>
+  <main id="content" class="reader" tabindex="-1">
+    <nav class="contents" aria-label="Table of contents">
+      <h2>In this issue</h2>
+      <ol>BEACON_NAVIGATION</ol>
+    </nav>
+    BEACON_PAGES
+  </main>
+  <p class="manifest-note">Canonical route: <code>BEACON_ROUTE</code>. Source model: edition JSON, page JSON, and Markdown. Generated HTML is not canonical.</p>
+  <script id="beacon-publication-manifest" type="application/json">BEACON_MANIFEST</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+% Copyright 2026 Ego Hygiene
+% SPDX-License-Identifier: MIT
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beacon-magazine}[2026/08/26 Beacon magazine profile]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{graphicx}
+\RequirePackage{multicol}
+\RequirePackage{enumitem}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\RequirePackage{eso-pic}
+\RequirePackage{ragged2e}
+\RequirePackage{hyperref}
+\usetikzlibrary{calc,positioning,shapes.geometric}
+
+\ifBeaconPrint
+  \RequirePackage[
+    paperwidth=\BeaconPageWidth,
+    paperheight=\BeaconPageHeight,
+    left=\BeaconSideMargin,
+    right=\BeaconSideMargin,
+    top=\BeaconTopMargin,
+    bottom=\BeaconTopMargin
+  ]{geometry}
+  \BeaconPdfBoxes
+\else
+  \RequirePackage[
+    paperwidth=\BeaconPageWidth,
+    paperheight=\BeaconPageHeight,
+    left=\BeaconSideMargin,
+    right=\BeaconSideMargin,
+    top=\BeaconTopMargin,
+    bottom=\BeaconTopMargin
+  ]{geometry}
+\fi
+
+\definecolor{BeaconPrimary}{HTML}{\BeaconPrimaryHex}
+\definecolor{BeaconAccent}{HTML}{\BeaconAccentHex}
+\definecolor{BeaconHighlight}{HTML}{\BeaconHighlightHex}
+\definecolor{BeaconSurface}{HTML}{\BeaconSurfaceHex}
+\definecolor{BeaconPaper}{HTML}{\BeaconPaperHex}
+\definecolor{BeaconInk}{HTML}{\BeaconInkHex}
+\definecolor{BeaconMuted}{HTML}{\BeaconMutedHex}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=BeaconAccent,
+  urlcolor=BeaconAccent,
+  pdftitle={\BeaconMagazineTitle},
+  pdfauthor={\BeaconPublisher},
+  pdfsubject={\BeaconMagazineDescription},
+  pdfkeywords={magazine, publication, Beacon}
+}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.62em}
+\setlength{\columnsep}{0.32in}
+\setlist{leftmargin=1.25em,itemsep=0.24em,topsep=0.35em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
+}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\familydefault}{\sfdefault}
+\color{BeaconInk}
+
+\newcommand{\BeaconCanvas}[1]{%
+  \AddToShipoutPictureBG*{\AtPageLowerLeft{\color{#1}\rule{\paperwidth}{\paperheight}}}%
+}
+
+\newcommand{\BeaconCropMarks}{%
+  \ifBeaconPrint
+    \begin{tikzpicture}[remember picture,overlay,line width=0.35pt,color=black]
+      \draw ([xshift=0pt,yshift=\BeaconBleed]current page.south west) -- ([xshift=\dimexpr\BeaconBleed-2pt\relax,yshift=\BeaconBleed]current page.south west);
+      \draw ([xshift=\BeaconBleed,yshift=0pt]current page.south west) -- ([xshift=\BeaconBleed,yshift=\dimexpr\BeaconBleed-2pt\relax]current page.south west);
+      \draw ([xshift=-\dimexpr\BeaconBleed-2pt\relax,yshift=\BeaconBleed]current page.south east) -- ([xshift=0pt,yshift=\BeaconBleed]current page.south east);
+      \draw ([xshift=-\BeaconBleed,yshift=0pt]current page.south east) -- ([xshift=-\BeaconBleed,yshift=\dimexpr\BeaconBleed-2pt\relax]current page.south east);
+      \draw ([xshift=0pt,yshift=-\BeaconBleed]current page.north west) -- ([xshift=\dimexpr\BeaconBleed-2pt\relax,yshift=-\BeaconBleed]current page.north west);
+      \draw ([xshift=\BeaconBleed,yshift=0pt]current page.north west) -- ([xshift=\BeaconBleed,yshift=-\dimexpr\BeaconBleed-2pt\relax]current page.north west);
+      \draw ([xshift=-\dimexpr\BeaconBleed-2pt\relax,yshift=-\BeaconBleed]current page.north east) -- ([xshift=0pt,yshift=-\BeaconBleed]current page.north east);
+      \draw ([xshift=-\BeaconBleed,yshift=0pt]current page.north east) -- ([xshift=-\BeaconBleed,yshift=-\dimexpr\BeaconBleed-2pt\relax]current page.north east);
+    \end{tikzpicture}%
+  \fi
+}
+\AddToShipoutPictureFG{\BeaconCropMarks}
+
+\newcommand{\BeaconFooter}[1]{%
+  \vfill
+  \noindent\textcolor{BeaconMuted}{\rule{\linewidth}{0.35pt}}\\[-0.1em]
+  {\fontsize{7.5}{9}\selectfont\color{BeaconMuted}\MakeUppercase{\BeaconMagazineTitle\ / \BeaconEditionLabel}\hfill #1}
+}
+
+\newcommand{\BeaconDarkFooter}[1]{%
+  \vfill
+  \noindent\textcolor{white!35}{\rule{\linewidth}{0.35pt}}\\[-0.1em]
+  {\fontsize{7.5}{9}\selectfont\color{white!72}\MakeUppercase{\BeaconPublisher\ / \BeaconEditionLabel}\hfill #1}
+}
+
+\newcommand{\BeaconKicker}[1]{%
+  {\fontsize{8}{10}\selectfont\bfseries\color{BeaconAccent}\MakeUppercase{#1}\par}
+}
+
+\newcommand{\BeaconDarkKicker}[1]{%
+  {\fontsize{8}{10}\selectfont\bfseries\color{white!78}\MakeUppercase{#1}\par}
+}
+
+\newcommand{\BeaconNetworkMotif}{%
+  \begin{center}
+  \begin{tikzpicture}[x=1in,y=1in]
+    \foreach \radius/\opacity in {0.55/70,1.05/50,1.55/28}{
+      \draw[BeaconHighlight!\opacity,line width=0.55pt] (0,0) circle (\radius);
+    }
+    \foreach \angle in {10,55,105,155,205,255,305}{
+      \draw[white!28,line width=0.45pt] (0,0) -- (\angle:1.55);
+      \fill[BeaconAccent!85] (\angle:1.55) circle (1.9pt);
+    }
+    \fill[BeaconPaper] (0,0) circle (6pt);
+    \fill[BeaconHighlight!85] (0,0) circle (3pt);
+    \node[draw=white!70,diamond,minimum size=0.95in,line width=0.7pt] at (0,0) {};
+  \end{tikzpicture}
+  \end{center}
+}
+
+\newcommand{\BeaconFlowMotif}{%
+  \begin{tikzpicture}[node distance=0.5in,>=latex]
+    \tikzset{flow/.style={draw=BeaconAccent,rounded corners=4pt,minimum width=2.05in,minimum height=0.56in,align=center,font=\small\bfseries,fill=BeaconPaper}}
+    \tikzset{output/.style={draw=BeaconAccent,rounded corners=4pt,minimum width=0.88in,minimum height=0.5in,align=center,font=\fontsize{7.5}{9}\selectfont\bfseries,fill=BeaconPaper}}
+    \node[flow] (source) {Edition + page sources};
+    \node[flow,below=of source] (validate) {Validate + review};
+    \node[flow,below=of validate] (render) {Deterministic render};
+    \node[output,below=0.52in of render,xshift=-0.98in] (pdf) {Digital PDF};
+    \node[output,below=0.52in of render] (print) {Print PDF};
+    \node[output,below=0.52in of render,xshift=0.98in] (web) {Web edition};
+    \draw[->,BeaconHighlight,line width=0.9pt] (source) -- (validate);
+    \draw[->,BeaconHighlight,line width=0.9pt] (validate) -- (render);
+    \draw[->,BeaconHighlight,line width=0.9pt] (render) -- (pdf);
+    \draw[->,BeaconHighlight,line width=0.9pt] (render) -- (print);
+    \draw[->,BeaconHighlight,line width=0.9pt] (render) -- (web);
+  \end{tikzpicture}
+}
+
+\newenvironment{BeaconCoverPage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconPrimary}
+  \color{white}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconDarkKicker{#1}
+  \vspace{0.18in}
+  {\rmfamily\fontsize{43}{45}\selectfont\bfseries\raggedright #2\par}
+  \vspace{0.12in}
+  {\Large\color{white!78}\raggedright #3\par}
+  \vspace{0.32in}
+  \BeaconNetworkMotif
+  \vspace{0.18in}
+  \small\color{white!86}\begin{multicols}{2}
+}{%
+  \end{multicols}
+  \BeaconDarkFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconOpenerPage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconSurface}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconKicker{#1}
+  \vspace{0.28in}
+  {\rmfamily\fontsize{38}{42}\selectfont\bfseries\color{BeaconPrimary}\raggedright #2\par}
+  \vspace{0.18in}
+  {\Large\color{BeaconAccent}\raggedright #3\par}
+  \vspace{0.45in}
+  \begin{minipage}{\linewidth}\color{BeaconInk}\vspace{0.18in}\large
+}{%
+  \vspace{0.18in}\end{minipage}
+  \BeaconFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconFeaturePage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconPaper}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconKicker{#1}
+  \vspace{0.12in}
+  {\rmfamily\fontsize{31}{34}\selectfont\bfseries\color{BeaconPrimary}\raggedright #2\par}
+  \vspace{0.1in}
+  {\large\color{BeaconAccent}\raggedright #3\par}
+  \vspace{0.18in}
+  \textcolor{BeaconHighlight}{\rule{1.15in}{2.4pt}}
+  \vspace{0.16in}
+  \begin{multicols}{2}\small
+}{%
+  \end{multicols}
+  \BeaconFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconDiagramPage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconSurface}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconKicker{#1}
+  \vspace{0.12in}
+  {\rmfamily\fontsize{29}{32}\selectfont\bfseries\color{BeaconPrimary}\raggedright #2\par}
+  \vspace{0.08in}
+  {\large\color{BeaconAccent}\raggedright #3\par}
+  \vspace{0.3in}
+  \begin{minipage}[t]{0.47\linewidth}\small
+}{%
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\linewidth}\centering\vspace{0.08in}\BeaconFlowMotif\end{minipage}\par
+  \BeaconFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconSplitPage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconPaper}
+  \AddToShipoutPictureBG*{%
+    \AtPageUpperLeft{\color{BeaconPrimary}\raisebox{-3.25in}{\rule{\paperwidth}{3.25in}}}%
+  }
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconDarkKicker{#1}
+  \vspace{0.18in}
+  {\rmfamily\fontsize{32}{35}\selectfont\bfseries\color{white}\raggedright #2\par}
+  \vspace{0.12in}
+  {\large\color{white!76}\raggedright #3\par}
+  \vspace{1.03in}
+  \color{BeaconInk}\begin{multicols}{2}\small
+}{%
+  \end{multicols}
+  \BeaconFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconQuotePage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconPrimary}
+  \color{white}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconDarkKicker{#1}
+  \vspace{0.28in}
+  {\rmfamily\fontsize{34}{38}\selectfont\bfseries\raggedright #2\par}
+  \vspace{0.14in}
+  {\Large\color{white!72}\raggedright #3\par}
+  \vspace{0.55in}
+  \renewenvironment{quote}{\list{}{\leftmargin=0.35in\rightmargin=0.35in}\item\relax\rmfamily\fontsize{22}{28}\selectfont\color{white}}{\endlist}
+  \large\color{white!88}
+}{%
+  \BeaconDarkFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconCreditsPage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconSurface}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconKicker{#1}
+  \vspace{0.18in}
+  {\rmfamily\fontsize{32}{35}\selectfont\bfseries\color{BeaconPrimary}\raggedright #2\par}
+  \vspace{0.1in}
+  {\large\color{BeaconAccent}\raggedright #3\par}
+  \vspace{0.35in}
+  \begin{minipage}{\linewidth}\color{BeaconInk}\vspace{0.16in}\small
+}{%
+  \vspace{0.16in}\end{minipage}
+  \BeaconFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconBackCoverPage}[4]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \BeaconCanvas{BeaconPrimary}
+  \color{white}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconDarkKicker{#1}
+  \vspace{0.7in}
+  \BeaconNetworkMotif
+  \vspace{0.38in}
+  {\rmfamily\fontsize{26}{30}\selectfont\bfseries\centering #2\par}
+  \vspace{0.14in}
+  {\large\color{white!70}\centering #3\par}
+  \vspace{0.4in}
+  \begin{center}\begin{minipage}{0.78\linewidth}\centering\color{white!86}
+}{%
+  \end{minipage}\end{center}
+  \BeaconDarkFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}
+
+\newenvironment{BeaconArtworkPage}[5]{%
+  \def\BeaconCurrentPageNumber{#4}
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{\includegraphics[width=\paperwidth,height=\paperheight]{#5}}%
+  }
+  \color{white}
+  \noindent\begin{minipage}[t][\dimexpr\textheight-\baselineskip\relax][t]{\textwidth}
+  \BeaconDarkKicker{#1}
+  \vfill
+  \begin{minipage}{\linewidth}\color{white}\vspace{0.08in}
+  {\rmfamily\fontsize{27}{31}\selectfont\bfseries #2\par}
+  {\large\color{white!78}#3\par}
+  \vspace{0.08in}\end{minipage}
+  \vspace{0.18in}
+  \begin{minipage}{0.01pt}\fontsize{1}{1}\selectfont\color{white!1}
+}{%
+  \end{minipage}
+  \BeaconDarkFooter{\BeaconCurrentPageNumber}
+  \end{minipage}
+}

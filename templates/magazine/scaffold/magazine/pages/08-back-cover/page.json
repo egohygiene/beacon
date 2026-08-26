@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "back-cover",
+  "kind": "back-cover",
+  "layout": "back-cover",
+  "kicker": "The issue closes. The work continues.",
+  "title": "Make knowledge worth returning to.",
+  "deck": "A quiet ending for a publication designed to remain alive.",
+  "source": "content.md",
+  "back_cover": {
+    "description": "Beacon Field Notes is a reference issue for reusable, evidence-aware magazine publishing.",
+    "creator": "Ego Hygiene",
+    "copyright": "Copyright 2026 Ego Hygiene",
+    "license": "MIT for template source; edition content retains its declared rights",
+    "version": "0.1.0",
+    "system_line": "Built with Beacon / part of the Ego Hygiene system",
+    "isbn": null,
+    "barcode_asset": null,
+    "qr_asset": null,
+    "qr_url": null
+  }
+}

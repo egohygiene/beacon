@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "credits",
+  "kind": "credits",
+  "layout": "credits",
+  "kicker": "Colophon",
+  "title": "Credits and production notes",
+  "deck": "Every durable publication should say who made it, what shaped it, and how it can be rebuilt.",
+  "source": "content.md"
+}

@@ -3,12 +3,12 @@ schema: aether.architecture-document/v1
 id: beacon-roadmap
 title: Beacon Roadmap
 kind: architecture-document
-version: 0.2.0
+version: 0.3.0
 status: provisional
 owners:
   - egohygiene
 created: 2026-08-19
-updated: 2026-08-25
+updated: 2026-08-26
 governed_by:
   - architecture-roadmap
 depends_on:
@@ -33,14 +33,14 @@ repository: egohygiene/beacon
 visibility: public
 publication: central
 route: /roadmap/beacon/
-updated: 2026-08-25
+updated: 2026-08-26
 -->
-## 2026-08-25 execution snapshot
+## 2026-08-26 execution snapshot
 
 > This roadmap is the issue-generation and execution handoff derived from the [2026-08-25 readiness audit](audits/beacon-readiness-audit-2026-08-25.md). It prioritizes a usable local research-publication workflow before complete organization synchronization.
 
 **Lifecycle:** seed, standalone extraction  
-**Current gate:** Promote the tested Beacon core from `.staging`, prove a clean build, and ship one versioned research-paper profile.  
+**Current gate:** Keep the profile-first authoring path usable while the shared Beacon core matures; the active slice is the reusable magazine/print profile in issue `#3`.
 **North-star outcome:** A local-first publication toolkit that lets a researcher initialize, write, validate, render, package, and publish reproducible papers and grant attachments without cloning another project's infrastructure.
 
 ### Definition of useful
@@ -101,7 +101,7 @@ issues: [1, 2, 3, 5]
 -->
 #### BEA-Q01 — Define the publication boundary
 
-**State:** `complete`  
+**State:** `complete`
 **Depends on:** None
 
 **Outcome:** Beacon is established as the standalone publication project/profile, validation, packaging, and distribution-coordination capability.
@@ -125,7 +125,7 @@ issues: []
 -->
 #### BEA-Q02 — Promote the standalone Beacon core
 
-**State:** `active`  
+**State:** `active`
 **Depends on:** `BEA-Q01`
 
 **Outcome:** The existing CLI, contracts, tests, and canonical starter package run from the Beacon repository root without Empathy assumptions.
@@ -155,13 +155,13 @@ issues: []
 
 <!-- roadmap-step
 id: BEA-Q03
-status: planned
+status: complete
 depends_on: [BEA-Q02]
 issues: [5]
 -->
 #### BEA-Q03 — Ship the minimum useful research-paper profile
 
-**State:** `planned`  
+**State:** `complete`
 **Depends on:** `BEA-Q02`
 
 **Outcome:** `beacon#5` provides a neutral, versioned, reproducible academic paper profile that builds immediately and can evolve without copying untracked internals.
@@ -178,11 +178,13 @@ issues: [5]
 
 **Exit criteria:**
 
-- [ ] A clean generated project builds a PDF from a minimal fixture.
-- [ ] Repeated clean builds use pinned/documented dependencies and produce explainable provenance.
-- [ ] Citation, reference, figure, link, and compilation failures are actionable.
-- [ ] A project can inspect its pin and preview an upgrade without silent mutation.
-- [ ] The current minimal Pandoc/Tera package is either intentionally retained under a distinct profile or superseded with a migration note.
+- [x] A clean generated project builds a PDF from a minimal fixture.
+- [x] Repeated clean builds use pinned/documented dependencies and produce explainable provenance.
+- [x] Citation, reference, figure, link, and compilation failures are actionable.
+- [x] A project can inspect its pin and preview an upgrade without silent mutation.
+- [x] The current minimal Pandoc/Tera package is either intentionally retained under a distinct profile or superseded with a migration note.
+
+**Evidence:** Research-paper profile merged in PR `#10` on 2026-08-26.
 
 <!-- roadmap-step
 id: BEA-Q04
@@ -320,14 +322,14 @@ issues: [1, 2]
 
 <!-- roadmap-step
 id: BEA-Q08
-status: deferred
-depends_on: [BEA-Q07]
+status: active
+depends_on: [BEA-Q01, BEA-Q03]
 issues: [3]
 -->
 #### BEA-Q08 — Curate the broader registry and publication formats
 
-**State:** `deferred`  
-**Depends on:** `BEA-Q07`
+**State:** `active`
+**Depends on:** `BEA-Q01`, `BEA-Q03`
 
 **Outcome:** Beacon expands from proven research/grant profiles into a governed template registry, magazine/print formats, and organization-wide synchronization.
 
@@ -335,10 +337,17 @@ issues: [3]
 
 - inventory, deduplicate, license, checksum, compile, and disposition third-party intake one package at a time;
 - admit only packages with redistribution and maintenance evidence;
-- add magazine/print work from issue `#3` after the core release path is stable;
+- ship the magazine/print work from issue `#3` as a profile-first vertical slice;
 - add optional Identity overlays without mixing presentation with semantic source;
 - publish reusable Aether authoring/review skills and Relay/Realm integrations;
 - let Holon materialize, Pace reconcile, and Observatory measure released contracts.
+
+**Current slice:** Build structured edition/page contracts, granular Markdown
+sources, neutral and Ego Hygiene themes, synchronized digital/print/web outputs,
+and a future Dreamscape branch-sync seam. Reflector remains the image-first
+compatibility canary; Ego Hygiene magazine is the first new consumer. Comic
+series semantics remain a later sibling profile with no repository decision in
+this slice.
 
 **Exit criteria:**
 
@@ -386,7 +395,7 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | Empathy `#71` | Canonical Antidote extraction issue; execute after research profile v0 |
 | Beacon `#1` | Follow the proven research profile; do not create a separate platform |
 | Beacon `#2` | Extend the proven package/release model after the first consumers |
-| Beacon `#3` | Defer magazine/print until paper, grant, and release flows work |
+| Beacon `#3` | Active profile-first slice; prove structured magazine sources, digital/print/web parity, and consumer seams without choosing a comics repository |
 | Reflector `#201` | Closed reference evidence; extract selectively from completed `template/` |
 
 ### Organization integration sequence
@@ -440,7 +449,6 @@ The following are intentionally outside the first useful release:
 - automatic NIH/Grants.gov submission;
 - automatic arXiv acceptance or Zenodo deposition;
 - complete journal/conference adapter coverage;
-- magazine and print production;
 - hosted collaboration or enterprise controls;
 - mandatory Holon, Pace, Observatory, or organization-site integration.
 

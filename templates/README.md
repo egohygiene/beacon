@@ -9,6 +9,7 @@ package is independently buildable, versioned, documented, and described by a
 | Package | Status | Purpose |
 | --- | --- | --- |
 | [`nih-nimh-rpg`](nih-nimh-rpg/) | experimental | NIH/NIMH research-project-grant concept and attachment authoring |
+| [`magazine`](magazine/) | experimental | Browser-compatible editorial magazines with digital, print, and accessible web outputs |
 | [`research-paper`](research-paper/) | experimental | Neutral academic papers with PDF, accessible web, and arXiv-source outputs |
 | [`technical-whitepaper`](technical-whitepaper/) | experimental | Evidence-led technical whitepapers with PDF and accessible web outputs |
 

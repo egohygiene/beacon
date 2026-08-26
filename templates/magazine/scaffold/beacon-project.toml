@@ -1,0 +1,51 @@
+[beacon]
+schema_version = 1
+profile = "magazine"
+profile_version = "0.1.0"
+theme = "neutral"
+
+[project]
+id = "beacon-field-notes"
+publisher = "Beacon"
+product = "Field Notes"
+
+[magazine]
+edition_manifest = "magazine/edition.json"
+
+[print]
+trim_width_in = 8.0
+trim_height_in = 12.0
+bleed_in = 0.125
+safe_margin_in = 0.5
+crop_marks = true
+signature_multiple = 4
+
+[web]
+route = "/magazine"
+
+[editor]
+schema_version = 1
+source_model = "edition-json+page-json+markdown"
+round_trip_safe = true
+branch_sync = "pull-request"
+
+[provenance]
+source_repository = "https://github.com/egohygiene/beacon"
+source_revision = "working-tree"
+source_path = "templates/magazine/scaffold"
+source_date_epoch = 1787702400
+license = "MIT"
+
+[review]
+editorial = "pending"
+accessibility = "pending"
+rights = "pending"
+print_proof = "pending"
+
+[publication]
+stage = "draft"
+enabled = false
+relay_profile = "document-site"
+pdf_artifact = "magazine.pdf"
+print_artifact = "magazine-print.pdf"
+web_artifact = "web/index.html"

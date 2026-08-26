@@ -1,0 +1,45 @@
+name: Magazine publication
+
+on:
+  pull_request:
+    paths:
+      - "templates/magazine/**"
+      - ".github/workflows/magazine.yml"
+  push:
+    branches: [main]
+    paths:
+      - "templates/magazine/**"
+      - ".github/workflows/magazine.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        theme: [neutral, egohygiene]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install deterministic build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes \
+            latexmk \
+            lmodern \
+            pandoc \
+            poppler-utils \
+            ripgrep \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-pictures
+      - name: Build and validate the profile
+        run: make --directory="templates/magazine" check reproducibility THEME="${{ matrix.theme }}"
+      - name: Prove clean project bootstrap
+        if: matrix.theme == 'neutral'
+        run: make --directory="templates/magazine" bootstrap-test

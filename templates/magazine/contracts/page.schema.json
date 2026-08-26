@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.egohygiene.io/beacon/magazine/page/v1.json",
+  "title": "Beacon Magazine Page",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "layout",
+    "kicker",
+    "title",
+    "deck",
+    "source"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "kind": {
+      "enum": ["cover", "inside-cover", "article", "credits", "back-cover"]
+    },
+    "layout": {
+      "enum": [
+        "cover",
+        "opener",
+        "feature",
+        "diagram",
+        "split",
+        "quote",
+        "credits",
+        "back-cover",
+        "full-bleed-artwork"
+      ]
+    },
+    "kicker": { "type": "string" },
+    "title": { "type": "string", "minLength": 1 },
+    "deck": { "type": "string" },
+    "source": { "type": "string", "pattern": "^[A-Za-z0-9._/-]+\\.md$" },
+    "prompt_source": { "type": "string", "pattern": "^[A-Za-z0-9._/-]+\\.md$" },
+    "animation_asset": { "type": "string", "pattern": "^[A-Za-z0-9._/-]+$" },
+    "artwork": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "alt", "fit", "rights"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^[A-Za-z0-9._/-]+\\.(?:png|jpg|jpeg|pdf|svg)$" },
+        "print_path": { "type": "string", "pattern": "^[A-Za-z0-9._/-]+\\.(?:png|jpg|jpeg|pdf)$" },
+        "alt": { "type": "string", "minLength": 1 },
+        "fit": { "enum": ["contain", "cover"] },
+        "rights": { "type": "string", "minLength": 1 }
+      }
+    },
+    "back_cover": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "creator", "copyright", "license", "version"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "creator": { "type": "string", "minLength": 1 },
+        "copyright": { "type": "string", "minLength": 1 },
+        "license": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "system_line": { "type": "string" },
+        "isbn": { "type": ["string", "null"] },
+        "barcode_asset": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Za-z0-9._/-]+\\.(?:png|jpg|jpeg)$"
+        },
+        "qr_asset": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Za-z0-9._/-]+\\.(?:png|jpg|jpeg)$"
+        },
+        "qr_url": { "type": ["string", "null"], "format": "uri" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "back-cover" } } },
+      "then": {
+        "required": ["back_cover"],
+        "properties": { "layout": { "enum": ["back-cover", "full-bleed-artwork"] } }
+      }
+    },
+    {
+      "if": { "properties": { "layout": { "const": "full-bleed-artwork" } } },
+      "then": { "required": ["artwork"] }
+    }
+  ]
+}
