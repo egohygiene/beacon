@@ -35,6 +35,7 @@ jobs:
             poppler-utils \
             texlive-fonts-recommended \
             texlive-latex-base \
+            texlive-latex-extra \
             texlive-latex-recommended \
             texlive-pictures
       - name: Build and validate the profile
