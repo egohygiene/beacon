@@ -8,7 +8,17 @@ provides the versioned profile and build runner.
 
 ## Start a paper
 
-From this directory, create a project-owned workspace:
+From the Beacon repository root, use the shared safe initializer:
+
+```bash
+cargo run --locked -- init research-paper "../antidote" \
+  --title "Antidote" \
+  --author "Alan Szmyt" \
+  --project-id "antidote" \
+  --theme "egohygiene"
+```
+
+The profile-owned adapter remains independently callable from this directory:
 
 ```sh
 python3 scripts/bootstrap.py \

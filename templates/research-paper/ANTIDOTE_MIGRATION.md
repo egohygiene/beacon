@@ -22,11 +22,10 @@ profile; Empathy issue #71 owns the later extraction from
 The initial Antidote configuration should use this shape:
 
 ```toml
-schema_version = 1
-
 [beacon]
+schema_version = 1
 profile = "research-paper"
-template_version = "0.1.0"
+profile_version = "0.1.0"
 theme = "egohygiene"
 
 [paper]

@@ -11,3 +11,5 @@
   manuscript.
 - Replaced the provisional research prototype and generic staged academic
   article references with an original MIT-licensed profile.
+- Adopted the shared Beacon project-manifest envelope and safe root initializer.
+- Escaped quoted metadata correctly when generating project TOML.

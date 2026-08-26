@@ -7,7 +7,19 @@ Identity and Relay contracts are finished.
 
 ## Start writing
 
-1. Edit `metadata/whitepaper.json` and choose a theme.
+From the Beacon repository root, initialize a customized project safely:
+
+```bash
+cargo run --locked -- init technical-whitepaper "../my-whitepaper" \
+  --title "Evidence-led System Design" \
+  --author "Author Name" \
+  --project-id "evidence-led-system-design" \
+  --theme "egohygiene"
+```
+
+Then:
+
+1. Review `metadata/whitepaper.json` and the selected theme.
 2. Replace the reference manuscript in `manuscript/whitepaper.md`.
 3. Record each important assertion in `evidence/claims.toml` and each supporting
    source in `evidence/sources.toml`.
@@ -64,5 +76,5 @@ through `THEME`.
 - `VERSION_HISTORY.md`: changes to the reusable template package itself.
 
 The reference manuscript describes the template instead of inventing product
-results. Copy the package for a real whitepaper, then replace the example claims
-with evidence from that product.
+results. Initialize a project for a real whitepaper, then replace the example
+claims with evidence from that product.

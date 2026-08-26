@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import re
 import shutil
 from pathlib import Path
@@ -36,7 +37,7 @@ def main() -> int:
     shutil.copytree(SCAFFOLD, destination, dirs_exist_ok=True)
 
     today = dt.date.today()
-    replacements = {
+    raw_replacements = {
         "@@TITLE@@": arguments.title,
         "@@AUTHOR@@": arguments.author,
         "@@PROJECT_ID@@": arguments.project_id or slug(arguments.title),
@@ -47,9 +48,15 @@ def main() -> int:
     for path in sorted(destination.rglob("*")):
         if path.is_file():
             text = path.read_text(encoding="utf-8")
+            replacements = raw_replacements
+            if path.name == "beacon-project.toml":
+                replacements = {
+                    marker: json.dumps(value, ensure_ascii=False)[1:-1]
+                    for marker, value in raw_replacements.items()
+                }
             text = text.replace(
                 'source_date_epoch = "@@SOURCE_DATE_EPOCH@@"',
-                f"source_date_epoch = {replacements['@@SOURCE_DATE_EPOCH@@']}",
+                f"source_date_epoch = {raw_replacements['@@SOURCE_DATE_EPOCH@@']}",
             )
             for marker, value in replacements.items():
                 text = text.replace(marker, value)

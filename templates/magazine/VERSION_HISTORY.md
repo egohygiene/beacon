@@ -11,3 +11,5 @@
   publication-readiness validation.
 - Record Reflector and Ego Hygiene consumer seams without moving consumer
   content.
+- Declare the profile-owned adapter for safe discovery and initialization by
+  the shared Beacon core.

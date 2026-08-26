@@ -3,7 +3,7 @@ schema: aether.architecture-document/v1
 id: beacon-roadmap
 title: Beacon Roadmap
 kind: architecture-document
-version: 0.3.0
+version: 0.4.0
 status: provisional
 owners:
   - egohygiene
@@ -40,7 +40,8 @@ updated: 2026-08-26
 > This roadmap is the issue-generation and execution handoff derived from the [2026-08-25 readiness audit](audits/beacon-readiness-audit-2026-08-25.md). It prioritizes a usable local research-publication workflow before complete organization synchronization.
 
 **Lifecycle:** seed, standalone extraction  
-**Current gate:** Keep the profile-first authoring path usable while the shared Beacon core matures; the active slice is the reusable magazine/print profile in issue `#3`.
+**Current gate:** Add the shared `doctor`, build planning, execution, and package surface on top of the promoted core, then verify it through Reflector and Antidote.
+
 **North-star outcome:** A local-first publication toolkit that lets a researcher initialize, write, validate, render, package, and publish reproducible papers and grant attachments without cloning another project's infrastructure.
 
 ### Definition of useful
@@ -65,7 +66,7 @@ At that threshold:
 - one neutral paper fixture builds in local and CI-equivalent environments;
 - the project manifest pins its profile/template and records provenance;
 - Reflector validates as a compatibility consumer without a disruptive rewrite;
-- Antidote can leave Empathy and become a standalone paper repository;
+- the standalone Antidote repository can consume Beacon without retaining Empathy as a build dependency;
 - a current NIMH concept proposal can be scaffolded while submission-specific gates remain explicit.
 
 ### Execution principles
@@ -119,13 +120,13 @@ issues: [1, 2, 3, 5]
 
 <!-- roadmap-step
 id: BEA-Q02
-status: active
+status: complete
 depends_on: [BEA-Q01]
-issues: []
+issues: [12]
 -->
 #### BEA-Q02 — Promote the standalone Beacon core
 
-**State:** `active`
+**State:** `complete`
 **Depends on:** `BEA-Q01`
 
 **Outcome:** The existing CLI, contracts, tests, and canonical starter package run from the Beacon repository root without Empathy assumptions.
@@ -142,16 +143,23 @@ issues: []
 
 **Exit criteria:**
 
-- [ ] `beacon list`, `inspect`, `validate`, and `init` run from the repository root.
-- [ ] One shared fixture proves schema and CLI validation agree.
-- [ ] Initialization remains deterministic and refuses unsafe overwrite.
-- [ ] Local `task check` and CI run the same contract.
-- [ ] No active path depends on `egohygiene/empathy`.
+- [x] `beacon list`, `inspect`, `validate`, and `init` run from the repository root.
+- [x] One shared manifest contract and fixtures prove library and CLI validation agree.
+- [x] Initialization remains deterministic and refuses unsafe overwrite.
+- [x] Local `task check` and CI run the same contract.
+- [x] No active path depends on `egohygiene/empathy`.
+
+**Current slice:** Issue [`#12`](https://github.com/egohygiene/beacon/issues/12)
+promotes and adapts the staged Rust core, unifies the active profile manifests
+and project envelope, adds safe four-profile initialization, retires the
+duplicate validator, pins the toolchain and lockfile, and establishes local/CI
+parity. The staged LaTeX intake remains intact for later component extraction.
 
 **Current evidence:**
 
-- A working Rust/Python vertical slice and tests were observed under `.staging`.
-- No Beacon Actions runs or active root implementation were observed.
+- The root CLI lists, inspects, and validates all four active profiles in stable order.
+- Unit and binary smoke tests initialize each profile through a temporary workspace and reject unsafe overwrite.
+- The former staged core has root equivalents; removal is limited to those superseded files.
 
 <!-- roadmap-step
 id: BEA-Q03
@@ -220,27 +228,26 @@ status: planned
 depends_on: [BEA-Q03]
 issues: []
 -->
-#### BEA-Q05 — Graduate Antidote into its own repository
+#### BEA-Q05 — Upgrade the standalone Antidote paper
 
 **State:** `planned`  
 **Depends on:** `BEA-Q03`
 
-**Outcome:** The incubated Antidote research program becomes the first new standalone Beacon paper project and can move rapidly through literature, methods, evidence, and publication work.
+**Outcome:** The extracted Antidote research program becomes a clean Beacon consumer and can move rapidly through literature, methods, evidence, writing, and publication work.
 
-**Owning issue:** [`egohygiene/empathy#71`](https://github.com/egohygiene/empathy/issues/71)
+**Completed extraction:** [`egohygiene/empathy#71`](https://github.com/egohygiene/empathy/issues/71) created [`egohygiene/antidote`](https://github.com/egohygiene/antidote).
 
 **Scope:**
 
-- inventory and preserve `empathy/research/antidote` with its source commit;
-- create the standalone repository using the versioned research-paper profile;
-- preserve manuscript, references, figures, data, bootstrap notes, and epistemic boundaries;
-- remove duplicated generic templates once Beacon owns them;
-- leave a migration pointer in Empathy and eliminate the second writable canonical copy;
+- audit the standalone repository against the current research-paper profile;
+- reconcile its manifest, manuscript, references, figures, data, bootstrap notes, and epistemic boundaries;
+- replace remaining provisional build/template assumptions with pinned Beacon contracts;
+- confirm Empathy contains only the historical migration pointer;
 - run the literature/novelty scan before freezing contribution or experimental architecture.
 
 **Exit criteria:**
 
-- [ ] Antidote has one canonical standalone repository.
+- [x] Antidote has one canonical standalone repository.
 - [ ] The project builds and validates through its pinned Beacon profile.
 - [ ] Research provenance and evidence classifications survive migration.
 - [ ] Empathy is not a runtime or build dependency.
@@ -258,10 +265,11 @@ issues: []
 
 **Outcome:** A researcher can begin a high-quality NIMH concept proposal immediately, then pin a mechanism/NOFO and produce a compliant attachment bundle without relying on the stale 2019 intake.
 
-**Current slice:** The original `nih-nimh-rpg` multi-attachment LaTeX package is
-being introduced as the first active root template. The two duplicated 2019 NIH
-reference directories are removed in the same migration so `.staging` shrinks
-as each reference is deliberately dispositioned.
+**Current evidence:** PR `#8` shipped the original `nih-nimh-rpg`
+multi-attachment LaTeX profile and deliberately dispositioned both duplicated
+2019 references. Issue `#12` adds safe root initialization. The remaining slice
+is a real proposal workspace after the applicant, mechanism, NOFO, and program
+fit gates are selected.
 
 **Profile design:**
 
@@ -342,12 +350,17 @@ issues: [3]
 - publish reusable Aether authoring/review skills and Relay/Realm integrations;
 - let Holon materialize, Pace reconcile, and Observatory measure released contracts.
 
-**Current slice:** Build structured edition/page contracts, granular Markdown
-sources, neutral and Ego Hygiene themes, synchronized digital/print/web outputs,
-and a future Dreamscape branch-sync seam. Reflector remains the image-first
-compatibility canary; Ego Hygiene magazine is the first new consumer. Comic
-series semantics remain a later sibling profile with no repository decision in
-this slice.
+**Completed slice:** PR `#11` shipped structured edition/page contracts,
+granular Markdown sources, neutral and Ego Hygiene themes, synchronized
+digital/print/web outputs, and a future Dreamscape branch-sync seam. Reflector
+remains the image-first compatibility canary; Ego Hygiene magazine is the first
+new consumer. Comic series semantics remain a later sibling profile with no
+repository decision in this slice.
+
+**Next registry direction:** After the core promotion, transform useful staged
+book, title-page, newsletter, and booklet patterns into original composable
+LaTeX primitives and page compositions with Identity, profile, project, and
+page-level override layers. Do not bulk-promote the source packages.
 
 **Exit criteria:**
 
@@ -363,7 +376,7 @@ After `BEA-Q03`, consumer work can proceed in parallel:
 | Lane | Immediate result | Canonical owner | Blocking dependency |
 | --- | --- | --- | --- |
 | Reflector alignment | Existing paper validates through Beacon | `egohygiene/reflector` | Research profile v0 |
-| Antidote graduation | Standalone paper and rapid literature/method work | future `egohygiene/antidote` | Research profile v0 |
+| Antidote upgrade | Standalone paper and rapid literature/method work | `egohygiene/antidote` | Shared Beacon execution surface |
 | NIMH proposal | Current concept attachment set and compliance gates | proposal repository + Beacon profile | Research profile foundation |
 
 The lanes should feed fixes back into Beacon without waiting for complete Holon/Pace/Observatory integration.
@@ -374,14 +387,14 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 
 | Candidate | Repository | Status | Outcome | Depends on |
 | --- | --- | --- | --- | --- |
-| BEA-C01 | Beacon | propose | Promote the standalone CLI/core from `.staging` | — |
-| BEA-C02 | Beacon | propose | Unify manifests, project schemas, validators, and shared fixtures | BEA-C01 |
-| BEA-C03 | Beacon | propose | Add standalone local/CI parity, lockfile, and clean smoke build | BEA-C01 |
+| BEA-C01 | Beacon `#12` | complete | Promote the standalone CLI/core from `.staging` | — |
+| BEA-C02 | Beacon `#12` | complete | Unify manifests, project schemas, validators, and shared fixtures | BEA-C01 |
+| BEA-C03 | Beacon `#12` | complete | Add standalone local/CI parity, lockfile, and clean smoke build | BEA-C01 |
 | BEA-C04 | Beacon `#5` | reconcile existing | Extract and ship the neutral research-paper profile from Reflector conventions | BEA-C02, BEA-C03 |
 | BEA-C05 | Beacon | propose | Add `doctor`, renderer planning/build, and publication packaging | BEA-C04 |
 | REF-C01 | Reflector | propose | Add Beacon compatibility manifest, canary, and exception report | BEA-C05 |
-| ANT-C01 | Empathy `#71` | existing | Extract Antidote into one standalone canonical repository | BEA-C04 |
-| BEA-C06 | Beacon | propose | Inventory and quarantine the 131-package LaTeX intake | BEA-C01 |
+| ANT-C01 | Antidote | propose | Audit and upgrade the standalone paper against the released Beacon profile | BEA-C05 |
+| BEA-C06 | Beacon | propose | Inventory the staged LaTeX intake and extract the first composable component family | BEA-C01 |
 | BEA-C07 | Beacon | propose | Define current NIH/NIMH grant profile and official-source contract | BEA-C04 |
 | BEA-C08 | Beacon | propose | Implement NIH/NIMH concept and submission-gated attachment profiles | BEA-C07 |
 | NIM-C01 | proposal repository | propose after destination decision | Scaffold the actual NIMH proposal and capture mechanism/NOFO gates | BEA-C08 |
@@ -392,10 +405,10 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | Issue | Roadmap treatment |
 | --- | --- |
 | Beacon `#5` | First product umbrella; reconcile against `BEA-Q03` rather than duplicate |
-| Empathy `#71` | Canonical Antidote extraction issue; execute after research profile v0 |
+| Empathy `#71` | Completed extraction; future paper upgrades belong to `egohygiene/antidote` |
 | Beacon `#1` | Follow the proven research profile; do not create a separate platform |
 | Beacon `#2` | Extend the proven package/release model after the first consumers |
-| Beacon `#3` | Active profile-first slice; prove structured magazine sources, digital/print/web parity, and consumer seams without choosing a comics repository |
+| Beacon `#3` | Profile implementation merged in PR `#11`; retain for Identity and first-consumer adoption without choosing a comics repository |
 | Reflector `#201` | Closed reference evidence; extract selectively from completed `template/` |
 
 ### Organization integration sequence
@@ -456,7 +469,7 @@ The following are intentionally outside the first useful release:
 
 - **Observed:** The standalone repository contains a tested CLI/template vertical slice under `.staging`, but no active root implementation or CI.
 - **Observed:** Reflector contains a completed reusable publication template and live publication evidence.
-- **Observed:** Antidote is incubated in Empathy and has a complete extraction issue.
+- **Observed:** Antidote now has one standalone repository; Empathy extraction issue `#71` is complete.
 - **Observed:** The staged NIH template is duplicated, dated 2019, and licensed CC BY-NC-SA 3.0.
 - **Decided for this roadmap:** Beacon will optimize for a working research-paper and grant-authoring path before expanding formats.
 - **Open:** The NIMH proposal's applicant organization, activity code, NOFO, due date, and final repository visibility/name.
