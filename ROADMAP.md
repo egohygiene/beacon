@@ -39,8 +39,8 @@ updated: 2026-08-26
 
 > This roadmap is the issue-generation and execution handoff derived from the [2026-08-25 readiness audit](audits/beacon-readiness-audit-2026-08-25.md). It prioritizes a usable local research-publication workflow before complete organization synchronization.
 
-**Lifecycle:** seed, standalone extraction  
-**Current gate:** Add the shared `doctor`, build planning, execution, and package surface on top of the promoted core, then verify it through Reflector and Antidote.
+**Lifecycle:** standalone, first-consumer verification
+**Current gate:** Audit Reflector as the compatibility canary, then upgrade Antidote against the proven research-paper execution and package contract.
 
 **North-star outcome:** A local-first publication toolkit that lets a researcher initialize, write, validate, render, package, and publish reproducible papers and grant attachments without cloning another project's infrastructure.
 
@@ -52,11 +52,10 @@ Beacon reaches its first useful threshold when a clean environment can perform a
 beacon init research-paper "../my-paper" \
   --title "My Research Paper" \
   --author "Alan Szmyt"
-cd "../my-paper"
-beacon doctor
-beacon validate
-beacon build
-beacon package
+beacon doctor research-paper
+beacon plan "../my-paper"
+beacon build "../my-paper"
+beacon package "../my-paper"
 ```
 
 The exact commands may evolve, but the capabilities may not be replaced by undocumented manual steps.
@@ -390,8 +389,8 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | BEA-C01 | Beacon `#12` | complete | Promote the standalone CLI/core from `.staging` | — |
 | BEA-C02 | Beacon `#12` | complete | Unify manifests, project schemas, validators, and shared fixtures | BEA-C01 |
 | BEA-C03 | Beacon `#12` | complete | Add standalone local/CI parity, lockfile, and clean smoke build | BEA-C01 |
-| BEA-C04 | Beacon `#5` | reconcile existing | Extract and ship the neutral research-paper profile from Reflector conventions | BEA-C02, BEA-C03 |
-| BEA-C05 | Beacon | propose | Add `doctor`, renderer planning/build, and publication packaging | BEA-C04 |
+| BEA-C04 | Beacon `#5` | complete | Extract and ship the neutral research-paper profile from Reflector conventions | BEA-C02, BEA-C03 |
+| BEA-C05 | Beacon `#14` | complete | Add `doctor`, renderer planning/build, and publication packaging | BEA-C04 |
 | REF-C01 | Reflector | propose | Add Beacon compatibility manifest, canary, and exception report | BEA-C05 |
 | ANT-C01 | Antidote | propose | Audit and upgrade the standalone paper against the released Beacon profile | BEA-C05 |
 | BEA-C06 | Beacon | propose | Inventory the staged LaTeX intake and extract the first composable component family | BEA-C01 |

@@ -1,4 +1,6 @@
 build/
+dist/
+.beacon-build-*/
 *.aux
 *.bbl
 *.bcf

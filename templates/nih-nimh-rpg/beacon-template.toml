@@ -42,6 +42,35 @@ script = "scripts/bootstrap.py"
 required = ["destination", "title", "author"]
 optional = ["project-id"]
 
+[execution]
+program = "make"
+arguments = ["--directory={{project}}", "check", "BUILD_DIR={{output}}"]
+default_output = "build"
+artifacts = ["project-summary-abstract.pdf", "project-narrative.pdf", "specific-aims.pdf", "research-strategy.pdf", "bibliography-references.pdf"]
+
+[[execution.requirements]]
+command = "make"
+
+[[execution.requirements]]
+command = "python3"
+
+[[execution.requirements]]
+command = "latexmk"
+
+[[execution.requirements]]
+command = "pdflatex"
+
+[[execution.requirements]]
+command = "bibtex"
+
+[[execution.requirements]]
+command = "pdfinfo"
+version_arguments = ["-v"]
+
+[[execution.requirements]]
+command = "pdffonts"
+version_arguments = ["-v"]
+
 [capabilities]
 bibliography = true
 citations = true

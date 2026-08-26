@@ -9,3 +9,5 @@
   profile.
 - Added a standalone initializer with project identity and provenance
   customization through the shared Beacon core.
+- Added configurable build output plus shared doctor, build/check, and package
+  adapter metadata.

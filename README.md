@@ -6,8 +6,9 @@ editorial projects.
 
 Beacon owns reusable publication profiles and their contracts. Projects own
 their manuscripts, evidence, bibliography, artwork, configuration, and release
-history. Profile-specific renderers remain independently usable; the Beacon
-core provides one deterministic registry and initialization surface over them.
+history. Profile-specific renderers remain independently usable; the Beacon core
+provides one deterministic registry, initialization, build, and packaging
+surface over them.
 
 ## Active profiles
 
@@ -29,6 +30,9 @@ cargo run --locked -- validate
 cargo run --locked -- init research-paper "../my-paper" \
   --title "My Research Paper" \
   --author "Author Name"
+cargo run --locked -- doctor research-paper
+cargo run --locked -- plan "../my-paper"
+cargo run --locked -- package "../my-paper"
 ```
 
 Every initializer writes through a temporary sibling workspace and refuses to
@@ -36,7 +40,10 @@ overwrite a non-empty destination. Executable initializers from a custom
 registry are denied unless the caller explicitly supplies
 `--allow-executable-initializer` after inspecting that package.
 
-See [`docs/cli.md`](docs/cli.md) for the command and trust contract.
+Builds are transactional and profile-checked. Packages contain only the
+profile's declared artifacts, a machine-readable manifest, and SHA-256
+checksums. See [`docs/cli.md`](docs/cli.md) for the command, output-safety, and
+trust contracts.
 
 ## Validation
 
@@ -62,8 +69,8 @@ See [`docs/latex-component-library.md`](docs/latex-component-library.md).
 
 ## Boundaries
 
-- Beacon owns profile discovery, manifest validation, safe initialization, and
-  future packaging coordination.
+- Beacon owns profile discovery, manifest validation, safe initialization,
+  execution planning, transactional builds, and artifact packaging.
 - Profiles own document-specific source, build, check, and renderer adapters.
 - Projects own authored content and selected style overrides.
 - Renderflow, Relay, Identity, Dreamscape, and organization synchronization are
