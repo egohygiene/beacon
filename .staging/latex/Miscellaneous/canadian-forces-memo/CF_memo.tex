@@ -1,0 +1,200 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Canadian Forces Memo
+% LaTeX Template
+% Version 1.0 (21/11/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% K. Thomas
+% With extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important notes:
+% 1) Common LaTeX distributions such as MikTeX, MacTeX and TeX Live are
+% open source software and therefore are not authorized on DND computers. You
+% therefore have install and typeset your memo on personal computers at home to 
+% produce a pdf file of your memo that you transfer via email or protected USB stick.
+% 2) This template was created from the American Math Society Article class with tweaks.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{amsart} % Using the American Math Society Article class set to 12pt font
+
+\usepackage[letterpaper]{geometry} % Use US letter size paper
+
+\setlength\parindent{0pt} % Stop paragraph indentation
+
+\usepackage{mathptmx} % Use the Times New Roman font as suggested by the CF writing guide
+
+\usepackage[normalem]{ulem} % Used for underlining text
+
+\thispagestyle{empty} % Suppress headers, footers and page numbers on the first page
+\pagestyle{empty} % Suppress headers, footers and page numbers on all pages
+
+%----------------------------------------------------------------------------------------
+%	MARGIN CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\addtolength{\oddsidemargin}{4pt} % This is the oddside margin used in oneside articles; 4 pts will add the 1/16th of an inch to get the printing to one inch from the edge of the paper
+
+\addtolength{\textwidth}{40pt} % This command adds width to the text to get it to print 6.5 inches wide (470pts)
+
+\addtolength{\topmargin}{-4pt} % This command will pull the top up the needed 1/32 inch to get it to print exactly 1 inch from top of paper
+
+\addtolength{\textheight}{94pt} % This command enables the text to cover 9 inches (650pts) height leaving 1 inch on the top and bottom for the margins.
+
+% Other margin tweaks to meet CF requirements
+\addtolength{\marginparsep}{-11pt}
+\addtolength{\marginparwidth}{-113pt}
+\addtolength{\evensidemargin}{-38pt}
+\addtolength{\headsep}{-14pt}
+\addtolength{\headheight}{-8pt}
+\addtolength{\footskip}{-12pt}
+\addtolength{\marginparpush}{-5pt}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	MEMO HEADER
+%----------------------------------------------------------------------------------------
+
+% The military writing guide says that as soon as a Service Number is included on a document that at least PROTECTED A be on the document
+% If accompanying documents are PROTECTED B then the memo should also be B
+% If this is not the case comment out the PROTECTED A or B lines with a preceding % sign
+% LaTeX will take care of moving the Memorandum line up to the margin automatically
+
+\uline{PROTECTED B} % Change this from B to A as needed
+
+\vspace{14pt}
+
+%------------------------------------------------
+
+Memorandum
+
+\vspace{14pt}
+
+%------------------------------------------------
+
+5710-1 % Change this as necessary, a document explaining what codes are who, can be received from your chain of command
+
+\vspace{14pt}
+
+%------------------------------------------------
+
+% If the date of signature is uncertain, the space for the day may be left blank, and the information penned in by the signatory when the correspondence is signed; five blank spaces shall be left from the left margin for this purpose
+\hspace{0.375in} Nov 15
+
+\vspace{14pt}
+
+%------------------------------------------------
+
+Cmdnt (through CoC) % This is who you are addressing, it can also be a "Distr List" on this line with the addressees listed below
+
+\vspace{14pt}
+
+%----------------------------------------------------------------------------------------
+%	MEMO TITLE
+%----------------------------------------------------------------------------------------
+
+% Only the bottom line on a Memo Title is underlined and longer than the top line when it extends to 2 lines, this is in accordance with the military writing guide along with the newline and an empty line to give one empty line separation to the first para or any references you include on the memo
+
+\parbox[c]{235pt}{REQUEST TRANSFER TO SANITARY} % The title of the memo, the 235pt will keep this block to half the text width
+
+% If the title must run to 2 lines use the second \parbox{} below to underline the text in the second line
+% If one line must be longer than the other ensure it's the bottom line, otherwise it's ok if they're equal in length
+% If you only need one line, comment out the top \parbox{} with the % and use only the the \parbox{}{\uline{YOUR TITLE HERE}} to get an underlined title
+% If your Service Number and name is included it is suggested in the guide to include your rank, name and initials as well
+
+\parbox[c]{235pt}{\uline{ENGINEER X15 999 666 CPL BLOGGINS I.M.}}
+
+\vspace{14pt}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+% Example references you may wish include with this document, if none to be included comment out these lines
+% Refs will be one on top of the other in A, B, C order so maintain the empty lines between them
+
+Refs: 
+A. 1000-1 (Adjt) 1 Feb 11 (encl)
+
+B. CFAO 2-15
+
+\vspace{14pt}
+
+%----------------------------------------------------------------------------------------
+%	MEMO CONTENT
+%----------------------------------------------------------------------------------------
+
+% Distance between the digit to the first letter in the sentence is 0.5 inches but there is already a natural separation with a period so by only adding 0.375 gives us half an inch from number to first letter
+
+1. \hspace{0.375in}These are the paragraphs where you lay out what and why you are requesting what is in the title above. References would be added above as printed in this memo. If they are not needed you simply comment them out. Comments are the lines beginning with the \% character which is what you precede a line with to have it not print.  For example, to not print any Refs, comment out the lines in the references block. \LaTeX~will take care of all spacing automatically without further input from you. \\
+
+2. \hspace{0.375in}You will need 5 blank lines left open between the last itemization in your list to the top of the signature block. At 120\% with the 12 point font and the space between lines gives us 72 points in total of vertical vspace between the end of the last paragraph and the signature block. \\
+
+3. \hspace{0.375in}Half an inch of separation between the number and the start of the text is required IAW the Military Writing Guide. The text should now naturally wrap to under the digit of each itemized paragraph. Your editor may add a different amount so the 0.375 may have to be adjusted.  \\
+
+4. \hspace{0.375in}For your consideration Sir.
+
+%----------------------------------------------------------------------------------------
+%	MEMO FOOTER
+%----------------------------------------------------------------------------------------
+
+\vspace*{72pt} % This is intended to be used for the physical space for signature with a pen
+
+%------------------------------------------------
+
+% Military writing guide suggests 1. First Initial and Surname, 2. Rank, 3. Position or Trade, and 4. Local Contact info
+% Maintain blank lines between to ensure they are directly below each other with no blank lines between them in the output
+
+I. Bloggins
+
+Cpl
+
+Construction Engineer
+
+Local 6666
+
+\vspace{14pt}
+
+%------------------------------------------------
+
+% The following line to be included if there is are documents enclosed with this memo; the number corresponds to how many documents are attached
+% As in the example of Ref A's (encl) in that section
+
+Encl: 1 % Comment this line if no documents are enclosed
+
+%------------------------------------------------
+
+% If using a Distr List above in the addressee area you would put the list here under any enclosures
+% Uncomment this list and change the addressees as necessary to have them printed
+
+%Distr List
+
+%CO
+
+%Ops O
+
+%Sup O
+
+%------------------------------------------------
+
+\vfill % This will ensure the protected status gets printed at the very bottom margin
+
+\nopagebreak \uline{PROTECTED B} 
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

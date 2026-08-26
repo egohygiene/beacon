@@ -1,0 +1,118 @@
+% CV Template with Comments
+% This template is designed for technical professionals with a focus on software engineering
+% Based on a clean, modern design with customizable sections
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% Remove page numbers
+\pagenumbering{gobble}
+
+% Set page margins
+\geometry{left=1.5cm,right=1.5cm,top=1cm,bottom=1cm}
+
+% Adjust line spacing (0.9 for compact layout)
+\linespread{0.9}
+
+% Define custom colors - you can modify RGB values
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Configure hyperlinks color and style
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,      
+    urlcolor=darkblue,
+    citecolor=darkblue
+}
+
+% Section formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{*1.0}{*0.5}
+
+% Remove spacing between list items
+\setlist{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+% Custom commands for consistent formatting
+% Command for experience entries: company, position, date, website
+\newcommand{\entry}[4]{
+  \noindent\textbf{#1 - \href{#4}{#2}}\hfill{#3}\par
+  \vspace{0.5em}
+}
+
+% Command for education entries: degree, date, institution, website
+\newcommand{\eduentry}[4]{
+  \noindent\textbf{#1}\hfill#2\\
+  \textit{#3}\hfill\textit{#4}\\[0.5em]
+}
+
+% Command for dotted separator
+\newcommand{\dotsep}{\leavevmode\xleaders\hbox to 0.4em{\hfil.\hfil}\hfill\kern0pt}
+
+\begin{document}
+
+% Header Section
+\begin{center}
+\huge\textbf{YOUR NAME — YOUR TITLE}\\
+\vspace{0.5em}
+\normalsize
+\href{https://github.com/yourusername}{GitHub} $\cdot$ 
+\href{tel:+1234567890}{Your Phone} $\cdot$ 
+\href{mailto:your.email@example.com}{your.email@example.com} $\cdot$ 
+\href{https://www.linkedin.com/in/yourprofile}{linkedin.com/in/yourprofile}
+\end{center}
+
+% About Section - Customize with your professional summary
+\section*{ABOUT}
+\textbf{Your Title} with over \textbf{X years} of expertise in \textbf{your key skill} and \textbf{another key skill}. 
+[Add 3-4 sentences describing your expertise, achievements, and approach to work]
+
+% Skills Section - List your technical skills
+\section*{SKILLS}
+\begin{tabular}{@{}p{\textwidth}@{}}
+Skill 1, Skill 2, Skill 3, Framework 1, Framework 2, Database 1, Database 2, \\
+Tool 1, Tool 2, Tool 3, Methodology 1, Methodology 2
+\end{tabular}
+
+% Experience Section
+\section*{EXPERIENCE}
+\entry{Job Title 1}{Company Name 1}{Start Date - End Date}{https://company1.com}
+\begin{itemize}
+  \item Achievement 1 using \textbf{technology} resulting in \textbf{X\%} improvement
+  \item Achievement 2 involving \textbf{skill} and \textbf{tool}
+  \item Achievement 3 demonstrating \textbf{expertise}
+\end{itemize}
+
+\dotsep
+
+\entry{Job Title 2}{Company Name 2}{Start Date - End Date}{https://company2.com}
+\begin{itemize}
+  \item Achievement 1 with measurable impact
+  \item Achievement 2 highlighting technical skills
+  \item Achievement 3 showing leadership or initiative
+\end{itemize}
+
+% Education Section
+\section*{EDUCATION}
+\eduentry{Your Degree}{Start Date -- End Date}
+{University Name}{\href{https://university.edu}{}}
+
+% Languages Section
+\section*{LANGUAGES}
+\begin{itemize}
+  \item Language 1: Level / Proficiency
+  \item Language 2: Level / Proficiency
+\end{itemize}
+
+% Optional: Hidden keywords for ATS systems
+\vspace{1pt}
+{\tiny\color{white}\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
+Add relevant keywords here separated by spaces}
+
+\end{document}

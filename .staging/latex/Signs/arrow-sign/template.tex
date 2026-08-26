@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arrow Sign
+% LaTeX Template
+% Version 1.0 (March 17, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%!TEX program = xelatex
+% Note: this template must be compiled with XeLaTeX rather than PDFLaTeX
+% due to the custom fonts used. The line above should ensure this happens
+% automatically, but if it doesn't, your LaTeX editor should have a simple toggle
+% to switch to using XeLaTeX.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{CSArrowSign}
+
+%---------------------------------------------------------------------------------
+%	SIGN COLORS
+%---------------------------------------------------------------------------------
+
+\definecolor{SignBrown}{RGB}{121, 68, 0} 
+\definecolor{SignBlue}{RGB}{0, 121, 193} 
+\definecolor{SignOrange}{RGB}{255, 102, 0} 
+
+%---------------------------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------------------------
+%	CREATE SIGN
+%---------------------------------------------------------------------------------
+
+% Each arrow sign is created with a separate \signarrow command.
+% The \signarrow command takes 5 required arguments:
+% 1) The sign text. This is automatically capitalized. You can use \\ to manually add line breaks.
+% 2) The font size. This should be scaled such that the sign text fits inside the arrow nicely. Generally, the longer the text, the smaller the font size.
+% 3) The background color of the arrow. Can be a standard color such as Green or can be a custom color defined in the SIGN COLORS block above.
+% 4) The text and inner arrow color. Can be a standard color such as Green or can be a custom color defined in the SIGN COLORS block above.
+% 5) The orientation of the sign. Should be 'left' or 'right'.
+
+\signarrow{Emergency Exit}{135pt}{red}{white}{right}
+
+\signarrow{One Way}{155pt}{SignOrange}{black}{left}
+
+\signarrow{Trail Start}{140pt}{SignBrown}{white}{right}
+
+\signarrow{Cigar Lounge}{140pt}{black}{white}{left}
+
+\signarrow{Valet Parking}{135pt}{SignBlue}{white}{right}
+
+\signarrow{Round Island Point\\ Nature Preserve Trail Head}{60pt}{SignBrown}{white}{right}
+
+\signarrow{Fire Escape}{135pt}{SeaGreen}{white}{right}
+
+%---------------------------------------------------------------------------------
+
+\end{document}

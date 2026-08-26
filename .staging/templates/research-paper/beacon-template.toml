@@ -1,0 +1,32 @@
+schema_version = 1
+id = "research-paper"
+name = "Research Paper"
+version = "0.1.0"
+description = "A reproducible research-paper project template derived from Renderflow."
+category = "research"
+license = "MIT"
+source = "egohygiene/renderflow"
+
+[[outputs]]
+format = "pdf"
+renderer = "pandoc"
+template = "template.tex"
+
+[[outputs]]
+format = "html"
+renderer = "tera"
+template = "template.html"
+
+[metadata]
+required = ["title", "author"]
+optional = ["date", "abstract", "toc", "fontsize", "papersize", "geometry", "header-includes"]
+
+[capabilities]
+citations = true
+bibliography = true
+figures = true
+tables = true
+mathematics = true
+code = true
+html = true
+pdf = true

@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Weekly Timetable Calendar
+% LaTeX Template
+% Version 2.0 (January 5, 2025)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use either a4paper or letterpaper
+	10pt, % Default font size, specify between 8pt and 12pt
+]{CSCalendars}
+
+%----------------------------------------------------------------------------------------
+%	CALENDAR SETTINGS
+%----------------------------------------------------------------------------------------
+
+\setcounter{startingdayoftheweek}{1} % The starting day of the calendar: 1 means Sunday, 2 for Monday, 3 for Tuesday, etc. Should be between 1 and 7.
+
+\setlength{\dayheight}{4cm} % Set the height of day boxes in the calendar, increase to accommodate more events per day or decrease if there are few
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+	\textsc{\LARGE University Timetable}\\ % Title text
+	\textsc{\large Semester 1} % Subtitle text
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+\begin{calendar} % Start the calendar table
+
+%----------------------------------------------------------------------------------------
+%	FIRST DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{
+	\textbf{9am-5pm} \eventrule Work at McDonald's
+}
+
+%----------------------------------------------------------------------------------------
+%	SECOND DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{
+	\textbf{9am-10am} \eventrule BIOSCI 101 - BLT100 \eventskip
+	\textbf{10am-11am} \eventrule BIOSCI 104 - LLT \eventskip
+	%\textbf{11am-12pm} \eventrule No Lecture \eventskip
+	\textbf{12pm-1pm} \eventrule BIOSCI 105 - BLT204 \eventskip
+	%\textbf{1pm-2pm} \eventrule No Lecture \eventskip
+	\textbf{2pm-5pm} \eventrule BIOSCI 101 Laboratory \eventskip
+	%\textbf{3pm-4pm} \eventrule BIOSCI 101 Laboratory \eventskip
+	%\textbf{4pm-5pm} \eventrule BIOSCI 101 Laboratory
+} 
+
+%----------------------------------------------------------------------------------------
+%	THIRD DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{
+	\textbf{9am-10am} \eventrule BIOSCI 101 - BLT100 \eventskip
+	\textbf{10am-11am} \eventrule BIOSCI 104 - LLT \eventskip
+	%\textbf{11am-12pm} \eventrule No Lecture \eventskip
+	%\textbf{12pm-1pm} \eventrule No Lecture \eventskip
+	%\textbf{1pm-2pm} \eventrule No Lecture \eventskip
+	\textbf{2pm-3pm} \eventrule GEO 101 - HSB1 \eventskip
+	%\textbf{3pm-4pm} \eventrule No Lecture \eventskip
+	%\textbf{4pm-5pm} \eventrule No Lecture
+} 
+
+%----------------------------------------------------------------------------------------
+%	FOURTH DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{
+	%\textbf{9am-10am} \eventrule No Lecture \eventskip
+	\textbf{10am-11am} \eventrule BIOSCI 104 - LLT \eventskip
+	%\textbf{11am-12pm} \eventrule No Lecture \eventskip
+	\textbf{12pm-1pm} \eventrule BIOSCI 105 - BLT204 \eventskip
+	%\textbf{1pm-2pm} \eventrule No Lecture \eventskip
+	\textbf{2pm-3pm} \eventrule GEO 101 - HSB1 \eventskip
+	%\textbf{3pm-4pm} \eventrule No Lecture \eventskip
+	%\textbf{4pm-5pm} \eventrule No Lecture
+} 
+
+%----------------------------------------------------------------------------------------
+%	FIFTH DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{
+	%\textbf{9am-10am} \eventrule No Lecture \eventskip
+	\textbf{10am-11am} \eventrule BIOSCI 104 - LLT \eventskip
+	%\textbf{11am-12pm} \eventrule No Lecture \eventskip
+	%\textbf{12pm-1pm} \eventrule No Lecture \eventskip
+	%\textbf{1pm-2pm} \eventrule No Lecture \eventskip
+	\textbf{2pm-3pm} \eventrule GEO 101 - HSB1 \eventskip
+	%\textbf{3pm-4pm} \eventrule No Lecture \eventskip
+	%\textbf{4pm-5pm} \eventrule No Lecture
+} 
+
+%----------------------------------------------------------------------------------------
+%	SIXTH DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{
+	\textbf{9am-10am} \eventrule BIOSCI 101 - BLT100 \eventskip
+	\textbf{10am-11am} \eventrule BIOSCI 104 - LLT \eventskip
+	%\textbf{11am-12pm} \eventrule No Lecture \eventskip
+	\textbf{12pm-1pm} \eventrule BIOSCI 105 - BLT204 \eventskip
+	%\textbf{1pm-2pm} \eventrule No Lecture \eventskip
+	%\textbf{2pm-3pm} \eventrule No Lecture \eventskip
+	\textbf{3pm-4pm} \eventrule GEO 101 Tutorial \\ Room A \eventskip
+	%\textbf{4pm-5pm} \eventrule No Lecture
+} 
+
+%----------------------------------------------------------------------------------------
+%	SEVENTH DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{}
+
+%----------------------------------------------------------------------------------------
+
+\end{calendar}
+
+\end{document}

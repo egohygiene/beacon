@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alert Sign
+% LaTeX Template
+% Version 1.1 (February 25, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use 'a4paper' for A4 (default) or 'letterpaper' for US letter (you may want to adjust margins afterwards)
+]{CSAlertSign}
+
+%---------------------------------------------------------------------------------
+%	SIGN CONTENT
+%---------------------------------------------------------------------------------
+
+\alertheading{Warning} % The top alert heading text. Will be made uppercase automatically.
+
+\alerttext{Elevators temporarily out of service} % Alert text (the main message of the sign). Will be made uppercase automatically. Add new lines manually with \\.
+
+\instructiontext{Please use fire\\ escape stairs} % Instruction text. Will be made italic automatically. Add new lines manually with \\. Leave command empty (i.e. \instructiontext{}) if not required.
+
+%---------------------------------------------------------------------------------
+%	SIGN SETTINGS
+%---------------------------------------------------------------------------------
+
+\newlength{\alertheadingfontsize}\setlength{\alertheadingfontsize}{80pt} % The top alert heading font size
+
+\newlength{\alerttextfontsize}\setlength{\alerttextfontsize}{70pt}  % Alert text font size
+
+\newlength{\instructiontextfontsize}\setlength{\instructiontextfontsize}{50pt} % Instruction text font size
+
+\definecolor{alertbackground}{RGB}{231, 76, 60} % Alert text box background color
+
+%---------------------------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------------------------
+%	CREATE SIGN
+%---------------------------------------------------------------------------------
+
+\centering % Center everything horizontally on the page
+
+\begin{tikzpicture}
+	\node [
+		rectangle, % Node shape
+		rounded corners=10pt, % How much corners are rounded (radius)
+		minimum width=\linewidth, % Minimum width of the rectangle
+		text width=0.97\linewidth, % Maximum text width, slightly less than line width to account for border thickness
+		draw=black, % Border color
+		line width=5pt, % Border thickness
+		fill=alertbackground, % Fill color
+		text=white, % Text color
+		font=\fontsize{\alertheadingfontsize}{\alertheadingfontsize}\selectfont\bfseries, % Text styling
+		inner ysep=1cm, % Amount of vertical padding above and below the text
+		align=center, % Text horizontal alignment
+	]{\MakeUppercase{\alertheading}}; % Heading text
+\end{tikzpicture}
+
+\vfill % Automatic vertical whitespace
+
+\begingroup
+	\fontsize{\alerttextfontsize}{1.1\alerttextfontsize}\selectfont % Font size
+	\textbf{\MakeUppercase{\alerttext}}\par % Alert text styling
+\endgroup
+
+\vfill\vfill % Automatic vertical whitespace
+
+\ifdefempty{\instructiontext}{}{ % If instruction text was entered
+	\begingroup
+		\fontsize{\instructiontextfontsize}{\instructiontextfontsize}\selectfont % Font size
+		\textit{\instructiontext}\par % Instruction text styling
+	\endgroup
+}
+
+%---------------------------------------------------------------------------------
+
+\end{document}

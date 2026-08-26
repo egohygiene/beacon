@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Information Sign
+% LaTeX Template
+% Version 1.1 (February 25, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%!TEX program = xelatex
+% Note: this template must be compiled with XeLaTeX rather than PDFLaTeX
+% due to the custom fonts used. The line above should ensure this happens
+% automatically, but if it doesn't, your LaTeX editor should have a simple toggle
+% to switch to using XeLaTeX.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use 'a4paper' for A4 (default) or 'letterpaper' for US letter (you may want to adjust margins afterwards)
+]{CSInformationSign}
+
+%---------------------------------------------------------------------------------
+%	SIGN CONTENT
+%---------------------------------------------------------------------------------
+
+\informationheading{Welcome Attendees} % The heading text in the colored box at the top of the sign. Will be made uppercase automatically.
+
+\informationtext{Conference registration begins at 2pm in the main hall} % The main text of the sign. Add new lines manually with \\.
+
+\additionaltext{Complimentary coffee available in the foyer} % The additional text at the bottom of the sign. Add new lines manually with \\. Leave command empty (i.e. \additionaltext{}) if not required.
+
+%---------------------------------------------------------------------------------
+%	SIGN SETTINGS
+%---------------------------------------------------------------------------------
+
+\newlength{\informationheadingfontsize}\setlength{\informationheadingfontsize}{70pt} % The font size of the top heading
+
+\newlength{\informationtextfontsize}\setlength{\informationtextfontsize}{58pt} % The font size of the main text in the middle of the sign
+
+\newlength{\additionaltextfontsize}\setlength{\additionaltextfontsize}{36pt} % The font size of the additional text at the bottom of the sign
+
+\definecolor{headingbackground}{RGB}{117, 223, 156} % Heading background color
+
+%---------------------------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------------------------
+%	CREATE SIGN
+%---------------------------------------------------------------------------------
+
+\centering % Center everything on the page
+
+\begin{tikzpicture}
+	\node [
+		rectangle, % Node shape
+		minimum width=\linewidth, % Minimum width of the rectangle
+		text width=0.98\linewidth, % Maximum text width, slightly less than line width to maintain some padding
+		fill=headingbackground, % Fill color
+		text=white, % Text color
+		font=\latoblack\fontsize{\informationheadingfontsize}{\informationheadingfontsize}\selectfont, % Text styling
+		inner ysep=1cm, % Amount of vertical padding above and below the text
+		align=center, % Text horizontal alignment
+		rounded corners=5pt, % How much corners are rounded (radius)
+	]{\MakeUppercase{\informationheading}}; % Output the heading text inside the rectangle
+\end{tikzpicture}
+
+\vfill % Automatic vertical whitespace
+
+{\fontsize{\informationtextfontsize}{1.2\informationtextfontsize}\selectfont\informationtext\par} % Output information text
+
+\vfill\vfill % Automatic vertical whitespace
+
+\ifdefempty{\additionaltext}{\strut}{ % If additional text was entered
+	\begingroup
+		\fontsize{\additionaltextfontsize}{1.2\additionaltextfontsize}\selectfont % Font size
+		\textit{\additionaltext}\par % Output additional text
+	\endgroup
+}
+
+%---------------------------------------------------------------------------------
+
+\end{document}

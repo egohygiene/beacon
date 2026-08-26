@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drake Certificate
+% LaTeX Template
+% Version 1.0 (February 24, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use 'a4paper' for A4 (default) or 'letterpaper' for US letter (you may want to adjust margins afterwards)
+]{CSDrakeCertificate}
+
+%---------------------------------------------------------------------------------
+%	CERTIFICATE INFORMATION
+%---------------------------------------------------------------------------------
+
+\heading{Certificate} % The main certificate heading at the top, typically will be "Certificate", "Award", "Congratulations" or similar. Will be made uppercase automatically.
+
+\subheading{of achievement} % The subheading to the main heading, useful for qualifying the main heading, leave empty if not required (i.e. \subheading{})
+
+\recipient{Nathan Drake} % Recipient name, will be made uppercase automatically
+
+\largedescription{For the discovery of the lost city of Shambhala.} % The large description line under the recipient name, useful for stating what the certificate is for or writing a congratulatory message, leave empty if not required (i.e. \largedescription{})
+\smalldescription{The remaining fragments of the city will provide our society with years of exploration.} % The smaller description under the large description, useful for a further classification of the certificate, leave empty if not required (i.e. \smalldescription{})
+
+\leftlinetitle{Date} % The title under the left line, will be made uppercase automatically and can be left empty if not required (i.e. \leftlinetitle{}) in which case the right line will be horizontally centered (if present)
+\leftlineoptional{} % A subtitle to the title under the left line, useful to qualify the title, can be left empty if not required (i.e. \leftlineoptional{})
+
+\rightlinetitle{Signed} % The title under the right line, will be made uppercase automatically and can be left empty if not required (i.e. \rightlinetitle{}) in which case the left line will be horizontally centered (if present)
+\rightlineoptional{Explorers Society} % A subtitle to the title under the right line, useful to qualify the title, can be left empty if not required (i.e. \rightlineoptional{})
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------------------------
+%	HEADINGS
+%---------------------------------------------------------------------------------
+
+\begin{center} % Center horizontally
+	{\fontsize{60pt}{60pt}\selectfont\sourceserifproblack{\MakeUppercase{\heading}}\par} % Main heading
+	
+	\ifdefempty{\subheading}{}{{\fontsize{45pt}{42pt}\selectfont\textbf{\subheading}\par}} % Output subheading if it was specified
+\end{center}
+
+\vfill\vfill\vfill % Automatic vertical whitespace for alignment
+
+%---------------------------------------------------------------------------------
+%	RECIPIENT
+%---------------------------------------------------------------------------------
+
+\begin{tikzpicture}
+	\node [
+		rectangle, % Node shape
+		fill=black, % Background color
+		text=white, % Text color
+		align=center, % Text alignment
+		text width=0.85\textwidth, % Maximum text width, shorter than the full line width so there is horizontal padding
+		font=\fontsize{46pt}{46pt}\selectfont, % Font styling
+		inner xsep=1.5cm, % Horizontal padding for the triangles
+		inner ysep=0.5cm, % Vertical padding
+	] (namebox) at (0,0){%
+		{\hyphenpenalty 10000\exhyphenpenalty 10000\sourcesanspro{\textbf{\MakeUppercase{\recipient}}}\par}% Output recipient name (suppressing hyphenation)
+	};
+	\draw [fill=white, draw=white] (namebox.north west) -- (namebox.south west) -- ($(namebox.west)+(0.75, 0)$) -- cycle; % Left triangle
+	\draw [fill=white, draw=white] (namebox.north east) -- (namebox.south east) -- ($(namebox.east)+(-0.75, 0)$) -- cycle; % Right triangle
+\end{tikzpicture}
+
+\vfill % Automatic vertical whitespace for alignment
+
+%---------------------------------------------------------------------------------
+%	DESCRIPTIONS
+%---------------------------------------------------------------------------------
+
+\begin{center}	
+	\ifdefempty{\largedescription}{}{{\LARGE\largedescription\vspace*{0.02\textheight}}} % Output large description if it was entered
+	
+	\ifdefempty{\smalldescription}{}{{\large\smalldescription}} % Output small description if it was entered
+\end{center}
+
+\vfill\vfill\vfill\vfill\vfill\vfill\vfill % Automatic vertical whitespace for alignment
+
+%---------------------------------------------------------------------------------
+%	SIGNATURE/INFORMATION LINES
+%---------------------------------------------------------------------------------
+
+\begin{center}	
+	\ifdefempty{\leftlinetitle}{}{ % Display the left line and title(s) if the left title has been entered
+		\begin{tikzpicture}
+			\node [rectangle, fill=black, minimum width=0.35\textwidth, inner ysep=2pt] (leftline) at (0, 0){}; % Left line
+			\node [rectangle, anchor=north, minimum height=20pt] at ($(leftline.south)-(0, 3pt)$) {{\LARGE\sourcesanspro{\textbf{\MakeUppercase{\leftlinetitle}}}}}; % Top title
+			\node [rectangle, anchor=north, minimum height=20pt] at ($(leftline.south)-(0, 20pt)$) {{\large\sourcesanspro{\textit{\leftlineoptional}}}}; % Subtitle
+		\end{tikzpicture}%
+	}
+	\ifdefempty{\leftlinetitle}{}{\ifdefempty{\rightlinetitle}{}{\hfill}} % If both lines have titles and are therefore visible, space them out horizontally
+	\ifdefempty{\rightlinetitle}{}{ % Display the right line and title(s) if the right title has been entered
+		\begin{tikzpicture}
+			\node [rectangle, fill=black, minimum width=0.35\textwidth, inner ysep=2pt] (rightline) at (0, 0){}; % Right line
+			\node [rectangle, anchor=north, minimum height=20pt] at ($(rightline.south)-(0, 3pt)$) {{\LARGE\sourcesanspro{\textbf{\MakeUppercase{\rightlinetitle}}}}}; % Top title
+			\node [rectangle, anchor=north, minimum height=20pt] at ($(rightline.south)-(0, 20pt)$) {{\large\sourcesanspro{\textit{\rightlineoptional}}}}; % Subtitle
+		\end{tikzpicture}%
+	}
+\end{center}
+
+%---------------------------------------------------------------------------------
+%	CERTIFICATE FRAMING
+%---------------------------------------------------------------------------------
+
+\outputframe % Output the certificate frames and corner accents
+
+%---------------------------------------------------------------------------------
+
+\end{document}

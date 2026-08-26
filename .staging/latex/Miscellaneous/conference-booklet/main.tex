@@ -1,0 +1,354 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conference Booklet
+% LaTeX Template
+% Version 1.0 (22/12/2019)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Maxime Lucas (ml.maximelucas@gmail.com) 
+% Pau Clusella
+% Modifications for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% GNU General Public License v3.0
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	openany, % Allow chapters to start on odd and even pages
+	parskip=full, % Large space between paragraphs
+	12pt, % Default font size
+	a4paper, % Paper size, use letterpaper for US letter size
+]{conferencebooklet} % Custom class defining the style and layout of the template
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	 COVER PAGE
+%----------------------------------------------------------------------------------------
+
+\includepdf{images/cover.jpg} % The cover for the booklet is included as a whole-page image, it can be a PDF or an image file but must be the same dimensions as the paper size
+
+%----------------------------------------------------------------------------------------
+%	 INFORMATION/COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+~\vfill % Push text down
+
+\begin{center}	
+	This is the short version of the booklet for print use. \\ Full abstracts with all authors, references, and figures can be found at:\\ \url{https://amcosconference.com/}
+	
+	This template originates from \url{LaTeXTemplates.com} and is based on the original version at:\\ \url{https://github.com/maximelucas/AMCOS\_booklet}
+\end{center}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	 TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents
+
+%----------------------------------------------------------------------------------------
+%	 ABOUT CONFERENCE
+%----------------------------------------------------------------------------------------
+
+\chapter{About}
+
+{\small \textcolor{myblue}{This is a generic version of the real AMCOS conference booklet for which this \LaTeX{} template was generated. All information about the use and distribution of this template, and all related codes, can be found at \url{https://github.com/maximelucas/AMCOS\_booklet}.}}
+
+\section{AMCOS}
+
+The conference on Analysis and Modeling of Complex Oscillatory Systems (AMCOS) aims to bring together theoretical and experimental researchers working on the state of the art in the field of complex oscillatory systems.
+
+The main topics of the conference comprise both (a) the modeling of complex systems and the emergence of collective behavior, as well as (b) the analysis of complex data sets in order to infer the underlying structure and functionality of networks. Particular focus will be put on oscillatory phenomena in neuroscience.
+
+\section{COSMOS}
+
+The AMCOS Conference is organized by the Early Stage Researchers (ESRs) of the Marie Curie Initial Training Network led by Arkady Pikovsky of Potsdam Univeristy. COSMOS trains 15 ESRs at the interface between Physics, Applied Mathematics, and Life Sciences, integrating theoretical and data-driven methods, in 7 universities across Europe.
+
+\section{Organizing committee}
+
+\begin{center}
+	\begin{tabular}{l l l}
+		Gloria Cecchini & Marco Faggian &  Aleksandra Pidde \\
+		Rok Cestnik & R. Janis Goldschmidt &  Bastian Pietras\\
+		 Pau Clusella  & Marc Grau Leguia & Eero Satuvuori \\
+		 Nicolás Deschle & Maxime Lucas   &  Çağdaş Topçu \\
+		Federico Devalle  & Irene Malvestio  & Clément Zankoc
+	\end{tabular}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	 TIMETABLE
+%----------------------------------------------------------------------------------------
+
+\chapter{Timetable}
+
+CT: Contributed Talk, IS: Invited Speaker, KL: Keynote Lecture, IT: Invited Talk.
+
+\section{Tuesday, 20 of March}
+
+\begin{longtable}{|C{0.15\linewidth}| C{0.04\linewidth}|  C{0.3\linewidth} C{0.0\linewidth} C{0.4\linewidth}|}\hline	
+	\tablebreak{8:30--9:00}{Registration}
+	\tablebreak{9:00--9:10}{Welcome remarks}
+	\KL{9:10--10:05}{Leon Tremblay}{Montreal, Canada}{Title of a keynote lecture}
+	\CT{10:05--10:30}{Marc Fournier}{Brussels, Belgium}{Title of contributed talk}
+	\tablebreak{10:30--11:00}{Coffee}
+	\IS{11:00--11:40}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\CT{11:40--12:45}{Marc Smith}{Brussels, Belgium}{Title of contributed talk with math and paragraphs}
+	\tablebreak{12:45--14:00}{Lunch}
+	\CT{14:00--14:30}{Marc Rodriguez}{Barcelona, Spain}{Title of contributed talk with math and references}
+	\IS{14:30--15:05}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\tablebreak{15:05--15:30}{Coffee}
+	\CT{15:30-16:00}{Marc Jansen}{Amsterdam, The Netherlands}{Title of contributed talk and references and a figure}
+	\IS{16:00-17:10}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\eventtype{17:10--19:30}{Poster session with Wine \& Cheese}
+\end{longtable}
+
+\newpage
+
+%------------------------------------------------
+
+\section{Wednesday, 21 of March}
+
+\begin{longtable}{|C{0.15\linewidth}| C{0.04\linewidth}|  C{0.3\linewidth} C{0.0\linewidth} C{0.4\linewidth}|}\hline	
+	\IS{9:00-9:40}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\CT{9:40-10:10}{Marc Fournier}{Brussels, Belgium}{Title of contributed talk}
+	\IS{10:10--12:45}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\tablebreak{10:45--11:10}{Coffee}
+	%odor
+	\CT{11:10--11:40}{Marc Jansen}{Amsterdam, The Netherlands}{Title of contributed talk and references and a figure}
+	\CT{11:40--12:10}{Marc Jansen}{Amsterdam, The Netherlands}{Title of contributed talk and references and a figure}
+	\IS{12:10--12:45}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\tablebreak{12:45--14:00}{Lunch}
+	\CT{14:00--14:30}{Marc Fournier}{Brussels, Belgium}{Title of contributed talk}
+	\CT{14:30-15:00}{Marc Fournier}{Brussels, Belgium}{Title of contributed talk}
+	\eventtype{16:30--18:00}{Excursion}
+	\eventtype{20:00}{Conference Dinner}
+\end{longtable}
+
+%------------------------------------------------
+
+\section{Thursday, 22 of March}
+
+\begin{longtable}{|C{0.15\linewidth}| C{0.04\linewidth}|  C{0.3\linewidth} C{0.0\linewidth} C{0.4\linewidth}|}\hline	
+	\IS{9:00 -- 9:40}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\IS{9:40--10:20}{Hiroya Sato}{Tokyo, Japan}{Title of invited speaker}
+	\IT{10:20--10:45}{Franck Schmidt}{Munich, Germany}{A special talk about diversity in science}
+	\tablebreak{10:45--11:10}{Coffee}
+	\CT{11:10-11:40}{Marc Jansen}{Amsterdam, The Netherlands}{Title of contributed talk and references and a figure}
+	\KL{11:40--12:35}{Leon Tremblay}{Montreal, Canada}{Title of a keynote lecture}
+	\eventtype{12:35--12:45}{Poster Prize \& Conclusion}
+	\tablebreak{12:45--14:00}{Lunch}
+\end{longtable}
+
+%----------------------------------------------------------------------------------------
+%	 LIST OF TALK ABSTRACTS
+%----------------------------------------------------------------------------------------
+
+% Abstract template
+%\abstract
+%	{} % Title
+%	{} % Author(s)
+%	{} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+%	{} % Affiliation(s)
+%	{} % Abstract text
+
+\chapter{List of Abstracts -- Talks}
+
+\section{Tuesday 20th}
+
+\abstract
+	{Title of a keynote lecture} % Title
+	{L. Tremblay} % Author(s)
+	{\KLtag} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{McGill University, Montreal, Canada} % Affiliation(s)
+	{On recommend tolerably my belonging or am. Mutual has cannot beauty indeed now sussex merely you. It possible no husbands jennings ye offended packages pleasant he. Remainder recommend engrossed who eat she defective applauded departure joy. Get dissimilar not introduced day her apartments. Fully as taste he mr do smile abode every. Luckily offered article led lasting country minutes nor old. Happen people things oh is oppose up parish effect. Law handsome old outweigh humoured far appetite. Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now. Affronting discretion as do is announcing. Now months esteem oppose nearer enable too six. She numerous unlocked you perceive speedily. Affixed offence spirits or ye of offices between. Real on shot it were four an as. Absolute bachelor rendered six nay you juvenile. Vanity entire an chatty to.} % Abstract text
+        
+\abstract
+	{Title of contributed talk} % Title
+	{\underline{M. Fournier}$^{1}$, D. Dupont$^{1,2,3}$} % Author(s)
+	{} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{$^1$ Physics Department, Université Libre de Bruxelles, Brussels, Belgium\\ $^2$ Physics Department, Lancaster University, Lancaster, UK\\ $^3$ CSDC, University of Florence, Florence, Italy} % Affiliation(s)
+	{On recommend tolerably my belonging or am. Mutual has cannot beauty indeed now sussex merely you. It possible no husbands jennings ye offended packages pleasant he. Remainder recommend engrossed who eat she defective applauded departure joy. Get dissimilar not introduced day her apartments. Fully as taste he mr do smile abode every. Luckily offered article led lasting country minutes nor old. Happen people things oh is oppose up parish effect. Law handsome old outweigh humoured far appetite. Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now. Affronting discretion as do is announcing. Now months esteem oppose nearer enable too six. She numerous unlocked you perceive speedily. Affixed offence spirits or ye of offices between. Real on shot it were four an as. Absolute bachelor rendered six nay you juvenile. Vanity entire an chatty to.} % Abstract text
+
+\abstract
+	{Title of invited speaker} % Title
+	{H. Sato} % Author(s)
+	{\IStag} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{Department of Physics, Tokyo Institute of Technology, Tokyo, Japan} % Affiliation(s)
+	{On recommend tolerably my belonging or am. Mutual has cannot beauty indeed now sussex merely you. It possible no husbands jennings ye offended packages pleasant he. Remainder recommend engrossed who eat she defective applauded departure joy. Get dissimilar not introduced day her apartments. Fully as taste he mr do smile abode every. Luckily offered article led lasting country minutes nor old. Happen people things oh is oppose up parish effect. Law handsome old outweigh humoured far appetite. Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now. Affronting discretion as do is announcing. Now months esteem oppose nearer enable too six. She numerous unlocked you perceive speedily. Affixed offence spirits or ye of offices between. Real on shot it were four an as. Absolute bachelor rendered six nay you juvenile. Vanity entire an chatty to.} % Abstract text
+
+\abstract
+	{Title of contributed talk with math and paragraphs} % Title
+	{\underline{M. Smith}$^{1}$, D. Dupont$^{1,2,3}$} % Author(s)
+	{} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{$^1$ Physics Department, Université Libre de Bruxelles, Brussels, Belgium\\ $^2$ Physics Department, Lancaster University, Lancaster, UK\\ $^3$ CSDC, University of Florence, Florence, Italy} % Affiliation(s)
+	{On recommend tolerably my belonging or am $\dot \psi = \Delta \omega + \gamma \sin \psi $. Mutual has cannot beauty indeed now sussex merely you. It possible no husbands jennings ye offended packages pleasant he. Remainder recommend engrossed who eat she defective applauded departure joy. Get dissimilar not introduced day her apartments. Fully as taste he mr do smile abode every. Luckily offered article led lasting country minutes nor old. Happen people things oh is oppose up parish effect. Law handsome old outweigh humoured far appetite. \par  Now residence $M \ll N$ dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now. Affronting discretion as do is announcing. Now months esteem oppose nearer enable too six. She numerous unlocked you perceive speedily. Affixed offence spirits or ye of offices between. Real on shot it were four an as. Absolute bachelor rendered six nay you juvenile. Vanity entire an chatty to.} % Abstract text
+
+\abstract
+	{Title of contributed talk with math and references} % Title
+	{\underline{M. Rodriguez}$^{1}$, D. Dupont$^{1,2,3}$} % Author(s)
+	{} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{$^1$ Physics Department, Université Libre de Bruxelles, Brussels, Belgium\\ $^2$ Physics Department, Lancaster University, Lancaster, UK\\ $^3$ CSDC, University of Florence, Florence, Italy} % Affiliation(s)
+	{On recommend [1] tolerably my belonging or am $\dot \psi = \Delta \omega + \gamma \sin \psi $. Mutual has cannot beauty indeed now sussex merely you. It possible no husbands jennings ye offended packages pleasant he. Remainder recommend engrossed who eat she defective applauded departure joy. Get dissimilar not introduced day her apartments. Fully as taste he mr do smile abode every. Luckily offered article led lasting country minutes nor old. Happen people things oh is oppose up parish effect. Law handsome old outweigh humoured far appetite. Now residence $M \ll N$ dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now. Affronting discretion as do is announcing. Now months esteem oppose nearer enable too six. She numerous unlocked you perceive speedily. Affixed offence spirits or ye of offices between. Real on shot it were four an as. Absolute bachelor rendered six nay you juvenile. Vanity entire an chatty to [2]. 
+
+	\textbf{References}\newline [1] Sanchez-Vives M.V., Massimini M. and Mattia M. (2017). Neuron, 94(5):993-1001.\newline [2] Capone C., Rebollo B., Mu{\~n}oz A., Illa X., Del Giudice P., Sanchez-Vives M.V., Mattia M. (2017). Cereb Cortex, 28:1-17.} % Abstract text
+
+%------------------------------------------------
+
+\section{Thursday 22nd}
+
+\abstract
+	{A special talk about diversity in science} % Title
+	{F. Schmidt} % Author(s)
+	{\ITtag} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{Physics Department, Technical University of Munich, Germany} % Affiliation(s)
+	{One of the most consistent global trends in science over the last decades concerns the move from individual efforts of scientists to collaborative projects among several researchers. Across most scientific disciplines the solitary researcher has been replaced by collective efforts between individuals often distributed across organizations and countries. Accompanying this trend are efforts to understand the “ingredients” of excellent research teams. Social sciences, but also social psychology as well as social networks analysis have all contributed to the understanding of successful collaborations. This contribution will review the elements of excellent teams as well as highlighting how bias and stereotypes can undermine optimal group performance. The presentation will be rounded up by examples how diversity not only affects research collaboration but also improves the quality of the produced science and engineering knowledge.} % Abstract text
+
+%----------------------------------------------------------------------------------------
+%	 LIST OF POSTERS
+%----------------------------------------------------------------------------------------
+
+\chapter{List of Posters} 
+
+\vspace{-2.5em}
+
+\section{Tuesday Session}
+
+\abstract
+	{A random abstract title} % Title
+	{\underline{J. Doe}$^{1}$, M. Smith$^{2, 3}$} % Author(s)
+	{} % Tag, can be: empty, \KLtag (keynote lecture), \IStag (invited speaker), \CTtag (contributed talk) or \ITtag (invited talk)
+	{$^1$ Faculty of Science and Technology, Bournemouth University, UK\\ $^2$ Institut d'Investigacions Biom\`{e}diques August Pi i Sunyer (IDIBAPS), Barcelona, Spain\\ $^3$ ICREA Barcelona, Spain\\ $^4$ Bernstein Center for Computational Neuroscience, Medical Faculty Mannheim and Heidelberg University, Germany.} % Affiliation(s)
+	{On recommend tolerably my belonging or am [1]. Mutual has cannot beauty indeed now sussex merely you. It possible no husbands jennings ye offended packages pleasant he. Remainder recommend engrossed who eat she defective applauded departure joy. Get dissimilar not introduced day her apartments. Fully as taste he mr do smile abode every. Luckily offered article led lasting country minutes nor old. Happen people things oh is oppose up parish effect. Law handsome old outweigh humoured far appetite. Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved far recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now. Affronting discretion as do is announcing. Now months esteem oppose nearer enable too six. She numerous unlocked you perceive speedily. Affixed offence spirits or ye of offices between. Real on shot it were four an as. Absolute bachelor rendered six nay you juvenile. Vanity entire an chatty to [2]. 
+
+	\textbf{References}\newline [1] Sanchez-Vives M.V., Massimini M. and Mattia M. (2017). Neuron, 94(5):993-1001.\newline [2] Capone C., Rebollo B., Mu{\~n}oz A., Illa X., Del Giudice P., Sanchez-Vives M.V., Mattia M. (2017). Cereb Cortex, 28:1-17.} % Abstract text
+	
+%------------------------------------------------
+
+\section{Alternative Compact Poster List}
+
+\poster
+	{A poster title} % Title
+	{John Smith} % Author(s)
+	{University Name} % Affiliation(s)
+
+\poster
+	{Another poster title} % Title
+	{Jane Smith} % Author(s)
+	{University Name} % Affiliation(s)
+
+%----------------------------------------------------------------------------------------
+%	 LIST OF PARTICIPANTS
+%----------------------------------------------------------------------------------------
+
+\chapter{List of Participants}
+
+\begingroup
+	\rowcolors{1}{gray!25}{white} % Alternating row colours
+	\begin{longtable}{p{0.4\linewidth} p{0.4\linewidth}}
+		\hline
+		John1 Doe1 & Barcelona, Spain \\ \hline
+		John2 Doe2 & Barcelona, Spain \\ \hline
+		John3 Doe3 & Barcelona, Spain \\ \hline
+		John4 Doe4 & Barcelona, Spain \\ \hline
+		John5 Doe5 & Barcelona, Spain \\ \hline
+		John6 Doe6 & Barcelona, Spain \\ \hline
+		John7 Doe7 & Barcelona, Spain \\ \hline
+		John8 Doe8 & Barcelona, Spain \\ \hline
+		John9 Doe9 & Barcelona, Spain \\ \hline
+		John10 Doe10 & Barcelona, Spain \\ \hline
+		John11 Doe11 & Barcelona, Spain \\ \hline
+		John12 Doe12 & Barcelona, Spain \\ \hline
+		John13 Doe13 & Barcelona, Spain \\ \hline
+		John14 Doe14 & Barcelona, Spain \\ \hline
+		John15 Doe15 & Barcelona, Spain \\ \hline
+		John16 Doe16 & Barcelona, Spain \\ \hline
+		John17 Doe17 & Barcelona, Spain \\ \hline
+		John18 Doe18 & Barcelona, Spain \\ \hline
+		John19 Doe19 & Barcelona, Spain \\ \hline
+		John20 Doe20 & Barcelona, Spain \\ \hline
+		John21 Doe21 & Barcelona, Spain \\ \hline
+		John22 Doe22 & Barcelona, Spain \\ \hline
+		John23 Doe23 & Barcelona, Spain \\ \hline
+		John24 Doe24 & Barcelona, Spain \\ \hline
+		John25 Doe25 & Barcelona, Spain \\ \hline
+		John26 Doe26 & Barcelona, Spain \\ \hline
+		John27 Doe27 & Barcelona, Spain \\ \hline
+		John28 Doe28 & Barcelona, Spain \\ \hline
+		John29 Doe29 & Barcelona, Spain \\ \hline
+	\end{longtable}
+\endgroup
+ 
+%----------------------------------------------------------------------------------------
+%	 USEFUL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\chapter{Useful Information}
+
+\textbf{Talks} will be held at the \textbf{Conference Hall-Auditorium} of PRBB. It is situated on the first floor of the central courtyard and
+has independent access from the rest of the building (through stairs located at the ground floor, main entrance of PRBB). 
+
+\textbf{Coffee breaks and lunches} will be offered in the half-covered terrace in front of the main entrance of the conference hall.
+
+The \textbf{poster session} will be held on Tuesday and Wednesday night on the \textbf{ground floor} of the PRBB. 
+
+Wi-Fi will be available during the conference. The PRBB also provides access to an eduroam network.
+
+The \textbf{conference dinner} will be held at the "The best restaurant", at Some Street, 39, Barcelona.
+
+\section{How to get to the PRBB?}
+
+The PRBB building overlooks the Ronda del Litoral and is next to the twin towers of the Olympic Village: Torre Mapfre and Arts Hotel. The address is Carrer del Dr. Aiguader, 88, 08003 Barcelona, Spain. and and can be reached by:
+
+\begin{itemize}
+	\item \textbf{Subway:} yellow line, L4, station Ciutadella/Vila Ol\'{i}mpica,
+	\item \textbf{Bus:} lines V21, 14, 36, 41, 45, 59, 71, 92, D20,
+	\item \textbf{Tram:} line 4, stop Vila Ol\'{i}mpica.
+\end{itemize}
+
+\newpage
+
+\includegraphics[width=\linewidth]{images/amcos_map}
+
+%----------------------------------------------------------------------------------------
+%	 PARTNERS & SPONSORS
+%----------------------------------------------------------------------------------------
+
+\chapter{Partner Institutions and Sponsors}
+
+The AMCOS conference is part of the COSMOS project, funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Sk\l{}odowska-Curie grant agreement No 642563.
+
+\section{Sponsors}
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{images/logos/Partnerlogos/LancasterHelium.jpg}
+\end{center}
+
+\vfill
+
+%----------------------------------------------------------------------------------------
+%	 CLOSING PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+\pagecolor{myblue} % Coloured background
+~
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

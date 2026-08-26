@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wile E. Invoice
+% LaTeX Template
+% Version 1.0 (17/8/18)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Peter Morrison-Whittle
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article}
+
+\input{structure.tex} % Include the file specifying the document structure and styling
+
+%----------------------------------------------------------------------------------------
+%	INVOICE INFORMATION
+%----------------------------------------------------------------------------------------
+
+\taxrate{0.15} % The tax rate used to automatically calculate tax, must be set to a decimal between 0 and 1 (for no tax set to 0)
+
+%------------------------------------------------
+% Invoice information
+
+\invoiceref{1632-F} % Invoice number
+\invoiceissued{\today} % Date issued
+\invoicedue{\DayAfter[7]} % Due date, a number of days into the future, use 0 for due on receipt
+\projectname{Pest Eradication}
+
+%------------------------------------------------
+% Recipient/payee information
+
+\payeename{Wile E. Coyote}
+\payeejob{Ornithologist}
+\payeeaddresslineone{1 Monument Valley}
+\payeeaddresslinetwo{Arizona, United States}
+\payeecontactlineone{wile.e@coyote.is}
+\payeecontactlinetwo{LaTeXTemplates.com}
+
+%------------------------------------------------
+% Sender information
+
+\companyname{ACME Corporation} % Displayed in large letters at the top, can be replaced with an image or left blank for no company
+
+\sendername{John Smith}
+\senderjob{Sales Associate}
+\senderaddresslineone{1 ACME Plaza}
+\senderaddresslinetwo{Brooklyn, New York}
+\sendercontactlineone{john@acmecorp.com}
+\sendercontactlinetwo{+1 123 456 7890}
+
+%------------------------------------------------
+
+\termsandconditions{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. \newline\newline Aliquam arcu turpis, ultrices sed luctus ac, vehicula id metus. Morbi eu feugiat velit, et tempus augue. Proin ac mattis tortor. Donec tincidunt, ante rhoncus luctus semper, arcu lorem lobortis justo, nec convallis ante quam quis lectus. Aenean tincidunt sodales massa, et hendrerit tellus mattis ac. Sed non pretium nibh.} % Note: must use \newline for new lines in this command 
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	INVOICE ITEMS
+%----------------------------------------------------------------------------------------
+
+\begin{invoice}
+	\begin{invoicetable}
+		\invoiceitem{Heavy wrought anvil}{1}{5600}
+		\invoiceitem{Dynamite sticks}{25}{25.95}
+		\invoiceitem{Exploding tennis balls}{7}{49.99}
+	\end{invoicetable}
+\end{invoice}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

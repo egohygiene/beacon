@@ -1,0 +1,225 @@
+%-------------------------
+% Modern ATS-Friendly CV in LaTeX
+% Improved version with better formatting and ATS compatibility
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Define accent color - Professional Blue
+\usepackage{xcolor}
+\definecolor{ACCENT_COLOR}{RGB}{0, 102, 204}  % Professional blue
+
+% Sections formatting
+\titleformat{\section}{
+\vspace{-4pt}\scshape\raggedright\large\bfseries\color{ACCENT_COLOR}
+}{}{0em}{}[\color{ACCENT_COLOR}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% Custom commands
+\newcommand{\customItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\customSubHeading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\customProject}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\customSubHeadingContentStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\customSubHeadingContentEnd}{\end{itemize}}
+\newcommand{\customItemListStart}{\begin{itemize}}
+\newcommand{\customItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \scshape \color{ACCENT_COLOR} Your Name} \\ \vspace{1pt}
+    
+    \raisebox{-0.1\height}\faMapMarker\ Your City, State 
+    ~~
+    \small \raisebox{-0.1\height}\faPhone\ +1-234-567-8900 
+    ~~ 
+    \href{mailto:your.email@gmail.com}{\raisebox{-0.1\height}\faEnvelope\  \underline{your.email@gmail.com}}
+    \\ \vspace{2pt} 
+
+    \href{https://linkedin.com/in/yourprofile}{\raisebox{-0.1\height}\faLinkedin\ \underline{linkedin.com/in/yourprofile}}  
+    ~~
+    \href{https://github.com/yourusername}{\raisebox{-0.1\height}\faGithub\ \underline{github.com/yourusername}}
+    ~~
+    \href{https://yourportfolio.com}{\raisebox{-0.1\height}\faGlobe\ \underline{yourportfolio.com}} 
+    \vspace{-8pt}
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{PROFESSIONAL SUMMARY}
+Results-driven Software Engineer with 3+ years of experience developing scalable applications and implementing AI/ML solutions. Proven track record of improving system performance by 40\% and reducing deployment time by 50\%. Expertise in full-stack development, cloud technologies, and data-driven decision making. Passionate about leveraging cutting-edge technologies to solve complex business challenges.
+\vspace{-2pt}
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+\begin{itemize}[noitemsep, left=0pt]
+    \item \textbf{Languages:} Python, JavaScript, TypeScript, Java, C++, SQL
+    \item \textbf{Frameworks \& Libraries:} React, Node.js, Express, Flask, FastAPI, Django, TensorFlow, PyTorch
+    \item \textbf{Databases:} PostgreSQL, MongoDB, MySQL, Redis, DynamoDB
+    \item \textbf{Cloud \& DevOps:} AWS (EC2, S3, Lambda), Docker, Kubernetes, CI/CD, GitHub Actions, Jenkins
+    \item \textbf{Tools \& Technologies:} Git, REST APIs, GraphQL, Microservices, Agile/Scrum, JIRA
+\end{itemize}
+\vspace{-13pt}
+
+%-----------PROFESSIONAL EXPERIENCE-----------
+\section{PROFESSIONAL EXPERIENCE}
+  \customSubHeadingContentStart
+
+    \customSubHeading
+      {Senior Software Engineer}{Jun 2022 – Present}
+      {Tech Company Name}{San Francisco, CA}
+      \customItemListStart
+        \customItem{Architected and deployed microservices-based platform serving 500K+ users, improving system reliability by 45\%}
+        \customItem{Led cross-functional team of 5 engineers to deliver critical features 30\% ahead of schedule, enhancing user engagement by 60\%}
+        \customItem{Optimized database queries and implemented caching strategies, reducing API response time from 800ms to 150ms}
+        \customItem{Implemented CI/CD pipelines using GitHub Actions and Docker, reducing deployment time by 50\%}
+        \customItem{Technologies: React, Node.js, PostgreSQL, AWS, Docker, Kubernetes}
+      \customItemListEnd
+
+    \customSubHeading
+      {Software Engineer}{Aug 2021 – May 2022}
+      {Previous Company Name}{Remote}
+      \customItemListStart
+        \customItem{Developed RESTful APIs and backend services processing 1M+ daily transactions with 99.9\% uptime}
+        \customItem{Built responsive front-end components using React and TypeScript, improving page load speed by 40\%}
+        \customItem{Collaborated with product managers and designers to implement user-centric features based on analytics insights}
+        \customItem{Technologies: Python, Flask, React, MongoDB, AWS Lambda}
+    \customItemListEnd
+    
+  \customSubHeadingContentEnd
+\vspace{-10pt}
+
+%-----------PROJECTS-----------
+\section{KEY PROJECTS}
+    \vspace{-5pt}
+    \customSubHeadingContentStart
+
+      \customProject
+          {\textbf{\href{https://github.com/yourusername/project1}
+          {\underline{AI-Powered Recommendation Engine}}} $|$ 
+          \emph{Python, TensorFlow, Flask, PostgreSQL, Docker}}
+          {Mar 2024}
+          \customItemListStart
+            \customItem{Developed machine learning recommendation system using collaborative filtering and deep learning achieving 92\% accuracy}
+            \customItem{Processed 2M+ user interactions daily, increasing click-through rate by 35\% and user retention by 28\%}
+            \customItem{Deployed scalable solution on AWS using Docker containers and automated training pipeline}
+          \customItemListEnd
+          \vspace{-13pt}
+
+      \customProject
+          {\textbf{\href{https://github.com/yourusername/project2}
+          {\underline{Real-Time Analytics Dashboard}}} $|$ 
+          \emph{React, Node.js, WebSocket, MongoDB, Chart.js}}
+          {Nov 2023}
+          \customItemListStart
+            \customItem{Built real-time data visualization platform processing streaming data from 10K+ IoT devices}
+            \customItem{Implemented WebSocket connections for live updates and interactive charts with sub-second latency}
+            \customItem{Designed responsive UI with advanced filtering capabilities, serving 50K+ monthly active users}
+          \customItemListEnd
+          \vspace{-13pt}
+
+      \customProject
+          {\textbf{\href{https://github.com/yourusername/project3}
+          {\underline{Automated Testing Framework}}} $|$ 
+          \emph{Python, Selenium, Jest, GitHub Actions}}
+          {Aug 2023}
+          \customItemListStart
+            \customItem{Created comprehensive testing framework reducing bug detection time by 60\% and improving code coverage to 85\%}
+            \customItem{Integrated automated E2E and unit tests into CI/CD pipeline, preventing 40+ critical bugs from reaching production}
+          \customItemListEnd
+          \vspace{-13pt}
+      
+    \customSubHeadingContentEnd
+\vspace{3pt}
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \customSubHeadingContentStart
+ \customSubHeading
+      {University Name}{Aug 2017 – May 2021}
+      {Bachelor of Science in Computer Science, GPA: 3.8/4.0} {City, State}
+  \customSubHeadingContentEnd
+\vspace{-8pt}
+
+%-----------CERTIFICATIONS & ACHIEVEMENTS-----------
+\section{CERTIFICATIONS \& ACHIEVEMENTS}
+\begin{itemize}[itemsep=-3pt, left=0pt]
+    \item AWS Certified Solutions Architect – Associate (2023)
+    \item Solved 500+ algorithmic problems on LeetCode (Top 5\% globally)
+    \item Winner of University Hackathon 2020 – Built COVID-19 tracking dashboard used by 10K+ students
+    \item Published research paper on "Optimizing Neural Networks for Edge Devices" at IEEE Conference 2022
+\end{itemize}
+\vspace{-13pt}
+
+%-----------LEADERSHIP & ACTIVITIES-----------
+\section{LEADERSHIP \& ACTIVITIES}
+    \customSubHeadingContentStart
+    
+        \customSubHeading{Google Developer Student Club}{Sep 2019 – May 2021}{Technical Lead}{University Name}
+            \customItemListStart
+                \customItem{Led team of 15 members organizing 20+ technical workshops and hackathons reaching 500+ students}
+                \customItem{Mentored 30+ junior developers in web development and competitive programming}
+            \customItemListEnd
+        
+    \customSubHeadingContentEnd
+\vspace{-10pt}
+
+\end{document}

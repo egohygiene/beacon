@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Monthly Calendar
+% LaTeX Template
+% Version 2.0 (January 5, 2025)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use either a4paper or letterpaper
+	10pt, % Default font size, specify between 8pt and 12pt
+]{CSCalendars}
+
+%----------------------------------------------------------------------------------------
+%	CALENDAR SETTINGS
+%----------------------------------------------------------------------------------------
+
+\setcounter{startingdayoftheweek}{1} % The starting day of the calendar: 1 means Sunday, 2 for Monday, 3 for Tuesday, etc. Should be between 1 and 7.
+
+\setcounter{startingdate}{1} % The starting date of the calendar, will usually be 1 but can be set to 30 or 31 to display those dates at the top left of the calendar when the first day of the month is near the end of the week
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	CALENDAR PAGE(S)
+%----------------------------------------------------------------------------------------
+
+% Each calendar consists of 7 * 5 = 35 table cells. Each cell must be populated with either a \blankday or \day command. \blankday is used for empty cells that don't contain dates, usually at the start or end of the calendar. \day is used for all days with dates and takes 2 parameters: 1) the header at the top of the day cell (e.g. Work, Social, etc). 2) The day's events, separated by \eventskip for nice vertical spacing. You can also use \dayheader{<title>} inside each \day's events to output an additional header.
+
+% Calendar header
+\begin{center}
+	\textsc{\LARGE Month}\\ % Month
+	\textsc{\large Year} % Year
+\end{center}
+
+% Calendar table
+\begin{calendar}
+	\blankday{}
+	\day{Work}{10am Weekly Catch Up with Rachel \eventskip 12pm TPS Report Due} % 1
+	\day{Work}{9am Team Standup Meeting} % 2
+	\day{Social}{5:30pm Tennis with John, Janet and James} % 3
+	\day{Work}{9am Team Standup Meeting} % 4
+	\day{}{} % 5
+	\day{Social}{10am Marinate Meat \eventskip 5pm-10pm Neighborhood BBQ} % 6
+	\day{}{} % 7
+	\day{Work}{10am Weekly Catch Up with Rachel \eventskip \dayheader{Social} \eventskip 7pm Dinner with Jeremy} % 8
+	\day{Work}{9am Team Standup Meeting} % 9
+	\day{Work}{1pm-5pm Product Brainstorming Session \eventskip \dayheader{Social} \eventskip 5:30pm Tennis with John, Janet and James} % 10
+	\day{Work}{9am Team Standup Meeting} % 11
+	\day{}{} % 12
+	\day{}{} % 13
+	\day{}{Rebecca's 40th Birthday} % 14
+	\day{Work}{10am Weekly Catch Up with Rachel} % 15
+	\day{Work}{9am Team Standup Meeting} % 16
+	\day{Social}{5:30pm Tennis with John, Janet and James} % 17
+	\day{Work}{9am Team Standup Meeting} % 18
+	\day{Conference}{9am Opening Talks \eventskip 11am Group Presentation \eventskip 2pm Networking Event \eventskip \dayheader{Work} \eventskip 5pm Report Due} % 19
+	\day{}{} % 20
+	\day{}{} % 21
+	\day{Work}{10am Weekly Catch Up with Rachel} % 22
+	\day{Work}{9am Team Standup Meeting} % 23
+	\day{Social}{5:30pm Tennis with John, Janet and James} % 24
+	\day{Work}{9am Team Standup Meeting \eventskip 12pm Company Report Due \eventskip 6pm Executive Debriefing \eventskip 8pm Company Dinner} % 25
+	\day{Work}{12pm Client Introduction \eventskip 2pm Client Presentation \eventskip 6pm Client Dinner} % 26
+	\day{}{Dad's 64th Birthday \eventskip \dayheader{Vacation} \eventskip Family Trip to New York} % 27
+	\day{Vacation}{Family Trip to New York} % 28
+	\day{Work}{10am Weekly Catch Up with Rachel} % 29
+	\day{Work}{9am Team Standup Meeting} % 30
+	\day{Work}{9am Team Standup Meeting \eventskip \dayheader{Social} \eventskip 5:30pm Tennis with John, Janet and James} % 31
+	\blankday{}
+	\blankday{}
+	\blankday{}
+\end{calendar}
+
+%--------------------------------------------
+
+\newpage
+
+\setcounter{startingdate}{30} % The starting date of the calendar, set to 30 so the first days output are for the end of the month
+
+% Calendar header
+\begin{center}
+	\textsc{\LARGE Month}\\ % Month
+	\textsc{\large Year} % Year
+\end{center}
+
+% Calendar table
+\begin{calendar}
+	\day{}{} % 30
+	\day{}{} % 31
+	\setcounter{startingdate}{1} % Reset the current date back to 1
+	\blankday{}
+	\blankday{}
+	\blankday{}
+	\blankday{}
+	\day{}{} % 1
+	\day{}{} % 2
+	\day{}{} % 3
+	\day{}{} % 4
+	\day{}{} % 5
+	\day{}{} % 6
+	\day{}{} % 7
+	\day{}{} % 8
+	\day{}{} % 9
+	\day{}{} % 10
+	\day{}{} % 11
+	\day{}{} % 12
+	\day{}{} % 13
+	\day{}{} % 14
+	\day{}{} % 15
+	\day{}{} % 16
+	\day{}{} % 17
+	\day{}{} % 18
+	\day{}{} % 19
+	\day{}{} % 20
+	\day{}{} % 21
+	\day{}{} % 22
+	\day{}{} % 23
+	\day{}{} % 24
+	\day{}{} % 25
+	\day{}{} % 26
+	\day{}{} % 27
+	\day{}{} % 28
+	\day{}{} % 29
+\end{calendar}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

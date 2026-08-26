@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bezos Business Card
+% LaTeX Template
+% Version 1.0 (April 4, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@latextemplates.com)
+% Candrika Pujnadati
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{CSBezosBusinessCard}
+
+% Specify the paper size (i.e. business card dimensions), uncomment the line that matches your country or required sizing
+\geometry{
+	paperwidth=3.5in, paperheight=2in, % Canada, United States
+	%paperwidth=8.5cm, paperheight=5.5cm, % Ireland, Italy, United Kingdom, France, Germany, Austria, Netherlands, Spain, Switzerland, Belgium, Slovenia, Portugal, Turkey, Nepal
+	%paperwidth=9cm, paperheight=5.5cm, % Australia, Denmark, New Zealand, Norway, Taiwan, Sweden, Vietnam, India, Colombia
+	%paperwidth=9.1cm, paperheight=5.5cm, % Japan
+	%paperwidth=9cm, paperheight=5.4cm, % Hong Kong, China, Singapore, Malaysia
+	%paperwidth=8.5cm, paperheight=4.8cm, % Iran
+	%paperwidth=9cm, paperheight=5cm, % Sri Lanka, Argentina, India, Brazil, Bosnia and Herzegovina, Costa Rica, Czech Republic, Croatia, Estonia, Finland, Hungary, Israel, Kazakhstan, Lithuania, Poland, Romania, Russia, Serbia, Montenegro, Slovakia, Ukraine, Uzbekistan, Bulgaria, Latvia, Mexico, South Korea and South Africa
+	%paperwidth=7.4cm, paperheight=5.2cm, % ISO 216, A8 sized
+	%paperwidth=8.1cm, paperheight=5.7cm, % ISO 216, C8 sized
+	%paperwidth=8.8cm, paperheight=6.2cm, % ISO 216, B8 sized
+	%paperwidth=8.56cm, paperheight=5.398cm, % ISO/IEC 7810 ID-1, credit card sized, Australia
+}
+
+% Uncomment if a bleed for trimming (i.e. crop) is required
+%\usepackage[
+%	width=4in, height=2.5in, % New paper width and height (should be larger than paperwidth and paperheight above), crop marks are output at the difference between the paper size defined here vs. in the geometry package
+%	cross, % Crop markings to use, available options include: cross, cam, axes and frame
+%	noinfo, % Don't display default page information at the top added by this package
+%	center, % Center page contents inside the cropped area vertically and horizontally
+%]{crop}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	OUTPUT BUSINESS CARD
+%----------------------------------------------------------------------------------------
+
+\topskip0pt\vspace*{\fill} % For vertical alignment
+
+\minipage[c]{0.48\textwidth} % Left column width
+	{\fontsize{17pt}{17pt}\selectfont Jeff Bezos\par} % Your name
+	
+	\textit{Executive Chairman} % Job title, remove this line if not required
+	
+	\smallskip % Vertical whitespace
+	
+	{\fontsize{6pt}{6pt}\selectfont\textbf{\textsc{Amazon.com, Inc.}}\par} % Company name, remove this line if not required
+\endminipage
+\hfill % Automatic padding between columns
+\minipage[c]{0.48\textwidth} % Right column width 
+	% Try to shorten each line so it does not wrap to a new line automatically
+	410 Terry Ave. N, Seattle\\
+	WA 98109 United States
+	
+	\bigskip % Vertical whitespace
+	
+	\begin{tabular}{@{} >{\bfseries\arraybackslash} l @{\hspace{3pt}} l @{}} % Contact information table column specification
+		% Specify each piece of contact information with a single letter for the type of contact information to maintain neat spacing
+		p. & 1 (888) 280 4331\\
+		e. & jeff@amazon.com\\
+		t. & @JeffBezos\\
+		w. & amazon.com\\
+	\end{tabular}
+\endminipage
+
+\vspace*{\fill} % For vertical alignment
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

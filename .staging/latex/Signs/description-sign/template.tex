@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description Sign
+% LaTeX Template
+% Version 1.1 (February 25, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use 'a4paper' for A4 (default) or 'letterpaper' for US letter
+]{CSDescriptionSign}
+
+%---------------------------------------------------------------------------------
+%	SIGN CONTENT
+%---------------------------------------------------------------------------------
+
+\signtitle{Building Under Renovation} % The main sign title at the top
+
+\signsubtitle{Facilities Moved to Building 42} % The bold subtitle under the main title, may be left empty (i.e. \signsubtitle{}) if not required
+
+\descriptiontext{ % Paragraphs of description, explanation or instruction text, separated by empty lines for correct paragraph line spacing
+	Renovation will continue through August if weather permits. In the event of delays, alternative office spaces and facilities will be provisioned. If you have any questions about how you will be impacted, please contact the facility manager.
+
+	The shared staff kitchen and lunch room are now on level 10 of B42, shared with the Engineering Department.
+
+	Showers are now on basement level 3 next to the elevators.
+
+	Smoking is now allowed only on the balcony on level 14 or in Albert Park across the road.
+
+	All facility tours are postponed until renovation is complete.
+}
+
+\additionaltext{Apologies for any inconvenience caused.} % Additional text at the bottom, may be left empty (i.e. \additionaltext{}) if not required
+
+%---------------------------------------------------------------------------------
+%	SIGN SETTINGS
+%---------------------------------------------------------------------------------
+
+\newlength{\signtitlefontsize}\setlength{\signtitlefontsize}{55pt} % Main sign title font size
+
+\newlength{\signsubtitlefontsize}\setlength{\signsubtitlefontsize}{28pt} % Subtitle font size
+
+\newlength{\descriptiontextfontsize}\setlength{\descriptiontextfontsize}{18pt} % Description text font size
+
+\newlength{\additionaltextfontsize}\setlength{\additionaltextfontsize}{20pt} % Additional text font size
+
+%---------------------------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------------------------
+%	CREATE SIGN
+%---------------------------------------------------------------------------------
+
+{\fontsize{\signtitlefontsize}{1.1\signtitlefontsize}\selectfont{\lseries \signtitle}\par} % Output the main sign title
+
+\vfill % Automatic vertical whitespace
+
+%------------------------------------------------
+
+\ifdefempty{\signsubtitle}{}{ % If a subtitle was entered
+	{\fontsize{\signsubtitlefontsize}{1.2\signsubtitlefontsize}\selectfont\textbf{\signsubtitle}\par} % Output the subtitle
+	\vspace{0.3cm} % Fixed whitespace below the subtitle
+}
+
+%------------------------------------------------
+
+{\fontsize{\descriptiontextfontsize}{1.2\descriptiontextfontsize}\selectfont\descriptiontext\par} % Output the description text
+
+\vfill\vfill\vfill % Automatic vertical whitespace
+
+%------------------------------------------------
+
+\ifdefempty{\additionaltext}{\strut}{ % If additional text was entered
+	{\fontsize{\additionaltextfontsize}{1.2\additionaltextfontsize}\selectfont\textit{\additionaltext}\par} % Output the additional text
+}
+
+%---------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,143 @@
+# Normalize text consistently across operating systems.
+* text=auto eol=lf
+
+# Windows-native command files require CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Scripts and command-oriented files.
+*.bash text eol=lf
+*.fish text eol=lf
+*.ps1 text eol=lf
+*.psd1 text eol=lf
+*.psm1 text eol=lf
+*.sh text eol=lf
+*.zsh text eol=lf
+Dockerfile text eol=lf
+Makefile text eol=lf
+Taskfile.yml text eol=lf
+Taskfile.yaml text eol=lf
+
+# Source and configuration files.
+*.c text
+*.cc text
+*.conf text
+*.cpp text
+*.css text
+*.csv text
+*.dart text
+*.go text
+*.graphql text
+*.h text
+*.hpp text
+*.html text
+*.ini text
+*.java text
+*.js text
+*.json text
+*.jsonc text
+*.jsx text
+*.kt text
+*.kts text
+*.md text diff=markdown
+*.mjs text
+*.py text diff=python
+*.rb text diff=ruby
+*.rs text
+*.scss text
+*.sql text
+*.svg text
+*.swift text
+*.tf text
+*.toml text
+*.ts text
+*.tsx text
+*.txt text
+*.xml text
+*.yaml text
+*.yml text
+
+# Lockfiles stay reviewable because they are part of the supply-chain record.
+*.lock text
+Cargo.lock text
+Gemfile.lock text
+Package.resolved text
+package-lock.json text
+pnpm-lock.yaml text
+pubspec.lock text
+yarn.lock text
+
+# Generated or machine-heavy text formats.
+*.map text -diff
+*.min.css text -diff
+*.min.js text -diff
+*.snap text
+*.ipynb text -diff
+
+# Images and design assets.
+*.avif binary
+*.bmp binary
+*.drawio binary
+*.gif binary
+*.heic binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.png binary
+*.psd binary
+*.sketch binary
+*.svgz binary
+*.tif binary
+*.tiff binary
+*.webp binary
+
+# Fonts.
+*.eot binary
+*.otf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Audio and video.
+*.aac binary
+*.avi binary
+*.flac binary
+*.m4a binary
+*.mkv binary
+*.mov binary
+*.mp3 binary
+*.mp4 binary
+*.ogg binary
+*.wav binary
+*.webm binary
+
+# Archives, compiled artifacts, and documents.
+*.7z binary
+*.a binary
+*.bz2 binary
+*.class binary
+*.dll binary
+*.dmg binary
+*.doc binary
+*.docx binary
+*.exe binary
+*.gz binary
+*.jar binary
+*.o binary
+*.pdf binary
+*.ppt binary
+*.pptx binary
+*.so binary
+*.tar binary
+*.wasm binary
+*.xls binary
+*.xlsx binary
+*.xz binary
+*.zip binary
+
+# GitHub language statistics.
+docs/** linguist-documentation
+*.spec.md linguist-documentation
+*.sql linguist-language=SQL
+*.graphql linguist-language=GraphQL
+*.gql linguist-language=GraphQL

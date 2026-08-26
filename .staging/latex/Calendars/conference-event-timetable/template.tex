@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conference/Event Timetable
+% LaTeX Template
+% Version 2.0 (January 12, 2025)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use either a4paper or letterpaper
+	10pt, % Default font size, specify between 8pt and 12pt
+]{CSCalendars}
+
+%----------------------------------------------------------------------------------------
+%	CALENDAR SETTINGS
+%----------------------------------------------------------------------------------------
+
+\setcounter{startingdayoftheweek}{1} % The starting day of the calendar: 1 means Sunday, 2 for Monday, 3 for Tuesday, etc. Should be between 1 and 7.
+
+\setcounter{startingdate}{7} % The starting date of the first numbered day in the calendar
+
+\setlength{\dayheight}{4cm} % Set the height of day boxes in the calendar, increase to accommodate more events per day or decrease if there are few
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+	\textsc{\LARGE Conference X}\\ % Title
+	\textsc{\large February 2025} % Date
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	CALENDAR
+%----------------------------------------------------------------------------------------
+
+% Each calendar consists of one or more rows of 7 table cells. Each cell must be populated with either a \blankday or \day command. \blankday is used for empty cells that don't contain dates, usually at the start or end of the calendar. \blankday takes a single parameter for the day's events (if any). \day is used for all days with dates and takes 2 parameters: 1) the header at the top of the day cell (e.g. Work, Social, etc). 2) the day's events. Day events can be separated by \eventskip for nice vertical spacing and you can also use \dayheader{<title>} to output an additional header.
+
+\begin{calendar} % Start the calendar table
+
+%----------------------------------------------------------------------------------------
+%	FIRST DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{Packing for conference}
+
+%----------------------------------------------------------------------------------------
+%	SECOND DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{} 
+
+%----------------------------------------------------------------------------------------
+%	THIRD DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{} 
+
+%----------------------------------------------------------------------------------------
+%	FOURTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{In Transit}{
+	\textbf{Depart} (PHL) @ 18:10 EDT \eventrule
+	US Airways \# 740\\
+	US Airways record locator: EPYTWQ\\
+	Airline ticket number(s): 0377186181588-589 \eventrule
+}
+
+%----------------------------------------------------------------------------------------
+%	FIFTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Madrid}{
+	\textbf{Arrive} (MAD) @ 07:45 CEST \eventrule
+	Hotel Senator Gran V\'ia\\
+	Calle Gran V\'ia, 21\\
+	28013 (Centro) MADRID\\
+	+34 915 31 41 51\\
+	Reservation code: 080131-98638\\
+	Cancellation code: 9860291 \eventrule 
+	Palacio Real \eventskip
+	Plaza Mayor \eventskip
+	Reina Sof\'ia National Museum
+}
+
+%----------------------------------------------------------------------------------------
+%	SIXTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Toledo (Day Trip)}{
+	Cathedral \eventskip
+	Sinagoga del Transito \eventskip
+	Palace Alcazar \eventskip
+	Sinagoga del Santa Maria la Blanca
+}
+
+%----------------------------------------------------------------------------------------
+%	SEVENTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Madrid}{
+	Real Academic de Bellas Artes \eventskip
+	Templo de Debod \eventskip
+	Museo del Prado \eventrule
+	\textbf{Depart} Madrid @ 22:45 on SNCF 332
+}
+
+%----------------------------------------------------------------------------------------
+%	EIGHTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Lisbon}{
+	\textbf{Arrive} in Lisbon @ 08:00 \eventrule
+	Hotel Real Pal\'acio\\
+	Rua Tom\'as Ribeiro 115 \eventrule
+	Elevador de Santa Justa \eventskip
+	Solar do Vinho do Porto \eventskip
+	Castelo de S\~ao Jorge \eventskip
+	Mosteiro do Geron\'imos \eventskip
+	Torre de Bel\'em
+}
+
+%----------------------------------------------------------------------------------------
+%	NINTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Estoril}{
+	\textbf{Arrive} in Estoril \eventrule
+	Hotel Alvorada\\
+	Rua de Lisboa, 3 \eventrule 
+	OptMAS Workshop?
+}
+
+%----------------------------------------------------------------------------------------
+%	TENTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Estoril}{
+	DCR Workshop
+}
+
+%----------------------------------------------------------------------------------------
+%	ELEVENTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Estoril}{
+	FIPA Meeting 11:10--12:10 \eventskip
+	Poster Session w/``Drinks and Snacks'' 15:00--16:00
+}
+
+%----------------------------------------------------------------------------------------
+%	TWELFTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Estoril}{ 
+	AAMAS Demos \eventskip
+	Conference Banquet @ 18:30
+}
+
+%----------------------------------------------------------------------------------------
+%	THIRTEENTH DAY
+%----------------------------------------------------------------------------------------
+
+\day{Estoril}{
+	\textbf{Depart} (LIS) @ 10:35 WEST\\
+	US Airways \#739 \eventskip
+	\textbf{Arrive} (PHL) @ 13:25 EST
+}
+
+%----------------------------------------------------------------------------------------
+%	FOURTEENTH DAY
+%----------------------------------------------------------------------------------------
+
+\blankday{}
+
+% Note: more days can be added to give the calendar a third or fourth week, but make sure to add them in sets of 7 for the table to look correct
+
+%----------------------------------------------------------------------------------------
+
+\end{calendar}
+
+\end{document}

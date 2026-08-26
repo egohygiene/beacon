@@ -1,0 +1,174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ryo Menu
+% LaTeX Template
+% Version 1.0 (February 25, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%!TEX program = xelatex
+% Note: this template must be compiled with XeLaTeX rather than PDFLaTeX
+% due to the custom fonts used. The line above should ensure this happens
+% automatically, but if it doesn't, your LaTeX editor should have a simple toggle
+% to switch to using XeLaTeX.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use 'a4paper' for A4 (default) or 'letterpaper' for US letter (you may want to adjust margins afterwards)
+]{CSRyoMenu}
+
+%---------------------------------------------------------------------------------
+%	MENU SETTINGS
+%---------------------------------------------------------------------------------
+
+\determinecurrencysymbol{USD} % Set the currency for the menu which will automatically determine the correct currency symbol to use, options include: USD, AUD, CAD, FJD, HKD, JMD, NZD, SGD, TWD, GBP, CNY, JPY, EUR, BRL, INR, RUB. If you don't want a currency symbol, leave this command blank (i.e. \currency{})
+%\renewcommand{\currencysymbol}{\$} % Alternatively to the above, uncomment this command and set your own currency symbol using a character or command as needed
+
+\newlength{\menuitemtitlefontsize}\setlength{\menuitemtitlefontsize}{24pt} % Menu item title font size
+\newlength{\menuitempricefontsize}\setlength{\menuitempricefontsize}{17pt} % Menu item price font size
+\newlength{\menuitemdescriptionfontsize}\setlength{\menuitemdescriptionfontsize}{12pt} % Menu item description font size
+\newlength{\extrainfofontsize}\setlength{\extrainfofontsize}{12pt} % Extra information font size
+
+%---------------------------------------------------------------------------------
+
+\begin{document}
+
+%---------------------------------------------------------------------------------
+%	MENU WITH PRICES AND DESCRIPTIONS
+%---------------------------------------------------------------------------------
+
+\title{Cocktail List} % Output the menu title
+
+\vspace{20pt} % Vertical whitespace below the menu title
+
+%------------------------------------------------
+
+% Individual menu items are output using the \menuitem{}{}{} command
+% The first parameter to this command is the menu item title, this is required
+% The second parameter is the menu item price, this can be left empty if not required
+% The third parameter is the menu item description, this can be left empty if not required
+
+\menuitem{Bloody Mary}{15}{Vodka, tomato juice, hot sauce, Worcestershire sauce, lemon juice, secret spices, celery stick}
+
+\menuitem{Espresso Martini}{10}{Vodka, Kahlúa, espresso}
+
+\menuitem{French 75}{12}{Gin, Champagne, lemon juice, sugar}
+
+\menuitem{Long Island Iced Tea}{15}{Vodka, gin, triple sec, tequila, white rum, lemon juice, cola}
+
+\menuitem{Manhattan}{12}{Rye whiskey, sweet vermouth, bitters}
+
+\menuitem{Mojito}{12}{Light rum, lime juice, cane sugar, soda water, mint leaves}
+
+\menuitem{Moscow Mule}{10}{Vodka, ginger beer, lime juice}
+
+\menuitem{Old Fashioned}{11}{Bourbon, bitters, sugar cube, orange twist}
+
+\menuitem{Piña Colada}{12}{White rum, pineapple juice, coconut cream}
+
+\menuitem{Tom Collins}{10}{Gin, lemon juice, soda water}
+
+\menuitem{White Russian}{12}{Kahlúa, Baileys, Frangelico, vodka, milk}
+
+%------------------------------------------------
+
+\extrainfo{All cocktails can be non-alcoholic on request. 10 percent surcharge applies on public holidays. Allergies will be accommodated where possible.} % Extra information about the menu or establishment
+
+%---------------------------------------------------------------------------------
+%	MENU WITH PRICES ONLY
+%---------------------------------------------------------------------------------
+
+\newpage
+
+\determinecurrencysymbol{GBP} % Changing the currency symbol as an example
+
+\title{Cocktail List} % Output the menu title
+
+\vspace{20pt} % Vertical whitespace below the menu title
+
+%------------------------------------------------
+
+% Individual menu items are output using the \menuitem{}{}{} command
+% The first parameter to this command is the menu item title, this is required
+% The second parameter is the menu item price, this can be left empty if not required
+% The third parameter is the menu item description, this can be left empty if not required
+
+\menuitem{Bloody Mary}{15}{}
+
+\menuitem{Espresso Martini}{10}{}
+
+\menuitem{French 75}{12}{}
+
+\menuitem{Long Island Iced Tea}{15}{}
+
+\menuitem{Manhattan}{12}{}
+
+\menuitem{Mojito}{12}{}
+
+\menuitem{Moscow Mule}{10}{}
+
+\menuitem{Old Fashioned}{11}{}
+
+\menuitem{Piña Colada}{12}{}
+
+\menuitem{Tom Collins}{10}{}
+
+\menuitem{White Russian}{12}{}
+
+%------------------------------------------------
+
+\extrainfo{All cocktails can be non-alcoholic on request. 10 percent surcharge applies on public holidays. Allergies will be accommodated where possible.} % Extra information about the menu or establishment
+
+%---------------------------------------------------------------------------------
+%	MENU WITH ITEMS ONLY
+%---------------------------------------------------------------------------------
+
+\newpage
+
+\title{Cocktail List} % Output the menu title
+
+\vspace{20pt} % Vertical whitespace below the menu title
+
+%------------------------------------------------
+
+% Individual menu items are output using the \menuitem{}{}{} command
+% The first parameter to this command is the menu item title, this is required
+% The second parameter is the menu item price, this can be left empty if not required
+% The third parameter is the menu item description, this can be left empty if not required
+
+\menuitem{Bloody Mary}{}{}
+
+\menuitem{Espresso Martini}{}{}
+
+\menuitem{French 75}{}{}
+
+\menuitem{Long Island Iced Tea}{}{}
+
+\menuitem{Manhattan}{}{}
+
+\menuitem{Mojito}{}{}
+
+\menuitem{Moscow Mule}{}{}
+
+\menuitem{Old Fashioned}{}{}
+
+\menuitem{Piña Colada}{}{}
+
+\menuitem{Tom Collins}{}{}
+
+\menuitem{White Russian}{}{}
+
+%---------------------------------------------------------------------------------
+
+\end{document}
