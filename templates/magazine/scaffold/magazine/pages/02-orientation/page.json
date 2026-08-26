@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "orientation",
+  "kind": "inside-cover",
+  "layout": "opener",
+  "kicker": "Orientation",
+  "title": "A magazine is a way of understanding",
+  "deck": "The document provides structure. Editorial design provides movement, memory, and invitation.",
+  "source": "content.md"
+}

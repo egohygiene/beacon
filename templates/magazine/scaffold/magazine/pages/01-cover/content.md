@@ -1,0 +1,4 @@
+- Semantic-first authoring
+- Digital and print review
+- Accessible web reading
+- Browser-ready source contracts

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "publication-flow",
+  "kind": "article",
+  "layout": "diagram",
+  "kicker": "Foundation 02",
+  "title": "One issue, three expressions",
+  "deck": "A deterministic compiler synchronizes print, screen, and web without making any generated artifact the source of truth.",
+  "source": "content.md"
+}

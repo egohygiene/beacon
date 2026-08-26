@@ -1,0 +1,33 @@
+{
+  "$schema": "../../contracts/edition.schema.json",
+  "schema_version": 1,
+  "id": "beacon-field-notes-01",
+  "title": "Beacon Field Notes",
+  "subtitle": "A reusable system for thoughtful publications",
+  "edition_number": "01",
+  "edition_name": "Foundations",
+  "date": "2026-08-26",
+  "version": "0.1.0",
+  "language": "en",
+  "description": "A compact reference issue showing how one structured source becomes an expressive magazine, a print proof, and an accessible web edition.",
+  "creators": [
+    {
+      "name": "Ego Hygiene",
+      "roles": ["publisher", "editorial direction", "template design"]
+    }
+  ],
+  "rights": {
+    "copyright": "Copyright 2026 Ego Hygiene",
+    "license": "MIT for template source; consumer content retains its declared rights"
+  },
+  "pages": [
+    "pages/01-cover/page.json",
+    "pages/02-orientation/page.json",
+    "pages/03-semantic-source/page.json",
+    "pages/04-publication-flow/page.json",
+    "pages/05-practical-rhythm/page.json",
+    "pages/06-future-editor/page.json",
+    "pages/07-credits/page.json",
+    "pages/08-back-cover/page.json"
+  ]
+}

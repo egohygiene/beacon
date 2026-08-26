@@ -1,0 +1,49 @@
+schema_version = 1
+id = "magazine"
+name = "Magazine Publication"
+version = "0.1.0"
+description = "A structured editorial-magazine profile with deterministic digital PDF, print PDF, and accessible web outputs."
+category = "publication"
+license = "MIT"
+source = "original Beacon implementation informed by the Reflector compatibility canary"
+
+[[outputs]]
+format = "pdf"
+variant = "digital-review"
+renderer = "latexmk"
+artifact = "magazine.pdf"
+
+[[outputs]]
+format = "pdf"
+variant = "print-ready"
+renderer = "latexmk"
+artifact = "magazine-print.pdf"
+
+[[outputs]]
+format = "html"
+variant = "web-preview"
+renderer = "beacon-magazine"
+artifact = "web/index.html"
+
+[metadata]
+required = ["id", "title", "edition_number", "date", "version", "language", "description", "creators", "rights", "pages"]
+optional = ["subtitle", "edition_name"]
+
+[capabilities]
+accessible_web = true
+article_pages = true
+back_cover = true
+browser_authoring_contract = true
+cover = true
+credits = true
+deterministic_builds = true
+digital_review_pdf = true
+full_page_artwork = true
+identity_themes = true
+page_level_sources = true
+print_bleed = true
+print_marks = true
+print_ready_pdf = true
+provenance = true
+relay_adapter = true
+stable_web_route = true

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "practical-rhythm",
+  "kind": "article",
+  "layout": "split",
+  "kicker": "Foundation 03",
+  "title": "Design in small, reversible moves",
+  "deck": "A page-level workflow lowers the cost of experimentation while preserving the integrity of the full edition.",
+  "source": "content.md"
+}

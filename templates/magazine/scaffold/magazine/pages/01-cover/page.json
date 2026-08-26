@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "cover",
+  "kind": "cover",
+  "layout": "cover",
+  "kicker": "Issue 01 / Foundations",
+  "title": "Beacon Field Notes",
+  "deck": "Structured stories, expressive pages, durable evidence.",
+  "source": "content.md"
+}

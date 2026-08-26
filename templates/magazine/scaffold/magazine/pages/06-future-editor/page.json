@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "future-editor",
+  "kind": "article",
+  "layout": "quote",
+  "kicker": "Future seam",
+  "title": "The browser becomes another careful collaborator",
+  "deck": "Dreamscape can eventually edit the same stable objects and propose branch changes without owning publication truth.",
+  "source": "content.md"
+}

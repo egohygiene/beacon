@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../contracts/page.schema.json",
+  "schema_version": 1,
+  "id": "semantic-source",
+  "kind": "article",
+  "layout": "feature",
+  "kicker": "Foundation 01",
+  "title": "Meaning before rendering",
+  "deck": "Structured metadata and small Markdown files keep the publication understandable to people, tools, and future editors.",
+  "source": "content.md"
+}
