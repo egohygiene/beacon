@@ -1,0 +1,65 @@
+%% nih-attachment.sty - original Beacon NIH/NIMH attachment style
+%% Copyright 2026 Ego Hygiene
+%% SPDX-License-Identifier: MIT
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{nih-attachment}[2026/08/25 v0.1.0 Beacon NIH attachment style]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\RequirePackage[letterpaper,margin=0.6in]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{xcolor}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{bibentry}
+
+\definecolor{BeaconInk}{HTML}{171A1F}
+\definecolor{BeaconAccent}{HTML}{153E5C}
+\definecolor{BeaconCaution}{HTML}{7A3E00}
+
+\color{BeaconInk}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.5pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.03}
+
+\newcommand{\GrantAttachmentTitle}[1]{%
+  \begin{center}
+    {\bfseries\large #1}
+  \end{center}
+  \vspace{-0.5em}
+}
+
+\newcommand{\GrantSection}[1]{%
+  \par\vspace{0.45em}
+  {\color{BeaconAccent}\bfseries\large #1}\par
+  \vspace{-0.15em}
+}
+
+\newcommand{\GrantSubsection}[1]{%
+  \par\vspace{0.3em}
+  {\bfseries #1}\par
+  \vspace{-0.1em}
+}
+
+\newcommand{\Aim}[2]{%
+  \par\vspace{0.25em}
+  \noindent\textbf{Aim #1: #2}\enspace
+}
+
+\newcommand{\TODO}[1]{%
+  {\color{BeaconCaution}\textbf{TODO:} #1}%
+}
+
+\newcommand{\GrantLoadBibliography}[1]{%
+  \bibliographystyle{unsrtnat}%
+  \nobibliography{#1}%
+}
+
+\AtBeginDocument{\fontsize{11}{13}\selectfont}

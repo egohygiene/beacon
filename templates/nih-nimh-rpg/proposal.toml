@@ -1,0 +1,23 @@
+schema_version = 1
+
+[application]
+stage = "concept"
+agency = "NIH"
+institute = "NIMH"
+forms_version = "I"
+activity_code = ""
+funding_opportunity = ""
+due_date = ""
+applicant_organization = ""
+authorized_submission_contact = ""
+program_officer = ""
+program_officer_contacted = false
+
+[page_limits]
+specific_aims = 1
+# Set this from the current NIH table and the selected NOFO. Zero means unknown.
+research_strategy = 0
+
+[guidance]
+verified_on = "2026-08-25"
+nofo_overrides_general_guidance = true
