@@ -6,8 +6,13 @@ package is independently buildable, versioned, documented, and described by a
 
 Each manifest also declares the profile's executable adapter: required host
 tools, supported theme values, a tokenized build/check command, default output,
-and artifacts eligible for publication packaging. The root CLI validates and
-orchestrates that contract while the profile continues to own rendering logic.
+and artifacts eligible for publication packaging. Initializers copy the
+profile's complete build kit into the project. The root CLI validates and
+orchestrates that project-owned contract without becoming a runtime dependency.
+
+Every initialized package offers equivalent Make and Task entrypoints over its
+local `scripts/tasks.py`. See the
+[`standalone project task contract`](../docs/project-task-contract.md).
 
 ## Active packages
 

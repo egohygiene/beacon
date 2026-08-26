@@ -15,3 +15,6 @@
   the shared Beacon core.
 - Declare host-tool, theme, build/check, and package-artifact contracts for the
   shared execution CLI.
+- Add project-owned Make and Task entrypoints over one shared task adapter.
+- Make initialized magazines independent of the Beacon checkout by copying
+  their renderer, checks, contracts, styles, themes, and web template.

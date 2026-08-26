@@ -15,3 +15,4 @@
   shared execution CLI.
 - Documented the verified, checksummed package as the Relay handoff boundary and
   separated that Beacon-owned contract from downstream deployment ownership.
+- Added project-owned Make and Task entrypoints over one shared task adapter.

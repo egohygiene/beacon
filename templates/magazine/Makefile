@@ -1,42 +1,27 @@
 PYTHON ?= python3
-PROJECT ?= scaffold
+PROJECT ?= auto
 THEME ?= neutral
 BUILD_DIR ?= build/$(THEME)
+TASK := $(PYTHON) scripts/tasks.py --project="$(PROJECT)" --build-dir="$(BUILD_DIR)" --theme="$(THEME)" --python="$(PYTHON)"
 
-.PHONY: all bootstrap-test check check-all clean reproducibility
+.PHONY: all bootstrap-check bootstrap-test build check check-all clean reproducibility
 
-all:
-	$(PYTHON) scripts/build.py --project="$(PROJECT)" --output="$(BUILD_DIR)" --theme="$(THEME)"
+all: build
 
-check: all
-	$(PYTHON) scripts/check.py --project="$(PROJECT)" --build="$(BUILD_DIR)" --theme="$(THEME)"
+build:
+	$(TASK) build
+
+check:
+	$(TASK) check
 
 reproducibility:
-	@tmp_dir="$$(mktemp -d)"; \
-	trap 'rm -rf "$$tmp_dir"' EXIT; \
-	$(PYTHON) scripts/build.py --project="$(PROJECT)" --output="$$tmp_dir/first" --theme="$(THEME)"; \
-	$(PYTHON) scripts/build.py --project="$(PROJECT)" --output="$$tmp_dir/second" --theme="$(THEME)"; \
-	cmp "$$tmp_dir/first/magazine.pdf" "$$tmp_dir/second/magazine.pdf"; \
-	cmp "$$tmp_dir/first/magazine-print.pdf" "$$tmp_dir/second/magazine-print.pdf"; \
-	cmp "$$tmp_dir/first/web/index.html" "$$tmp_dir/second/web/index.html"; \
-	cmp "$$tmp_dir/first/publication-manifest.json" "$$tmp_dir/second/publication-manifest.json"; \
-	cmp "$$tmp_dir/first/provenance.json" "$$tmp_dir/second/provenance.json"; \
-	echo "PASS reproducible magazine artifact bundle."
-
-bootstrap-test:
-	@tmp_dir="$$(mktemp -d)"; \
-	trap 'rm -rf "$$tmp_dir"' EXIT; \
-	$(PYTHON) scripts/bootstrap.py --destination="$$tmp_dir/project" --title="Bootstrap Magazine" --publisher="Bootstrap Publisher" --edition="07"; \
-	$(PYTHON) scripts/build.py --project="$$tmp_dir/project" --output="$$tmp_dir/output" --theme="neutral"; \
-	$(PYTHON) scripts/check.py --project="$$tmp_dir/project" --build="$$tmp_dir/output" --theme="neutral"; \
-	pdftotext "$$tmp_dir/output/magazine.pdf" - | rg --fixed-strings "Bootstrap Magazine"; \
-	rg --fixed-strings "Bootstrap Publisher" "$$tmp_dir/output/web/index.html" >/dev/null; \
-	echo "PASS bootstrap customization evidence."
+	$(TASK) reproducibility
 
 check-all:
-	$(MAKE) --no-print-directory check reproducibility THEME="neutral"
-	$(MAKE) --no-print-directory check reproducibility THEME="egohygiene"
-	$(MAKE) --no-print-directory bootstrap-test
+	$(TASK) check-all
+
+bootstrap-check bootstrap-test:
+	$(TASK) bootstrap-check
 
 clean:
-	rm -rf "build"
+	$(TASK) clean

@@ -21,6 +21,7 @@ COPY_ENTRIES = (
     "PROVENANCE.md",
     "README.md",
     "SOURCES.md",
+    "Taskfile.yml",
     "VERSION_HISTORY.md",
     "attachments",
     "beacon-template.toml",
@@ -29,6 +30,7 @@ COPY_ENTRIES = (
     "proposal.toml",
     "references.bib",
     "scripts/check.py",
+    "scripts/tasks.py",
     "sections",
     "styles",
 )

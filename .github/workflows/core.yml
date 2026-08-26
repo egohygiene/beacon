@@ -11,7 +11,9 @@ on:
       - "rust-toolchain.toml"
       - "src/**"
       - "templates/*/beacon-template.toml"
-      - "templates/*/scripts/bootstrap.py"
+      - "templates/*/Makefile"
+      - "templates/*/Taskfile.yml"
+      - "templates/*/scripts/*.py"
       - "templates/*/scaffold/beacon-project.toml"
       - "tests/**"
       - ".github/workflows/core.yml"
@@ -25,7 +27,9 @@ on:
       - "rust-toolchain.toml"
       - "src/**"
       - "templates/*/beacon-template.toml"
-      - "templates/*/scripts/bootstrap.py"
+      - "templates/*/Makefile"
+      - "templates/*/Taskfile.yml"
+      - "templates/*/scripts/*.py"
       - "templates/*/scaffold/beacon-project.toml"
       - "tests/**"
       - ".github/workflows/core.yml"
@@ -55,14 +59,10 @@ jobs:
             --profile "minimal" \
             --component "clippy,rustfmt"
 
-      - name: Check formatting
-        run: cargo fmt --all --check
+      - name: Install the pinned Task runner
+        uses: go-task/setup-task@70f2430ad412f838533de8c0515c749ffb2b8bd3 # v1
+        with:
+          version: "3.53.1"
 
-      - name: Run Clippy
-        run: cargo clippy --all-targets --all-features --locked -- -D warnings
-
-      - name: Run unit and CLI smoke tests
-        run: cargo test --all-targets --all-features --locked
-
-      - name: Validate the built-in registry
-        run: cargo run --quiet --locked -- validate
+      - name: Run the local core contract
+        run: task check

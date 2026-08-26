@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  PYTHON: '{{default "python3" .PYTHON}}'
+  BUILD_DIR: '{{default "build" .BUILD_DIR}}'
+  RUNNER: '{{.PYTHON}} scripts/tasks.py --build-dir="{{.BUILD_DIR}}" --python="{{.PYTHON}}"'
+
+tasks:
+  default:
+    desc: List NIH/NIMH proposal tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build all separately uploadable proposal attachments
+    aliases: [all]
+    cmds:
+      - '{{.RUNNER}} build'
+
+  check:
+    desc: Build, inspect attachment structure, and evaluate readiness gates
+    cmds:
+      - '{{.RUNNER}} check'
+
+  clean:
+    desc: Remove generated proposal artifacts
+    cmds:
+      - '{{.RUNNER}} clean'

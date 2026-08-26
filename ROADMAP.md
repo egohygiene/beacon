@@ -40,7 +40,8 @@ updated: 2026-08-26
 > This roadmap is the issue-generation and execution handoff derived from the [2026-08-25 readiness audit](audits/beacon-readiness-audit-2026-08-25.md). It prioritizes a usable local research-publication workflow before complete organization synchronization.
 
 **Lifecycle:** standalone, first-consumer verification
-**Current gate:** Audit Reflector as the compatibility canary, then upgrade Antidote against the proven research-paper execution and package contract.
+**Current gate:** Close Beacon `#17`'s standalone Make/Task contract, then upgrade
+Antidote against the project-owned research-paper execution and package surface.
 
 **North-star outcome:** A local-first publication toolkit that lets a researcher initialize, write, validate, render, package, and publish reproducible papers and grant attachments without cloning another project's infrastructure.
 
@@ -195,13 +196,13 @@ issues: [5]
 
 <!-- roadmap-step
 id: BEA-Q04
-status: planned
+status: complete
 depends_on: [BEA-Q03]
 issues: []
 -->
 #### BEA-Q04 — Prove Reflector compatibility
 
-**State:** `planned`  
+**State:** `complete`
 **Depends on:** `BEA-Q03`
 
 **Outcome:** Reflector becomes the canonical compatibility canary for Beacon's research and publication contracts without surrendering project ownership.
@@ -216,15 +217,20 @@ issues: []
 
 **Exit criteria:**
 
-- [ ] Reflector passes the declared Beacon compatibility profile in a clean environment.
-- [ ] No published content or canonical path is moved merely for conformity.
-- [ ] Shared behavior has one canonical owner and a pinned consumer relationship.
-- [ ] A compatibility report records supported profile and exceptions.
+- [x] Reflector passes the declared Beacon compatibility profile in a clean environment.
+- [x] No published content or canonical path is moved merely for conformity.
+- [x] Shared behavior has one canonical owner and a pinned consumer relationship.
+- [x] A compatibility report records supported profile and exceptions.
+
+**Evidence:** Reflector issue `#247` closed through merged PR
+[`#248`](https://github.com/egohygiene/reflector/pull/248) on 2026-08-26.
+The canary pins Beacon, invokes Reflector's native paper and magazine commands,
+and emits a non-deploying compatibility package without moving product content.
 
 <!-- roadmap-step
 id: BEA-Q05
 status: planned
-depends_on: [BEA-Q03]
+depends_on: [BEA-Q03, BEA-Q04]
 issues: []
 -->
 #### BEA-Q05 — Upgrade the standalone Antidote paper
@@ -241,6 +247,7 @@ issues: []
 - audit the standalone repository against the current research-paper profile;
 - reconcile its manifest, manuscript, references, figures, data, bootstrap notes, and epistemic boundaries;
 - replace remaining provisional build/template assumptions with pinned Beacon contracts;
+- consume the standalone project task contract completed through Beacon `#17`;
 - confirm Empathy contains only the historical migration pointer;
 - run the literature/novelty scan before freezing contribution or experimental architecture.
 
@@ -375,8 +382,8 @@ After `BEA-Q03`, consumer work can proceed in parallel:
 
 | Lane | Immediate result | Canonical owner | Blocking dependency |
 | --- | --- | --- | --- |
-| Reflector alignment | Existing paper validates through Beacon | `egohygiene/reflector` | Research profile v0 |
-| Antidote upgrade | Standalone paper and rapid literature/method work | `egohygiene/antidote` | Shared Beacon execution surface |
+| Reflector alignment | Complete: existing paper validates and packages through pinned Beacon | `egohygiene/reflector` | Research profile v0 |
+| Antidote upgrade | Standalone paper and rapid literature/method work | `egohygiene/antidote` | Beacon `#17` standalone project contract |
 | NIMH proposal | Current concept attachment set and compliance gates | proposal repository + Beacon profile | Research profile foundation |
 
 The lanes should feed fixes back into Beacon without waiting for complete Holon/Pace/Observatory integration.
@@ -392,8 +399,9 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | BEA-C03 | Beacon `#12` | complete | Add standalone local/CI parity, lockfile, and clean smoke build | BEA-C01 |
 | BEA-C04 | Beacon `#5` | complete | Extract and ship the neutral research-paper profile from Reflector conventions | BEA-C02, BEA-C03 |
 | BEA-C05 | Beacon `#14` | complete | Add `doctor`, renderer planning/build, and publication packaging | BEA-C04 |
-| REF-C01 | Reflector | propose | Add Beacon compatibility manifest, canary, and exception report | BEA-C05 |
-| ANT-C01 | Antidote | propose | Audit and upgrade the standalone paper against the released Beacon profile | BEA-C05 |
+| REF-C01 | Reflector `#247` / PR `#248` | complete | Add Beacon compatibility manifest, canary, and exception report | BEA-C05 |
+| BEA-C10 | Beacon `#17` | active | Make initialized projects standalone with Make and Task parity | BEA-C05, REF-C01 |
+| ANT-C01 | Antidote | propose | Audit and upgrade the standalone paper against the released Beacon profile | BEA-C10 |
 | BEA-C06 | Beacon | propose | Inventory the staged LaTeX intake and extract the first composable component family | BEA-C01 |
 | BEA-C07 | Beacon | propose | Define current NIH/NIMH grant profile and official-source contract | BEA-C04 |
 | BEA-C08 | Beacon | propose | Implement NIH/NIMH concept and submission-gated attachment profiles | BEA-C07 |
@@ -409,13 +417,15 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | Beacon `#1` | Complete in PRs `#9` and `#15`; Reflector compatibility may refine the consumer adapter without reopening the base profile |
 | Beacon `#2` | Extend the proven package/release model after the first consumers |
 | Beacon `#3` | Profile implementation merged in PR `#11`; retain for Identity and first-consumer adoption without choosing a comics repository |
+| Beacon `#17` | Active standalone-project and Make/Task parity gate before the Antidote upgrade |
 | Reflector `#201` | Closed reference evidence; extract selectively from completed `template/` |
+| Reflector `#247` | Complete in PR `#248`; compatibility canary is pinned, non-deploying, and project-owned |
 
 ### Organization integration sequence
 
 | Stage | Integration | Rule |
 | --- | --- | --- |
-| v0 local | Taskfile + pinned local toolchain | Must work without GitHub or organization services |
+| v0 local | Project-owned adapter + Make + Task + pinned local toolchain | Must work without Beacon, GitHub, or organization services after initialization |
 | v0 CI | Relay-compatible workflow with repository-local evidence | CI runs the same commands as local validation |
 | v0 environment | Realm profile or documented fallback | Reproducibility is required; Realm release is not a blocker |
 | v0 intelligence | Aether research/publishing/grant skills | Skills guide authoring and review but do not become runtime requirements |

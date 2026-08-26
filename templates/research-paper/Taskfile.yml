@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  PYTHON: '{{default "python3" .PYTHON}}'
+  PROJECT: '{{default "auto" .PROJECT}}'
+  THEME: '{{default "neutral" .THEME}}'
+  BUILD_DIR: '{{default (printf "build/%s" .THEME) .BUILD_DIR}}'
+  RUNNER: '{{.PYTHON}} scripts/tasks.py --project="{{.PROJECT}}" --build-dir="{{.BUILD_DIR}}" --theme="{{.THEME}}" --python="{{.PYTHON}}"'
+
+tasks:
+  default:
+    desc: List research-paper tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build PDF, accessible web, provenance, and arXiv source outputs
+    aliases: [all]
+    cmds:
+      - '{{.RUNNER}} build'
+
+  check:
+    desc: Build, validate, and prove deterministic outputs
+    cmds:
+      - '{{.RUNNER}} check'
+
+  check-content:
+    desc: Build and validate source plus rendered artifacts
+    cmds:
+      - '{{.RUNNER}} check-content'
+
+  check-links:
+    desc: Build and include live external-link validation
+    cmds:
+      - '{{.RUNNER}} check-links'
+
+  reproducibility:
+    desc: Compare two clean governed artifact builds
+    cmds:
+      - '{{.RUNNER}} reproducibility'
+
+  bootstrap-check:
+    desc: Prove the Beacon profile emits a standalone project
+    cmds:
+      - '{{.RUNNER}} bootstrap-check'
+
+  clean:
+    desc: Remove the selected generated output directory
+    cmds:
+      - '{{.RUNNER}} clean'

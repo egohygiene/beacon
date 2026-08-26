@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  PYTHON: '{{default "python3" .PYTHON}}'
+  PROJECT: '{{default "auto" .PROJECT}}'
+  THEME: '{{default "neutral" .THEME}}'
+  BUILD_DIR: '{{default (printf "build/%s" .THEME) .BUILD_DIR}}'
+  RUNNER: '{{.PYTHON}} scripts/tasks.py --project="{{.PROJECT}}" --build-dir="{{.BUILD_DIR}}" --theme="{{.THEME}}" --python="{{.PYTHON}}"'
+
+tasks:
+  default:
+    desc: List magazine tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build digital PDF, print PDF, web, manifest, and provenance outputs
+    aliases: [all]
+    cmds:
+      - '{{.RUNNER}} build'
+
+  check:
+    desc: Build and validate the selected magazine theme
+    cmds:
+      - '{{.RUNNER}} check'
+
+  reproducibility:
+    desc: Compare two clean governed artifact builds
+    cmds:
+      - '{{.RUNNER}} reproducibility'
+
+  check-all:
+    desc: Verify both fallback themes and the standalone initializer
+    cmds:
+      - '{{.RUNNER}} check-all'
+
+  bootstrap-check:
+    desc: Prove the Beacon profile emits a standalone project
+    aliases: [bootstrap-test]
+    cmds:
+      - '{{.RUNNER}} bootstrap-check'
+
+  clean:
+    desc: Remove the selected generated output directory
+    cmds:
+      - '{{.RUNNER}} clean'

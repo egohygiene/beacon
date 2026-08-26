@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  PYTHON: '{{default "python3" .PYTHON}}'
+  PANDOC: '{{default "pandoc" .PANDOC}}'
+  PDF_ENGINE: '{{default "pdflatex" .PDF_ENGINE}}'
+  BUILD_DIR: '{{default "build" .BUILD_DIR}}'
+  THEME: '{{default "themes/organization.json" .THEME}}'
+  SOURCE_DATE_EPOCH: '{{default "" .SOURCE_DATE_EPOCH}}'
+  EPOCH_ARGUMENT: '{{if .SOURCE_DATE_EPOCH}}--source-date-epoch="{{.SOURCE_DATE_EPOCH}}"{{end}}'
+  RUNNER: '{{.PYTHON}} scripts/tasks.py --build-dir="{{.BUILD_DIR}}" --theme="{{.THEME}}" --pandoc="{{.PANDOC}}" --pdf-engine="{{.PDF_ENGINE}}" --python="{{.PYTHON}}" {{.EPOCH_ARGUMENT}}'
+
+tasks:
+  default:
+    desc: List technical-whitepaper tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build synchronized PDF and accessible web outputs
+    aliases: [all]
+    cmds:
+      - '{{.RUNNER}} build'
+
+  check:
+    desc: Build, validate, and prove deterministic outputs
+    cmds:
+      - '{{.RUNNER}} check'
+
+  check-content:
+    desc: Build and validate the document contract
+    cmds:
+      - '{{.RUNNER}} check-content'
+
+  check-links:
+    desc: Build and include live external-link validation
+    cmds:
+      - '{{.RUNNER}} check-links'
+
+  reproducibility:
+    desc: Compare two clean governed artifact builds
+    cmds:
+      - '{{.RUNNER}} reproducibility'
+
+  clean:
+    desc: Remove generated whitepaper artifacts
+    cmds:
+      - '{{.RUNNER}} clean'

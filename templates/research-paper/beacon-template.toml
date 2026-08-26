@@ -33,8 +33,8 @@ required = ["destination", "title", "author"]
 optional = ["project-id", "theme"]
 
 [execution]
-program = "make"
-arguments = ["--directory={{profile}}", "check-content", "PROJECT={{project}}", "BUILD_DIR={{output}}", "THEME={{theme}}"]
+program = "python3"
+arguments = ["{{project}}/scripts/tasks.py", "check-content", "--project={{project}}", "--build-dir={{output}}", "--theme={{theme}}"]
 default_output = "build"
 default_theme = "neutral"
 artifacts = ["paper.pdf", "web/index.html", "provenance.json", "arxiv"]
@@ -42,9 +42,6 @@ artifacts = ["paper.pdf", "web/index.html", "provenance.json", "arxiv"]
 [execution.theme_values]
 neutral = "neutral"
 egohygiene = "egohygiene"
-
-[[execution.requirements]]
-command = "make"
 
 [[execution.requirements]]
 command = "python3"
@@ -88,9 +85,13 @@ figures = true
 html = true
 identity_themes = true
 limitations = true
+make_entrypoint = true
 orcid = true
 pdf = true
+project_owned_execution = true
 provenance = true
 reproducibility_checks = true
+standalone_build_kit = true
 tables = true
+taskfile_entrypoint = true
 web_accessibility_checks = true

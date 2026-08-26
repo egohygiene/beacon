@@ -84,6 +84,12 @@ See [SOURCES.md](SOURCES.md), [CHECKLIST.md](CHECKLIST.md), and
 make          # build all five authored attachments
 make check    # build, inspect PDF structure, and evaluate readiness gates
 make clean    # remove generated files
+task build    # equivalent Taskfile build entrypoint
+task check    # equivalent Taskfile validation entrypoint
+task clean    # equivalent Taskfile cleanup entrypoint
 ```
+
+Make and Task both delegate to `scripts/tasks.py`, which is owned by the
+initialized project. Beacon is not required for these local commands.
 
 See [`VERSION_HISTORY.md`](VERSION_HISTORY.md) for the package contract history.

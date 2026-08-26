@@ -13,6 +13,18 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+BUILD_KIT_ENTRIES = (
+    "Makefile",
+    "Taskfile.yml",
+    "beacon-template.toml",
+    "contracts",
+    "latex",
+    "scripts/build.py",
+    "scripts/check.py",
+    "scripts/tasks.py",
+    "themes",
+    "web",
+)
 
 
 def slugify(value: str) -> str:
@@ -24,6 +36,17 @@ def slugify(value: str) -> str:
 def toml_string(value: str) -> str:
     """Encode a human-supplied value as a TOML basic string."""
     return json.dumps(value, ensure_ascii=False)
+
+
+def copy_entry(relative_path: str, destination: Path) -> None:
+    """Copy one project-owned build-kit entry into an initialized workspace."""
+    source = ROOT / relative_path
+    target = destination / relative_path
+    if source.is_dir():
+        shutil.copytree(source, target)
+    else:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
 
 
 def main() -> int:
@@ -41,6 +64,8 @@ def main() -> int:
         raise SystemExit(f"refusing unsafe destination: {destination}")
 
     shutil.copytree(ROOT / "scaffold", destination)
+    for relative_path in BUILD_KIT_ENTRIES:
+        copy_entry(relative_path, destination)
     edition_path = destination / "magazine" / "edition.json"
     edition = json.loads(edition_path.read_text(encoding="utf-8"))
     edition["id"] = f"{slugify(arguments.title)}-{slugify(arguments.edition)}"

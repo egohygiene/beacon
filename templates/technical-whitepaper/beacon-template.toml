@@ -28,8 +28,8 @@ required = ["destination", "title", "author"]
 optional = ["project-id", "theme"]
 
 [execution]
-program = "make"
-arguments = ["--directory={{project}}", "check-content", "BUILD_DIR={{output}}", "THEME={{theme}}"]
+program = "python3"
+arguments = ["{{project}}/scripts/tasks.py", "check-content", "--build-dir={{output}}", "--theme={{theme}}"]
 default_output = "build"
 default_theme = "organization"
 artifacts = ["whitepaper.pdf", "web/index.html"]
@@ -37,9 +37,6 @@ artifacts = ["whitepaper.pdf", "web/index.html"]
 [execution.theme_values]
 organization = "themes/organization.json"
 product = "themes/product.json"
-
-[[execution.requirements]]
-command = "make"
 
 [[execution.requirements]]
 command = "python3"
@@ -69,7 +66,11 @@ html = true
 identity_themes = true
 limitations = true
 link_checks = true
+make_entrypoint = true
 pdf = true
+project_owned_execution = true
 relay_adapter = true
 reproducibility_checks = true
+standalone_build_kit = true
+taskfile_entrypoint = true
 version_history = true

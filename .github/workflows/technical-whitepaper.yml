@@ -28,6 +28,10 @@ jobs:
             theme_path: themes/product.json
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install the pinned Task runner
+        uses: go-task/setup-task@70f2430ad412f838533de8c0515c749ffb2b8bd3 # v1
+        with:
+          version: "3.53.1"
       - name: Install deterministic build dependencies
         run: |
           sudo apt-get update
@@ -42,17 +46,33 @@ jobs:
             texlive-pictures
       - name: Build and validate the profile
         run: make --directory="templates/technical-whitepaper" reproducibility THEME="${{ matrix.theme_path }}"
-      - name: Prove the shared Beacon execution adapter
+      - name: Prove standalone Make and Task parity
         shell: bash
         run: |
           set -euo pipefail
           workspace="$(mktemp -d)"
-          trap 'rm -rf "$workspace"' EXIT
           cargo run --quiet --locked -- doctor technical-whitepaper
           cargo run --quiet --locked -- init technical-whitepaper "$workspace/project" \
             --title "Beacon Whitepaper Adapter" \
             --author "Beacon Maintainers" \
             --theme "${{ matrix.theme }}"
+
+          profile="$GITHUB_WORKSPACE/templates/technical-whitepaper"
+          hidden_profile="$workspace/technical-whitepaper-profile"
+          restore_profile() {
+            if [[ -d "$hidden_profile" && ! -e "$profile" ]]; then
+              mv "$hidden_profile" "$profile"
+            fi
+          }
+          trap restore_profile EXIT
+          mv "$profile" "$hidden_profile"
+          make --directory="$workspace/project" check-content
+          make --directory="$workspace/project" clean
+          task --dir "$workspace/project" check-content
+          task --dir "$workspace/project" clean
+          restore_profile
+          trap - EXIT
+
           cargo run --quiet --locked -- package "$workspace/project"
           package="$workspace/project/dist/technical-whitepaper-0.1.0"
           test -f "$package/artifacts/whitepaper.pdf"

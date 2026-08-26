@@ -29,6 +29,7 @@ Then:
 
    ```bash
    make check
+   task check
    ```
 
 Outputs are written to `build/whitepaper.pdf` and `build/web/index.html`.
@@ -60,7 +61,11 @@ network check separately when preparing a release:
 
 ```sh
 make check-links
+task check-links
 ```
+
+Make and Task both delegate to `scripts/tasks.py`, which is owned by the
+initialized project. Beacon is not required for these local commands.
 
 ## Publication stages
 

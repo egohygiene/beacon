@@ -16,6 +16,7 @@ artwork, prompts, or product identity.
 
 ```sh
 make check-all
+task check-all
 ```
 
 That command builds and validates the neutral and Ego Hygiene fallback themes.
@@ -53,19 +54,18 @@ Then edit:
   optional artwork/prompt/animation references;
 - each page's `content.md` for semantic prose.
 
-Build a project with:
+The initializer copies the renderer, checks, styles, themes, templates,
+Makefile, and Taskfile into the product repository. Build there through either
+developer interface:
 
-```sh
-python3 scripts/build.py \
-  --project="../../../../my-product-magazine" \
-  --output="build/my-product" \
-  --theme="neutral"
-
-python3 scripts/check.py \
-  --project="../../../../my-product-magazine" \
-  --build="build/my-product" \
-  --theme="neutral"
+```bash
+cd "../my-product-magazine"
+make check THEME="neutral"
+task check THEME="neutral"
 ```
+
+Both entrypoints delegate to the project-owned `scripts/tasks.py`; Beacon is not
+required for either command.
 
 ## Source-of-truth boundary
 
