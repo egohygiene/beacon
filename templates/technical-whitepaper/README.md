@@ -27,11 +27,24 @@ Then:
    the manuscript.
 5. Build and validate:
 
-   ```sh
+   ```bash
    make check
    ```
 
 Outputs are written to `build/whitepaper.pdf` and `build/web/index.html`.
+
+For the canonical Beacon handoff, run the shared doctor and package commands
+from the Beacon repository root:
+
+```bash
+cargo run --locked -- doctor technical-whitepaper
+cargo run --locked -- package "../my-whitepaper"
+```
+
+The package command validates the project before staging only the declared PDF
+and web artifacts under `dist/technical-whitepaper-0.1.0/artifacts/`. The bundle
+also contains `beacon-package.json` and `SHA256SUMS`; downstream publishers use
+those files instead of collecting mutable files directly from `build/`.
 
 To preview the product theme:
 
@@ -56,12 +69,12 @@ source revision and may have pending reviews. `publication-ready` mode rejects
 mutable revisions, incomplete reviews, placeholder text, unchecked live links,
 and disabled publication.
 
-The `publication` table is the boundary for the future Relay `document-site`
-profile. Until `egohygiene/relay#4` is complete, the local workflow builds and
-retains the same PDF and web paths that Relay will consume. The theme JSON files
-are fallback projections for the future document-style output from
-`egohygiene/identity#2`; consumers can already provide another compatible file
-through `THEME`.
+The `publication` table and verified Beacon package form the input boundary for
+the future Relay `document-site` profile. Beacon owns production of the local,
+checksummed bundle; Relay and fleet consumers own live routes, deployment,
+rollback, and release evidence. The theme JSON files are fallback projections
+for the future document-style output from `egohygiene/identity#2`; consumers can
+already provide another compatible file through `THEME`.
 
 ## Source contract
 

@@ -54,4 +54,9 @@ jobs:
             --author "Beacon Maintainers" \
             --theme "${{ matrix.theme }}"
           cargo run --quiet --locked -- package "$workspace/project"
-          test -f "$workspace/project/dist/technical-whitepaper-0.1.0/beacon-package.json"
+          package="$workspace/project/dist/technical-whitepaper-0.1.0"
+          test -f "$package/artifacts/whitepaper.pdf"
+          test -f "$package/artifacts/web/index.html"
+          test -f "$package/beacon-package.json"
+          test -f "$package/SHA256SUMS"
+          (cd "$package" && sha256sum --check "SHA256SUMS")
