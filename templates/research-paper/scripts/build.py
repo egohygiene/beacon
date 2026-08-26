@@ -134,16 +134,20 @@ def write_generated_metadata(
     )
 
 
-def convert_figures(work: Path) -> None:
+def convert_figures(work: Path, epoch: int) -> None:
+    """Convert SVG figures with the project's reproducibility environment."""
     figure_dir = work / "paper" / "figures"
     if not figure_dir.exists():
         return
+    environment = os.environ.copy()
+    environment.update({"SOURCE_DATE_EPOCH": str(epoch), "TZ": "UTC"})
     for source in sorted(figure_dir.glob("*.svg")):
         destination = source.with_suffix(".pdf")
         if shutil.which("rsvg-convert"):
             run(
                 ["rsvg-convert", "--format", "pdf", "--output", str(destination), str(source)],
                 cwd=work,
+                env=environment,
             )
         elif shutil.which("inkscape"):
             run(
@@ -154,6 +158,7 @@ def convert_figures(work: Path) -> None:
                     f"--export-filename={destination}",
                 ],
                 cwd=work,
+                env=environment,
             )
         else:
             raise RuntimeError("SVG figures require rsvg-convert or inkscape")
@@ -356,7 +361,7 @@ def main() -> int:
         f"\\input{{{config['paper']['entrypoint']}}}\n",
         encoding="utf-8",
     )
-    convert_figures(work)
+    convert_figures(work, epoch)
 
     latex_output = work / "latex-out"
     latex_output.mkdir()
