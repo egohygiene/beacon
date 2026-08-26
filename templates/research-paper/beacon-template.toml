@@ -1,0 +1,49 @@
+schema_version = 1
+id = "research-paper"
+name = "Research Paper"
+version = "0.1.0"
+description = "A project-owned LaTeX research-paper profile with deterministic PDF, accessible web, and arXiv-source outputs."
+category = "research"
+license = "MIT"
+source = "original Beacon implementation informed by dispositioned staged academic-article references"
+
+[[outputs]]
+format = "pdf"
+renderer = "latexmk"
+entrypoint = "paper/paper.tex"
+
+[[outputs]]
+format = "html"
+renderer = "pandoc"
+template = "web/paper.html"
+
+[[outputs]]
+format = "arxiv-source"
+renderer = "scripts/build.py"
+entrypoint = "main.tex"
+
+[metadata]
+required = ["id", "title", "authors", "abstract", "keywords", "date", "version", "language", "source_repository"]
+optional = ["subtitle", "orcid", "email", "affiliation", "credit_roles", "arxiv_category", "doi"]
+
+[capabilities]
+abstract = true
+acknowledgements = true
+appendices = true
+arxiv_source = true
+bibliography = true
+citations = true
+credit_roles = true
+data_availability = true
+equations = true
+ethics_statement = true
+figures = true
+html = true
+identity_themes = true
+limitations = true
+orcid = true
+pdf = true
+provenance = true
+reproducibility_checks = true
+tables = true
+web_accessibility_checks = true

@@ -1,0 +1,36 @@
+schema_version = 1
+
+[beacon]
+profile = "research-paper"
+template_version = "0.1.0"
+theme = "neutral"
+
+[paper]
+id = "beacon-reference-paper"
+title = "A Reproducible Research-Paper Profile for Beacon"
+subtitle = "Reference manuscript and validation fixture"
+version = "0.1.0"
+date = "2026-08-26"
+language = "en-US"
+stage = "draft"
+entrypoint = "paper/paper.tex"
+bibliography = "paper/references.bib"
+keywords = ["research communication", "LaTeX", "reproducibility", "accessibility", "arXiv"]
+abstract = "This reference manuscript demonstrates Beacon's reusable research-paper contract without inventing scientific findings. One project-owned LaTeX source exercises citations, equations, tables, an accessible figure, required research disclosures, appendices, and deterministic PDF, web, provenance, and arXiv-source outputs."
+
+[[paper.authors]]
+name = "Beacon Maintainers"
+affiliation = "Ego Hygiene"
+email = "maintainers@example.org"
+credit_roles = ["Conceptualization", "Methodology", "Software", "Validation", "Writing - original draft"]
+
+[provenance]
+source_repository = "https://github.com/egohygiene/beacon"
+source_path = "templates/research-paper/examples/reference-paper"
+source_revision = "working-tree"
+license = "MIT"
+source_date_epoch = 1787616000
+
+[publication]
+arxiv_category = "cs.DL"
+doi = ""

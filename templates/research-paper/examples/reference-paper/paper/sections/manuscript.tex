@@ -1,0 +1,108 @@
+\section{Introduction}
+
+Research writing moves faster when formatting, disclosure sections, and release
+artifacts are a dependable substrate rather than a recurring side project. This
+reference paper tests that substrate. It follows arXiv's guidance to package the
+files needed for root-level compilation and to pre-convert figures for
+PDFLaTeX~\citep{arxiv-submit-tex}. It also produces a standalone HTML projection
+with semantic sections, citations, and MathML through Pandoc~\citep{pandoc-manual}.
+
+The profile deliberately separates responsibilities: a paper repository owns
+the manuscript and research record, while Beacon owns the versioned renderer
+and validation policy. Figure~\ref{fig:evidence-flow} summarizes that boundary.
+
+\begin{BeaconKeyPoints}
+  \item One LaTeX manuscript is canonical.
+  \item Generated outputs are disposable and reproducible.
+  \item Submission-specific publisher classes remain future adapters.
+\end{BeaconKeyPoints}
+
+\BeaconFigure{evidence-flow}{Project ownership and synchronized publication artifacts.}{A left-to-right flow begins with a project-owned LaTeX manuscript, bibliography, and SVG figures. Beacon validation transforms that source into PDF, accessible HTML, provenance JSON, and a clean arXiv source archive.}
+
+\section{Methods}
+
+The validation fixture exercises four artifact families from the same source.
+The PDF is built with PDFLaTeX and BibTeX; HTML is projected through Pandoc; the
+provenance record binds the project and template versions; and the arXiv archive
+is compiled again after extraction. A fixed source epoch follows the
+reproducible-builds convention~\citep{source-date-epoch}.
+
+For two builds $B_1$ and $B_2$ produced from the same source state, the profile
+tests the artifact invariant
+
+\begin{equation}
+  H(B_1^{(k)}) = H(B_2^{(k)}) \quad \text{for each artifact kind } k,
+  \label{eq:reproducibility}
+\end{equation}
+
+where $H$ is SHA-256. Equation~\eqref{eq:reproducibility} is a build property,
+not a claim that different TeX distributions always produce identical bytes.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Validation responsibilities by artifact.}
+  \label{tab:checks}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Artifact & Required checks \\
+    \midrule
+    PDF & US Letter, embedded fonts, no encryption or JavaScript \\
+    Web & Language, skip link, main landmark, navigation, figure text \\
+    arXiv source & Complete, tidy, root-compilable source archive \\
+    Provenance & Profile, versions, revision, epoch, artifact hashes \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Results}
+
+The repository's automated check is the result record for this fixture. A
+passing run means the reference manuscript compiled, its citations and
+cross-references resolved, the PDF passed structural inspection, the HTML
+contained the required landmarks, the archive compiled independently, the
+bootstrap project built, and repeated local artifacts matched byte for byte.
+Table~\ref{tab:checks} defines the checked surface. This section reports no
+human-subject, clinical, or product-effect result.
+
+\section{Discussion}
+
+The profile is intentionally neutral. It improves the common authoring loop
+without pretending that one layout satisfies every venue. A later adapter can
+map the same project-owned content into a publisher class after its license and
+submission rules are reviewed. The neutral profile remains useful for drafts,
+preprints, internal review, and the accessible companion page.
+
+Contributor metadata accepts the CRediT vocabulary as a description of work,
+not as an authorship decision~\citep{credit-taxonomy}. ORCID identifiers are
+optional and must be supplied or authenticated by the author; Beacon does not
+guess them from registry search results~\citep{orcid-search}.
+
+\section{Limitations}
+
+Local validation cannot reproduce arXiv moderation, category decisions, or
+every server-side TeX Live transition. Pandoc's LaTeX reader also cannot promise
+perfect web projection for arbitrary custom macros. Authors must review both
+rendered outputs, keep accessible prose equivalents for complex figures, and
+re-check venue guidance before submission.
+
+\section{Ethics statement}
+
+This template-validation work uses no human participants, animals, clinical
+records, or private datasets. A consuming paper must replace this statement
+with the disclosure required by its actual methods and venue.
+
+\section{Data and code availability}
+
+The template source, fixture, build scripts, and validation rules are versioned
+in the Beacon repository. The reference paper uses no external dataset. Build
+provenance is emitted beside each rendered artifact.
+
+\section{Acknowledgements}
+
+The implementation is informed by official arXiv, Pandoc, CRediT, ORCID, and
+Reproducible Builds documentation. Those sources define constraints and are not
+copied template code.
+
+\section{Contributor statement}
+
+\BeaconContributorStatement
