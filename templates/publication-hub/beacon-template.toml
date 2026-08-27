@@ -1,0 +1,61 @@
+schema_version = 1
+id = "publication-hub"
+name = "Publication Hub"
+version = "0.1.0"
+description = "A host-neutral catalog and standalone static-site kit for publication slots, artifacts, manifests, and honest unpublished states."
+category = "publication"
+license = "MIT"
+source = "original Beacon implementation informed by the Reflector and Antidote publication-site canaries"
+
+[[outputs]]
+format = "html"
+variant = "publication-hub"
+renderer = "beacon-publication-hub"
+artifact = "site"
+
+[[outputs]]
+format = "json"
+variant = "publication-catalog"
+renderer = "beacon-publication-hub"
+artifact = "site/site.json"
+
+[metadata]
+required = ["id", "title", "description", "language", "stage", "publisher", "canonical_base_url", "slots"]
+optional = ["fallback_base_url", "repository", "revision", "logo", "artwork", "copy", "styles", "extensions"]
+
+[initializer]
+runtime = "python3"
+script = "scripts/bootstrap.py"
+required = ["destination", "title", "author"]
+optional = ["publisher", "project-id", "theme"]
+
+[execution]
+program = "python3"
+arguments = ["{{project}}/scripts/tasks.py", "check-content", "--project={{project}}", "--build-dir={{output}}", "--theme={{theme}}"]
+default_output = "build"
+default_theme = "neutral"
+artifacts = ["site"]
+
+[execution.theme_values]
+neutral = "neutral"
+egohygiene = "egohygiene"
+
+[[execution.requirements]]
+command = "python3"
+
+[capabilities]
+accessible_web = true
+artifact_checksums = true
+canonical_and_fallback_urls = true
+deterministic_builds = true
+draft_slots = true
+extension_points = true
+identity_themes = true
+make_entrypoint = true
+planned_slots = true
+project_owned_execution = true
+root_artifact_aliases = true
+standalone_build_kit = true
+taskfile_entrypoint = true
+transactional_staging = true
+versioned_catalog = true

@@ -20,6 +20,7 @@ local `scripts/tasks.py`. See the
 | --- | --- | --- |
 | [`nih-nimh-rpg`](nih-nimh-rpg/) | experimental | NIH/NIMH research-project-grant concept and attachment authoring |
 | [`magazine`](magazine/) | experimental | Browser-compatible editorial magazines with digital, print, and accessible web outputs |
+| [`publication-hub`](publication-hub/) | experimental | Host-neutral publication catalogs, honest lifecycle pages, and checksummed static sites |
 | [`research-paper`](research-paper/) | experimental | Neutral academic papers with PDF, accessible web, and arXiv-source outputs |
 | [`technical-whitepaper`](technical-whitepaper/) | experimental | Evidence-led technical whitepapers with PDF and accessible web outputs |
 

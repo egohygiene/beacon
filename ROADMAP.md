@@ -3,12 +3,12 @@ schema: aether.architecture-document/v1
 id: beacon-roadmap
 title: Beacon Roadmap
 kind: architecture-document
-version: 0.4.0
+version: 0.5.0
 status: provisional
 owners:
   - egohygiene
 created: 2026-08-19
-updated: 2026-08-26
+updated: 2026-08-27
 governed_by:
   - architecture-roadmap
 depends_on:
@@ -33,15 +33,16 @@ repository: egohygiene/beacon
 visibility: public
 publication: central
 route: /roadmap/beacon/
-updated: 2026-08-26
+updated: 2026-08-27
 -->
-## 2026-08-26 execution snapshot
+## 2026-08-27 execution snapshot
 
 > This roadmap is the issue-generation and execution handoff derived from the [2026-08-25 readiness audit](audits/beacon-readiness-audit-2026-08-25.md). It prioritizes a usable local research-publication workflow before complete organization synchronization.
 
-**Lifecycle:** standalone, first-consumer verification
-**Current gate:** Close Beacon `#17`'s standalone Make/Task contract, then upgrade
-Antidote against the project-owned research-paper execution and package surface.
+**Lifecycle:** standalone, consumer publication sites
+**Current gate:** Complete Beacon `#19`'s host-neutral publication-hub contract,
+then let Relay `#38` consume its validated static artifact before aligning the
+Antidote site with the accepted Reflector design.
 
 **North-star outcome:** A local-first publication toolkit that lets a researcher initialize, write, validate, render, package, and publish reproducible papers and grant attachments without cloning another project's infrastructure.
 
@@ -67,6 +68,7 @@ At that threshold:
 - the project manifest pins its profile/template and records provenance;
 - Reflector validates as a compatibility consumer without a disruptive rewrite;
 - the standalone Antidote repository can consume Beacon without retaining Empathy as a build dependency;
+- products can publish an honest paper/magazine hub before every slot is available, without making Beacon a hosting dependency;
 - a current NIMH concept proposal can be scaffolded while submission-specific gates remain explicit.
 
 ### Execution principles
@@ -151,13 +153,13 @@ issues: [12]
 
 **Current slice:** Issue [`#12`](https://github.com/egohygiene/beacon/issues/12)
 promotes and adapts the staged Rust core, unifies the active profile manifests
-and project envelope, adds safe four-profile initialization, retires the
+and project envelope, adds safe profile initialization, retires the
 duplicate validator, pins the toolchain and lockfile, and establishes local/CI
 parity. The staged LaTeX intake remains intact for later component extraction.
 
 **Current evidence:**
 
-- The root CLI lists, inspects, and validates all four active profiles in stable order.
+- The root CLI lists, inspects, and validates every active profile in stable order.
 - Unit and binary smoke tests initialize each profile through a temporary workspace and reject unsafe overwrite.
 - The former staged core has root equivalents; removal is limited to those superseded files.
 
@@ -229,14 +231,14 @@ and emits a non-deploying compatibility package without moving product content.
 
 <!-- roadmap-step
 id: BEA-Q05
-status: planned
+status: complete
 depends_on: [BEA-Q03, BEA-Q04]
 issues: []
 -->
 #### BEA-Q05 — Upgrade the standalone Antidote paper
 
-**State:** `planned`  
-**Depends on:** `BEA-Q03`
+**State:** `complete`
+**Depends on:** `BEA-Q03`, `BEA-Q04`
 
 **Outcome:** The extracted Antidote research program becomes a clean Beacon consumer and can move rapidly through literature, methods, evidence, writing, and publication work.
 
@@ -254,9 +256,13 @@ issues: []
 **Exit criteria:**
 
 - [x] Antidote has one canonical standalone repository.
-- [ ] The project builds and validates through its pinned Beacon profile.
-- [ ] Research provenance and evidence classifications survive migration.
-- [ ] Empathy is not a runtime or build dependency.
+- [x] The project builds and validates through its pinned Beacon profile.
+- [x] Research provenance and evidence classifications survive migration.
+- [x] Empathy is not a runtime or build dependency.
+
+**Evidence:** Antidote issue
+[`#4`](https://github.com/egohygiene/antidote/issues/4) completed the standalone
+research-paper upgrade and project-owned execution boundary.
 
 <!-- roadmap-step
 id: BEA-Q06
@@ -266,7 +272,7 @@ issues: []
 -->
 #### BEA-Q06 — Create a current NIH/NIMH proposal profile and workspace
 
-**State:** `active`  
+**State:** `active`
 **Depends on:** `BEA-Q01` for profile authorship; `BEA-Q03` for final CLI integration
 
 **Outcome:** A researcher can begin a high-quality NIMH concept proposal immediately, then pin a mechanism/NOFO and produce a compliant attachment bundle without relying on the stale 2019 intake.
@@ -313,7 +319,7 @@ issues: [2]
 -->
 #### BEA-Q07 — Release the proven publication toolkit
 
-**State:** `planned`  
+**State:** `planned`
 **Depends on:** `BEA-Q04`, `BEA-Q05`, `BEA-Q06`
 
 **Outcome:** Consumers can pin a Beacon release, verify what produced an artifact, and stage publication outputs safely.
@@ -376,15 +382,50 @@ page-level override layers. Do not bulk-promote the source packages.
 - [ ] Later formats reuse proven contracts rather than introducing separate pipelines.
 - [ ] Fleet integration consumes releases and remains optional for local authoring.
 
+<!-- roadmap-step
+id: BEA-Q09
+status: active
+depends_on: [BEA-Q03, BEA-Q04, BEA-Q05]
+issues: [19]
+-->
+#### BEA-Q09 — Standardize product publication hubs
+
+**State:** `active`
+**Depends on:** `BEA-Q03`, `BEA-Q04`, `BEA-Q05`
+
+**Outcome:** Reflector, Antidote, and later publication products can expose a
+consistent paper/magazine site while retaining product-owned copy, artwork,
+routes, artifacts, and lifecycle truth.
+
+**Scope:**
+
+- define separate versioned source and public JSON catalogs;
+- model site stage independently from publication-slot status;
+- render honest planned/draft landing pages without fabricated release data;
+- stage an accessible, deterministic, checksummed static tree;
+- support custom domains, repository-subpath fallbacks, root aliases, and
+  product-supplied landing pages without coupling to one host;
+- preserve Make/Task/Beacon parity and clean-room standalone operation;
+- hand only the validated static artifact to Relay `#38` for deployment.
+
+**Exit criteria:**
+
+- [ ] Paper-only, magazine-only, combined, Antidote, Reflector, and empty-site fixtures validate.
+- [ ] Canonical/fallback URL, route, checksum, revision, and lifecycle invariants reject false publication claims.
+- [ ] The generated project builds without the Beacon checkout through Make and Task.
+- [ ] Relay can consume the public contract without importing Beacon renderer internals.
+- [ ] DNS, certificate, Pages configuration, and deployment remain outside Beacon.
+
 ### Consumer lanes
 
 After `BEA-Q03`, consumer work can proceed in parallel:
 
 | Lane | Immediate result | Canonical owner | Blocking dependency |
 | --- | --- | --- | --- |
-| Reflector alignment | Complete: existing paper validates and packages through pinned Beacon | `egohygiene/reflector` | Research profile v0 |
-| Antidote upgrade | Standalone paper and rapid literature/method work | `egohygiene/antidote` | Beacon `#17` standalone project contract |
+| Reflector alignment | Complete: paper/package compatibility and product-owned site baseline | `egohygiene/reflector` | Research profile v0 |
+| Antidote upgrade | Complete: standalone paper build; publication-hub alignment follows Relay `#38` | `egohygiene/antidote` | Beacon `#19`, Relay `#38` for site work |
 | NIMH proposal | Current concept attachment set and compliance gates | proposal repository + Beacon profile | Research profile foundation |
+| Publication deployment | Reusable, verified static-site handoff without DNS/build coupling | Beacon contract + Relay adapter | Beacon `#19` before Relay `#38` |
 
 The lanes should feed fixes back into Beacon without waiting for complete Holon/Pace/Observatory integration.
 
@@ -400,8 +441,12 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | BEA-C04 | Beacon `#5` | complete | Extract and ship the neutral research-paper profile from Reflector conventions | BEA-C02, BEA-C03 |
 | BEA-C05 | Beacon `#14` | complete | Add `doctor`, renderer planning/build, and publication packaging | BEA-C04 |
 | REF-C01 | Reflector `#247` / PR `#248` | complete | Add Beacon compatibility manifest, canary, and exception report | BEA-C05 |
-| BEA-C10 | Beacon `#17` | active | Make initialized projects standalone with Make and Task parity | BEA-C05, REF-C01 |
-| ANT-C01 | Antidote | propose | Audit and upgrade the standalone paper against the released Beacon profile | BEA-C10 |
+| BEA-C10 | Beacon `#17` | complete | Make initialized projects standalone with Make and Task parity | BEA-C05, REF-C01 |
+| ANT-C01 | Antidote `#4` | complete | Audit and upgrade the standalone paper against the current Beacon profile | BEA-C10 |
+| REF-C02 | Reflector `#250` | complete | Establish the product-owned publication-site design and slot baseline | REF-C01 |
+| BEA-C11 | Beacon `#19` | active | Ship the host-neutral publication-hub catalog, renderer, schemas, and standalone kit | REF-C02, ANT-C01 |
+| REL-C01 | Relay `#38` | next | Deploy a validated publication-hub artifact without owning product truth or rendering | BEA-C11 |
+| ANT-C02 | Antidote | propose | Adopt the shared site design with truthful draft/planned fallbacks | REL-C01 |
 | BEA-C06 | Beacon | propose | Inventory the staged LaTeX intake and extract the first composable component family | BEA-C01 |
 | BEA-C07 | Beacon | propose | Define current NIH/NIMH grant profile and official-source contract | BEA-C04 |
 | BEA-C08 | Beacon | propose | Implement NIH/NIMH concept and submission-gated attachment profiles | BEA-C07 |
@@ -416,10 +461,13 @@ No new issues are authorized by this file. These are duplicate-aware candidates 
 | Empathy `#71` | Completed extraction; future paper upgrades belong to `egohygiene/antidote` |
 | Beacon `#1` | Complete in PRs `#9` and `#15`; Reflector compatibility may refine the consumer adapter without reopening the base profile |
 | Beacon `#2` | Extend the proven package/release model after the first consumers |
-| Beacon `#3` | Profile implementation merged in PR `#11`; retain for Identity and first-consumer adoption without choosing a comics repository |
-| Beacon `#17` | Active standalone-project and Make/Task parity gate before the Antidote upgrade |
+| Beacon `#3` | Complete and closed after PR `#11`; Identity and product adoption remain consumer-owned work |
+| Beacon `#17` | Complete standalone-project and Make/Task parity foundation |
+| Beacon `#19` | Active host-neutral publication-hub contract; deployment belongs to Relay `#38` |
 | Reflector `#201` | Closed reference evidence; extract selectively from completed `template/` |
 | Reflector `#247` | Complete in PR `#248`; compatibility canary is pinned, non-deploying, and project-owned |
+| Reflector `#250` | Complete product-owned publication-site design baseline and consumer requirements for Beacon `#19` |
+| Antidote `#4` | Complete standalone research-paper upgrade; site adoption remains a separate consumer slice |
 
 ### Organization integration sequence
 

@@ -1,0 +1,66 @@
+{
+  "$schema": "contracts/publication-hub.schema.json",
+  "schema": "beacon.publication-hub-source/v1",
+  "schema_version": "1.0.0",
+  "site": {
+    "id": "publication-hub",
+    "title": "Publication Hub",
+    "description": "A home for the paper, magazine, and future publication artifacts.",
+    "language": "en",
+    "stage": "draft",
+    "publisher": "Publication Author",
+    "canonical_base_url": "https://example.com/",
+    "fallback_base_url": "https://example.github.io/publication-hub/",
+    "theme": "neutral",
+    "repository": "https://github.com/OWNER/REPOSITORY",
+    "brand": {
+      "logo": {
+        "source": "assets/logo.svg",
+        "alt": "Publication Hub"
+      }
+    },
+    "copy": {
+      "eyebrow": "Research and editorial publishing",
+      "heading": "Publication Hub",
+      "introduction": "This is the canonical home for reviewable papers, editorial editions, and their verified downloads.",
+      "downloads_heading": "Verified downloads",
+      "downloads_introduction": "Published files appear here with their media type, byte count, and SHA-256 digest.",
+      "footer": "Built from a product-owned publication catalog."
+    },
+    "styles": {
+      "tokens": {}
+    },
+    "extensions": {}
+  },
+  "slots": [
+    {
+      "id": "paper",
+      "kind": "paper",
+      "title": "Research paper",
+      "summary": "The manuscript is being developed and has not been published yet.",
+      "status": "draft",
+      "route": "paper/",
+      "order": 10,
+      "visible": true,
+      "copy": {
+        "availability": "Draft in progress. No public artifact has been released."
+      },
+      "extensions": {}
+    },
+    {
+      "id": "magazine",
+      "kind": "magazine",
+      "title": "Visual magazine",
+      "summary": "A visual companion edition is planned for a later publication cycle.",
+      "status": "planned",
+      "route": "magazine/",
+      "order": 20,
+      "visible": true,
+      "copy": {
+        "availability": "Planned publication. Downloads will appear only after a real release exists."
+      },
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}

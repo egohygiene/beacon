@@ -12,6 +12,7 @@ cargo run --locked -- list
 cargo run --locked -- inspect magazine
 cargo run --locked -- validate
 cargo run --locked -- validate technical-whitepaper
+cargo run --locked -- inspect publication-hub
 ```
 
 The built-in registry defaults to `templates/`. A separate registry can be
@@ -44,6 +45,17 @@ cargo run --locked -- init magazine "../field-notes" \
   --author "Ego Hygiene" \
   --publisher "Ego Hygiene" \
   --edition "01"
+```
+
+Publication-hub initialization creates an independently buildable draft site
+with honest paper and magazine placeholders:
+
+```bash
+cargo run --locked -- init publication-hub "../publication-site" \
+  --title "Publication Site" \
+  --author "Publication Author" \
+  --project-id "publication-site" \
+  --theme "egohygiene"
 ```
 
 The initializer:
@@ -130,6 +142,11 @@ commands execute programs declared by the registry.
 
 For direct project use and Make/Task command parity, see the
 [`standalone project task contract`](project-task-contract.md).
+
+The publication-hub profile produces a host-neutral `site/` artifact. Its
+versioned public catalog, required routes, lifecycle states, and deployment
+boundary are documented in the
+[`publication-hub contract`](../templates/publication-hub/CONTRACT.md).
 
 ## Project manifest envelope
 

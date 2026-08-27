@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://egohygiene.io/beacon/contracts/publication-hub-source/v1",
+  "title": "Beacon publication-hub source catalog",
+  "description": "Host- and renderer-neutral authored publication slots and local source resources.",
+  "type": "object",
+  "required": ["schema", "schema_version", "site", "slots"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema": { "const": "beacon.publication-hub-source/v1" },
+    "schema_version": { "const": "1.0.0" },
+    "site": { "$ref": "#/$defs/site" },
+    "slots": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slot" }
+    },
+    "extensions": { "$ref": "#/$defs/extensions" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "httpsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "relativeFile": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "^(?:/|.*(?:^|/)\\.\\.(?:/|$))" }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" }
+    },
+    "reference": {
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "url": { "$ref": "#/$defs/httpsUrl" },
+        "resource_id": { "$ref": "#/$defs/identifier" },
+        "media_type": { "type": "string", "pattern": "^[^/]+/[^/]+$" }
+      },
+      "oneOf": [
+        { "required": ["url"], "not": { "required": ["resource_id"] } },
+        { "required": ["resource_id"], "not": { "required": ["url"] } }
+      ],
+      "additionalProperties": false
+    },
+    "resource": {
+      "type": "object",
+      "required": ["id", "label", "source", "path", "media_type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/relativeFile" },
+        "path": { "$ref": "#/$defs/relativeFile" },
+        "route": { "type": "string", "minLength": 1 },
+        "media_type": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[^/]+$" },
+          "uniqueItems": true
+        },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "site": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "language",
+        "stage",
+        "publisher",
+        "canonical_base_url"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "language": { "type": "string", "minLength": 2 },
+        "stage": { "enum": ["draft", "published", "archived"] },
+        "publisher": { "type": "string", "minLength": 1 },
+        "canonical_base_url": { "$ref": "#/$defs/httpsUrl" },
+        "fallback_base_url": { "$ref": "#/$defs/httpsUrl" },
+        "repository": { "$ref": "#/$defs/httpsUrl" },
+        "revision": {
+          "anyOf": [
+            { "const": "WORKING_TREE" },
+            { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+          ]
+        },
+        "theme": { "enum": ["neutral", "egohygiene"] },
+        "brand": { "$ref": "#/$defs/brand" },
+        "artwork": { "$ref": "#/$defs/asset" },
+        "copy": { "$ref": "#/$defs/siteCopy" },
+        "styles": { "$ref": "#/$defs/styles" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "slot": {
+      "type": "object",
+      "required": ["id", "kind", "title", "summary", "status"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "kind": { "$ref": "#/$defs/identifier" },
+        "title": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 1 },
+        "status": {
+          "enum": ["planned", "draft", "available", "superseded", "withdrawn"]
+        },
+        "route": { "type": "string", "minLength": 1 },
+        "order": { "type": "integer" },
+        "visible": { "type": "boolean" },
+        "version": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/sourceRecord" },
+        "identifiers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/publicationIdentifier" },
+          "uniqueItems": true
+        },
+        "release": { "$ref": "#/$defs/release" },
+        "artifacts": { "type": "array", "items": { "$ref": "#/$defs/resource" } },
+        "manifests": { "type": "array", "items": { "$ref": "#/$defs/manifestResource" } },
+        "landing": { "$ref": "#/$defs/landing" },
+        "preview": { "$ref": "#/$defs/reference" },
+        "provenance": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+        "accessibility": { "$ref": "#/$defs/accessibility" },
+        "artwork": { "$ref": "#/$defs/asset" },
+        "copy": { "$ref": "#/$defs/slotCopy" },
+        "superseded_by": { "type": "string", "minLength": 1 },
+        "withdrawal_notice": { "type": "string", "minLength": 1 },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "planned" } }, "required": ["status"] },
+          "then": {
+            "not": {
+              "anyOf": [
+                { "required": ["artifacts"] },
+                { "required": ["manifests"] },
+                { "required": ["version"] },
+                { "required": ["identifiers"] },
+                { "required": ["release"] },
+                { "required": ["preview"] },
+                { "required": ["provenance"] },
+                { "required": ["source"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": { "properties": { "status": { "const": "available" } }, "required": ["status"] },
+          "then": {
+            "required": ["version", "source", "artifacts"],
+            "properties": { "artifacts": { "minItems": 1 } }
+          }
+        },
+        {
+          "if": {
+            "properties": { "status": { "enum": ["draft", "withdrawn"] } },
+            "required": ["status"]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                { "required": ["artifacts"] },
+                { "required": ["manifests"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": { "properties": { "status": { "const": "superseded" } }, "required": ["status"] },
+          "then": { "required": ["superseded_by"] }
+        },
+        {
+          "if": { "properties": { "status": { "const": "withdrawn" } }, "required": ["status"] },
+          "then": { "required": ["withdrawal_notice"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "asset": {
+      "type": "object",
+      "required": ["source", "alt"],
+      "properties": {
+        "source": { "$ref": "#/$defs/relativeFile" },
+        "alt": { "type": "string", "minLength": 1 },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "logo": { "$ref": "#/$defs/asset" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "siteCopy": {
+      "type": "object",
+      "properties": {
+        "downloads_heading": { "type": "string", "minLength": 1 },
+        "downloads_introduction": { "type": "string", "minLength": 1 },
+        "eyebrow": { "type": "string", "minLength": 1 },
+        "footer": { "type": "string", "minLength": 1 },
+        "heading": { "type": "string", "minLength": 1 },
+        "introduction": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "slotCopy": {
+      "type": "object",
+      "properties": {
+        "availability": { "type": "string", "minLength": 1 },
+        "eyebrow": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "styles": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "object",
+          "propertyNames": { "pattern": "^--[a-z][a-z0-9-]*$" },
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        },
+        "custom_css": { "$ref": "#/$defs/relativeFile" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "sourceRecord": {
+      "type": "object",
+      "required": ["repository", "revision"],
+      "properties": {
+        "repository": { "$ref": "#/$defs/httpsUrl" },
+        "revision": {
+          "anyOf": [
+            { "const": "WORKING_TREE" },
+            { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+          ]
+        },
+        "path": { "$ref": "#/$defs/relativeFile" }
+      },
+      "additionalProperties": false
+    },
+    "publicationIdentifier": {
+      "type": "object",
+      "required": ["scheme", "value"],
+      "properties": {
+        "scheme": { "$ref": "#/$defs/identifier" },
+        "value": { "type": "string", "minLength": 1 },
+        "url": { "$ref": "#/$defs/httpsUrl" }
+      },
+      "additionalProperties": false
+    },
+    "release": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {
+        "url": { "$ref": "#/$defs/httpsUrl" },
+        "published_at": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+      },
+      "additionalProperties": false
+    },
+    "landing": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["mode"],
+          "properties": { "mode": { "const": "generated" } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["mode", "resource_id"],
+          "properties": {
+            "mode": { "const": "resource" },
+            "resource_id": { "$ref": "#/$defs/identifier" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "accessibility": {
+      "type": "object",
+      "required": ["summary", "features"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "features": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "conformance": { "type": "string", "minLength": 1 },
+        "report_url": { "$ref": "#/$defs/httpsUrl" }
+      },
+      "additionalProperties": false
+    },
+    "manifestResource": {
+      "type": "object",
+      "required": ["id", "label", "source", "path", "media_type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/relativeFile" },
+        "path": { "$ref": "#/$defs/relativeFile" },
+        "route": { "type": "string", "minLength": 1 },
+        "media_type": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

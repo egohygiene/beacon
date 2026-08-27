@@ -3,12 +3,12 @@ schema: aether.architecture-document/v1
 id: beacon-architecture
 title: Beacon Architecture
 kind: architecture-document
-version: 0.1.0
+version: 0.2.0
 status: provisional
 owners:
   - egohygiene
 created: 2026-08-19
-updated: 2026-08-19
+updated: 2026-08-27
 governed_by:
   - architecture-architecture
 depends_on:
@@ -48,8 +48,8 @@ flowchart LR
   S3[Publication specification]
   S4[Content assembler]
   S5[Validation pipeline]
-  S6[Renderflow adapter]
-  S7[Packaging and release]
+  S6[Project renderer]
+  S7[Package or static site]
   S1 --> S2
   S2 --> S3
   S3 --> S4
@@ -59,6 +59,25 @@ flowchart LR
 ```
 
 The diagram is conceptual. [SYSTEM.md](SYSTEM.md) remains authoritative for responsibilities and implementation evidence determines current availability.
+
+## Project-owned execution boundary
+
+Every initialized profile carries its renderer/checker adapter, Makefile,
+Taskfile, schemas, and required local assets. Beacon discovers, initializes,
+plans, validates, and packages that contract, but a product build does not reach
+back into the Beacon checkout. Make, Task, and the Beacon execution adapter are
+interfaces over the same project-owned implementation.
+
+The `publication-hub` profile applies that boundary to product websites. The
+product owns a versioned source catalog and receives a deterministic static
+tree with a versioned public catalog. The renderer is host-neutral: it neither
+selects a GitHub Pages source nor mutates DNS, certificates, releases, or
+deployment settings.
+
+Site lifecycle and publication lifecycle are independent. A draft or published
+site may truthfully describe planned or draft slots. Deployment is not evidence
+that a paper or magazine is available; only a validated product catalog backed
+by real resources may make that claim.
 
 ## Dependency rules
 
@@ -72,6 +91,8 @@ The diagram is conceptual. [SYSTEM.md](SYSTEM.md) remains authoritative for resp
 
 - Renderflow
 - Reflector
+- Relay
+- Antidote
 - GitHub Pages
 - Zenodo and scholarly archives
 - future organization white-paper workflows
@@ -82,7 +103,7 @@ The architecture favors independently usable local and self-hosted operation. Op
 
 ## Evidence and uncertainty
 
-- **Observed:** The repository README establishes the intended boundary as a publishing platform for assembling, validating, packaging, and distributing polished documents and research artifacts; significant implementation remains incomplete.
-- **Decided for this draft:** The repository owns the bounded concern described here and participates through versioned contracts.
-- **Proposed:** Target systems and later roadmap phases remain proposals until accepted and implemented.
-- **Open question:** Which parts of this draft should become active in the first independently versioned release?
+- **Observed:** The root registry and project-owned adapters provide five independently buildable publication profiles, including a host-neutral publication hub.
+- **Decided:** Products retain canonical content, presentation overrides, publication truth, and local execution; Beacon owns reusable profile contracts and orchestration.
+- **Decided:** Relay and host providers consume validated artifacts without becoming local build dependencies.
+- **Proposed:** Release, dossier/PDF-A, component-library, and fleet synchronization work remains governed by the roadmap until implemented.

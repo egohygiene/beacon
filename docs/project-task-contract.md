@@ -48,6 +48,7 @@ builds the profile's governed outputs.
 | `technical-whitepaper` | Yes | Yes | Yes | Yes | Yes | — |
 | `magazine` | Yes | Yes | Yes | Yes | — | Yes |
 | `nih-nimh-rpg` | Yes | Yes | Yes | — | — | — |
+| `publication-hub` | Yes | Yes | Yes | Yes | — | Yes |
 
 Bootstrap tests exercise Beacon's initializer and therefore run only in the
 Beacon profile checkout. The parity command remains discoverable in initialized
@@ -78,6 +79,14 @@ Common variables are:
 | `PANDOC` | Technical whitepaper | Pandoc executable |
 | `PDF_ENGINE` | Technical whitepaper | Pandoc PDF engine |
 | `SOURCE_DATE_EPOCH` | Technical whitepaper | Optional override for the project-pinned reproducibility epoch |
+| `SOURCE_REVISION` | Publication hub | Explicit source revision; takes precedence over the environment and catalog |
+| `REVISION_POLICY` | Publication hub | `local` permits `WORKING_TREE`; `deployment` requires a full lowercase 40-character revision |
+
+The publication-hub profile uses only the Python standard library at runtime.
+Its `check-content` task stages and validates an accessible static site, while
+`check` additionally runs its contract suite and byte-for-byte reproducibility
+proof. The output ownership marker stays beside the public `site/` directory so
+it is never deployed as content.
 
 Cleanup refuses the project root, filesystem root, and paths outside the
 project-owned build-kit root.

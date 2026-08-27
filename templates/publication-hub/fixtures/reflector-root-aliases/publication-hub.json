@@ -1,0 +1,114 @@
+{
+  "schema": "beacon.publication-hub-source/v1",
+  "schema_version": "1.0.0",
+  "site": {
+    "id": "reflector",
+    "title": "Reflector",
+    "description": "A published paper and visual magazine collection.",
+    "language": "en",
+    "stage": "draft",
+    "publisher": "Ego Hygiene",
+    "canonical_base_url": "https://reflector.egohygiene.io/",
+    "fallback_base_url": "https://egohygiene.github.io/reflector/",
+    "repository": "https://github.com/egohygiene/reflector",
+    "revision": "5555555555555555555555555555555555555555",
+    "theme": "egohygiene"
+  },
+  "slots": [
+    {
+      "id": "paper",
+      "kind": "research-paper",
+      "title": "Reflector paper",
+      "summary": "The v0.1.2 research paper.",
+      "status": "available",
+      "version": "0.1.2",
+      "route": "paper/",
+      "order": 10,
+      "source": {
+        "repository": "https://github.com/egohygiene/reflector",
+        "revision": "6666666666666666666666666666666666666666",
+        "path": "paper"
+      },
+      "identifiers": [
+        {
+          "scheme": "doi",
+          "value": "10.5281/zenodo.20477044",
+          "url": "https://doi.org/10.5281/zenodo.20477044"
+        }
+      ],
+      "release": {
+        "url": "https://github.com/egohygiene/reflector/releases/tag/v0.1.2",
+        "published_at": "2026-05-22"
+      },
+      "artifacts": [
+        {
+          "id": "paper-pdf",
+          "label": "Reflector paper PDF",
+          "source": "artifacts/paper.pdf",
+          "path": "downloads/reflector-paper-v0.1.2.pdf",
+          "media_type": "application/pdf",
+          "aliases": ["reflector.pdf"]
+        }
+      ],
+      "manifests": [
+        {
+          "id": "publication-json",
+          "label": "Reflector publication manifest",
+          "source": "artifacts/publication.json",
+          "path": "publication.json",
+          "media_type": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "magazine",
+      "kind": "magazine",
+      "title": "Reflector magazine",
+      "summary": "The digital and print visual companion.",
+      "status": "available",
+      "version": "0.1.2",
+      "route": "magazine/",
+      "order": 20,
+      "source": {
+        "repository": "https://github.com/egohygiene/reflector",
+        "revision": "6666666666666666666666666666666666666666",
+        "path": "magazine"
+      },
+      "artifacts": [
+        {
+          "id": "magazine-pdf",
+          "label": "Reflector magazine PDF",
+          "source": "artifacts/magazine.pdf",
+          "path": "downloads/reflector-magazine-v0.1.2.pdf",
+          "media_type": "application/pdf",
+          "aliases": ["reflector-magazine.pdf"]
+        }
+      ]
+    },
+    {
+      "id": "magazine-print",
+      "kind": "magazine-print",
+      "title": "Reflector print magazine",
+      "summary": "The print-ready visual companion.",
+      "status": "available",
+      "version": "0.1.2",
+      "route": "magazine/print/",
+      "order": 30,
+      "source": {
+        "repository": "https://github.com/egohygiene/reflector",
+        "revision": "6666666666666666666666666666666666666666",
+        "path": "magazine"
+      },
+      "artifacts": [
+        {
+          "id": "magazine-print-pdf",
+          "label": "Reflector print magazine PDF",
+          "source": "artifacts/magazine-print.pdf",
+          "path": "downloads/reflector-magazine-print-v0.1.2.pdf",
+          "media_type": "application/pdf",
+          "aliases": ["reflector-magazine-print.pdf"]
+        }
+      ]
+    }
+  ]
+}
