@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  PYTHON: '{{default "python3" .PYTHON}}'
+  PROJECT: '{{default "auto" .PROJECT}}'
+  THEME: '{{default "neutral" .THEME}}'
+  BUILD_DIR: '{{default "build" .BUILD_DIR}}'
+  SOURCE_REVISION: '{{default "" .SOURCE_REVISION}}'
+  REVISION_POLICY: '{{default "local" .REVISION_POLICY}}'
+  RUNNER: '{{.PYTHON}} scripts/tasks.py --project="{{.PROJECT}}" --build-dir="{{.BUILD_DIR}}" --theme="{{.THEME}}" --python="{{.PYTHON}}" --source-revision="{{.SOURCE_REVISION}}" --revision-policy="{{.REVISION_POLICY}}"'
+
+tasks:
+  default:
+    desc: List publication-hub tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Transactionally stage the publication hub under build/site
+    aliases: [all]
+    cmds:
+      - '{{.RUNNER}} build'
+
+  validate:
+    desc: Validate the staged hub, catalog, links, and checksums
+    cmds:
+      - '{{.RUNNER}} validate'
+
+  check-content:
+    desc: Build and validate the project-owned publication hub
+    cmds:
+      - '{{.RUNNER}} check-content'
+
+  reproducibility:
+    desc: Compare two clean, independently staged hubs
+    cmds:
+      - '{{.RUNNER}} reproducibility'
+
+  test:
+    desc: Run the standard-library contract tests
+    cmds:
+      - '{{.RUNNER}} test'
+
+  bootstrap-check:
+    desc: Prove the profile emits a standalone project
+    cmds:
+      - '{{.RUNNER}} bootstrap-check'
+
+  check:
+    desc: Run tests, build validation, and reproducibility checks
+    cmds:
+      - '{{.RUNNER}} check'
+
+  clean:
+    desc: Remove only an owned publication-hub build directory
+    cmds:
+      - '{{.RUNNER}} clean'

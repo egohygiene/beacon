@@ -1,0 +1,126 @@
+---
+name: Publication hub
+
+on:
+  pull_request:
+    paths:
+      - "templates/publication-hub/**"
+      - "tests/cli_smoke.rs"
+      - ".github/workflows/publication-hub.yml"
+  push:
+    branches: [main]
+    paths:
+      - "templates/publication-hub/**"
+      - "tests/cli_smoke.rs"
+      - ".github/workflows/publication-hub.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "publication-hub-${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        theme: [neutral, egohygiene]
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install the pinned Task runner
+        uses: go-task/setup-task@70f2430ad412f838533de8c0515c749ffb2b8bd3 # v1
+        with:
+          version: "3.53.1"
+
+      - name: Build and validate the profile
+        shell: bash
+        run: |
+          set -euo pipefail
+          make --directory="templates/publication-hub" test
+          make --directory="templates/publication-hub" check-content \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          make --directory="templates/publication-hub" reproducibility \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          make --directory="templates/publication-hub" clean
+          task --dir "templates/publication-hub" test
+          task --dir "templates/publication-hub" check-content \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          task --dir "templates/publication-hub" reproducibility \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          task --dir "templates/publication-hub" clean
+
+      - name: Prove standalone Make and Task parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          workspace="$(mktemp -d)"
+          cargo run --quiet --locked -- doctor publication-hub
+          cargo run --quiet --locked -- init publication-hub "$workspace/project" \
+            --title "Beacon Publication Hub" \
+            --author "Beacon Maintainers" \
+            --project-id "beacon-publication-hub" \
+            --theme "${{ matrix.theme }}"
+
+          profile="$GITHUB_WORKSPACE/templates/publication-hub"
+          hidden_profile="$workspace/publication-hub-profile"
+          restore_profile() {
+            if [[ -d "$hidden_profile" && ! -e "$profile" ]]; then
+              mv "$hidden_profile" "$profile"
+            fi
+          }
+          trap restore_profile EXIT
+          mv "$profile" "$hidden_profile"
+          make --directory="$workspace/project" test
+          make --directory="$workspace/project" check-content \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          make --directory="$workspace/project" reproducibility \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          make --directory="$workspace/project" clean
+          task --dir "$workspace/project" test
+          task --dir "$workspace/project" check-content \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          task --dir "$workspace/project" reproducibility \
+            THEME="${{ matrix.theme }}" \
+            SOURCE_REVISION="$GITHUB_SHA" \
+            REVISION_POLICY="deployment"
+          task --dir "$workspace/project" clean
+          restore_profile
+          trap - EXIT
+
+          cargo run --quiet --locked -- package "$workspace/project" \
+            --theme "${{ matrix.theme }}"
+          package="$workspace/project/dist/publication-hub-0.1.0"
+          test -f "$package/artifacts/site/index.html"
+          test -f "$package/artifacts/site/site.json"
+          test -f "$package/artifacts/site/manifest.webmanifest"
+          test -f "$package/artifacts/site/SHA256SUMS"
+          test -f "$package/beacon-package.json"
+          test -f "$package/SHA256SUMS"
+          (cd "$package/artifacts/site" && sha256sum --check "SHA256SUMS")
+          (cd "$package" && sha256sum --check "SHA256SUMS")
+
+      - name: Prove clean project bootstrap
+        if: matrix.theme == 'neutral'
+        run: make --directory="templates/publication-hub" bootstrap-check

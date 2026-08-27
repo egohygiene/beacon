@@ -26,7 +26,7 @@ core rather than copying it unchanged. The standalone implementation:
 - corrects Empathy-era repository metadata and paths;
 - separates reusable registry behavior into `src/lib.rs` from the CLI in
   `src/main.rs`;
-- supports the four active heterogeneous profiles;
+- supports the five active heterogeneous profiles;
 - adds a common project-manifest envelope and profile initializer contract;
 - materializes projects through temporary sibling workspaces;
 - protects built-in and external executable-initializer trust boundaries;

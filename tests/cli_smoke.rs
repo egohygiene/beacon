@@ -6,9 +6,10 @@ use std::path::{Path, PathBuf};
 use std::process::{Command, Output};
 use tempfile::TempDir;
 
-const PROFILES: [&str; 4] = [
+const PROFILES: [&str; 5] = [
     "magazine",
     "nih-nimh-rpg",
+    "publication-hub",
     "research-paper",
     "technical-whitepaper",
 ];

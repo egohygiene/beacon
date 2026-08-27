@@ -1,0 +1,63 @@
+{
+  "schema": "beacon.publication-hub-source/v1",
+  "schema_version": "1.0.0",
+  "site": {
+    "id": "magazine-only",
+    "title": "Field Notes",
+    "description": "A branded magazine-only publication fixture.",
+    "language": "en",
+    "stage": "published",
+    "publisher": "Beacon Fixtures",
+    "canonical_base_url": "https://magazine.example.org/field-notes/",
+    "fallback_base_url": "https://example.github.io/field-notes/",
+    "revision": "7777777777777777777777777777777777777777",
+    "theme": "neutral",
+    "brand": {
+      "logo": { "source": "assets/logo.svg", "alt": "Field Notes" }
+    },
+    "artwork": {
+      "source": "assets/hero.svg",
+      "alt": "Abstract green and violet field lines"
+    },
+    "styles": {
+      "tokens": {
+        "--hub-accent": "#6f42c1",
+        "--hub-radius": "0.5rem"
+      },
+      "custom_css": "assets/custom.css"
+    },
+    "copy": {
+      "eyebrow": "Independent editorial series",
+      "heading": "Field Notes",
+      "introduction": "Product-owned copy, imagery, and CSS without renderer patches."
+    }
+  },
+  "slots": [
+    {
+      "id": "magazine",
+      "kind": "magazine",
+      "title": "Field Notes issue 01",
+      "summary": "A visual editorial edition.",
+      "status": "available",
+      "version": "1.0.0",
+      "route": "magazine/",
+      "source": {
+        "repository": "https://github.com/example/field-notes",
+        "revision": "8888888888888888888888888888888888888888"
+      },
+      "artwork": {
+        "source": "assets/cover.svg",
+        "alt": "Field Notes issue 01 cover"
+      },
+      "artifacts": [
+        {
+          "id": "magazine-pdf",
+          "label": "Field Notes PDF",
+          "source": "artifacts/magazine.pdf",
+          "path": "downloads/field-notes-01.pdf",
+          "media_type": "application/pdf"
+        }
+      ]
+    }
+  ]
+}

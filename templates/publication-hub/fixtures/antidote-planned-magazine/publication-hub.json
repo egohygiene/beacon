@@ -1,0 +1,122 @@
+{
+  "schema": "beacon.publication-hub-source/v1",
+  "schema_version": "1.0.0",
+  "site": {
+    "id": "antidote",
+    "title": "Antidote",
+    "description": "A draft research publication with a planned visual companion.",
+    "language": "en",
+    "stage": "draft",
+    "publisher": "Ego Hygiene",
+    "canonical_base_url": "https://antidote.egohygiene.io/",
+    "fallback_base_url": "https://egohygiene.github.io/antidote/",
+    "repository": "https://github.com/egohygiene/antidote",
+    "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "theme": "egohygiene",
+    "copy": {
+      "eyebrow": "Research in progress",
+      "heading": "Antidote",
+      "introduction": "The paper is reviewable while the project remains a draft. The visual magazine is planned and makes no release claim.",
+      "downloads_heading": "Draft artifacts",
+      "downloads_introduction": "Available draft artifacts are checksummed; planned work has no download route.",
+      "footer": "Antidote is independently buildable; Beacon is optional."
+    },
+    "styles": { "tokens": {} },
+    "extensions": {}
+  },
+  "slots": [
+    {
+      "id": "paper",
+      "kind": "research-paper",
+      "title": "Antidote research paper",
+      "summary": "An accessible draft web edition is available for review.",
+      "status": "available",
+      "version": "draft",
+      "route": "paper/",
+      "order": 10,
+      "source": {
+        "repository": "https://github.com/egohygiene/antidote",
+        "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "path": "paper"
+      },
+      "landing": {
+        "mode": "resource",
+        "resource_id": "accessible-web"
+      },
+      "artifacts": [
+        {
+          "id": "accessible-web",
+          "label": "Accessible draft web edition",
+          "source": "artifacts/paper.html",
+          "path": "paper/index.html",
+          "route": "paper/",
+          "media_type": "text/html"
+        },
+        {
+          "id": "paper-pdf",
+          "label": "Antidote draft PDF",
+          "source": "artifacts/antidote.pdf",
+          "path": "downloads/antidote.pdf",
+          "media_type": "application/pdf",
+          "aliases": ["antidote.pdf"]
+        },
+        {
+          "id": "source-archive",
+          "label": "Antidote source archive",
+          "source": "artifacts/antidote-arxiv-source.tar.gz",
+          "path": "downloads/antidote-arxiv-source.tar.gz",
+          "media_type": "application/gzip"
+        }
+      ],
+      "manifests": [
+        {
+          "id": "paper-provenance",
+          "label": "Paper provenance",
+          "source": "artifacts/provenance.json",
+          "path": "downloads/provenance.json",
+          "media_type": "application/json"
+        },
+        {
+          "id": "publication-json",
+          "label": "Publication manifest",
+          "source": "artifacts/publication.json",
+          "path": "publication.json",
+          "media_type": "application/json"
+        }
+      ],
+      "preview": {
+        "label": "Read the accessible draft",
+        "resource_id": "accessible-web"
+      },
+      "provenance": [
+        {
+          "label": "Build provenance",
+          "resource_id": "paper-provenance"
+        }
+      ],
+      "accessibility": {
+        "summary": "Semantic HTML with keyboard navigation and reduced-motion support.",
+        "features": ["high-contrast text", "keyboard navigation", "semantic headings"]
+      },
+      "visible": true,
+      "extensions": {}
+    },
+    {
+      "id": "magazine",
+      "kind": "magazine",
+      "title": "Antidote visual magazine",
+      "summary": "A visual companion is planned but has not been published.",
+      "status": "planned",
+      "route": "magazine/",
+      "order": 20,
+      "visible": true,
+      "copy": {
+        "availability": "Planned. No issue number, cover, version, manifest, identifier, or artifact is claimed."
+      },
+      "extensions": {
+        "workflow": { "state": "not-started" }
+      }
+    }
+  ],
+  "extensions": {}
+}

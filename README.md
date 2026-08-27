@@ -1,8 +1,8 @@
 # Beacon
 
 🔦 A local-first publication toolkit for discovering, initializing, validating,
-assembling, and eventually packaging polished research, grant, whitepaper, and
-editorial projects.
+assembling, and packaging polished research, grant, whitepaper, editorial, and
+publication-site projects.
 
 Beacon owns reusable publication profiles and their contracts. Projects own
 their manuscripts, evidence, bibliography, artwork, configuration, and release
@@ -14,6 +14,7 @@ surface over them.
 
 - `magazine`: structured digital, print, and accessible web magazines;
 - `nih-nimh-rpg`: separately rendered NIH/NIMH grant attachments;
+- `publication-hub`: host-neutral publication catalogs and accessible static sites;
 - `research-paper`: PDF, accessible web, and arXiv-source research papers;
 - `technical-whitepaper`: evidence-led PDF and web whitepapers.
 
@@ -26,6 +27,7 @@ The repository pins its Rust toolchain. From a clean checkout:
 ```bash
 cargo run --locked -- list
 cargo run --locked -- inspect research-paper
+cargo run --locked -- inspect publication-hub
 cargo run --locked -- validate
 cargo run --locked -- init research-paper "../my-paper" \
   --title "My Research Paper" \
@@ -66,7 +68,7 @@ Run the root contract locally with:
 task check
 ```
 
-The same formatting, Clippy, Rust tests, four-profile initialization smoke test,
+The same formatting, Clippy, Rust tests, five-profile initialization smoke test,
 and registry validation run in GitHub Actions. Each profile also retains its own
 document build and quality workflow.
 
@@ -88,6 +90,8 @@ See [`docs/latex-component-library.md`](docs/latex-component-library.md).
 - Projects own authored content and selected style overrides.
 - Initialized projects own the complete local build kit; Beacon invokes it but
   is not required by it.
+- Publication products own their catalog, copy, artwork, URL policy, and
+  generated static tree; Relay or another host owns deployment and DNS.
 - Renderflow, Relay, Identity, Dreamscape, and organization synchronization are
   optional integrations rather than local runtime requirements.
 - External publication and grant submission remain human-approved actions.

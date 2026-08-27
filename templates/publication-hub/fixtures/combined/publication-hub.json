@@ -1,0 +1,64 @@
+{
+  "schema": "beacon.publication-hub-source/v1",
+  "schema_version": "1.0.0",
+  "site": {
+    "id": "combined",
+    "title": "Combined Publications",
+    "description": "Paper and magazine slots in one host-neutral catalog.",
+    "language": "en",
+    "stage": "published",
+    "publisher": "Beacon Fixtures",
+    "canonical_base_url": "https://combined.example.org/library/",
+    "fallback_base_url": "https://example.github.io/combined/",
+    "revision": "3333333333333333333333333333333333333333",
+    "theme": "egohygiene"
+  },
+  "slots": [
+    {
+      "id": "paper",
+      "kind": "research-paper",
+      "title": "Combined paper",
+      "summary": "The paper component.",
+      "status": "available",
+      "version": "1.0.0",
+      "route": "paper/",
+      "order": 10,
+      "source": {
+        "repository": "https://github.com/example/combined",
+        "revision": "4444444444444444444444444444444444444444"
+      },
+      "artifacts": [
+        {
+          "id": "paper-pdf",
+          "label": "Paper PDF",
+          "source": "artifacts/paper.pdf",
+          "path": "downloads/combined-paper.pdf",
+          "media_type": "application/pdf"
+        }
+      ]
+    },
+    {
+      "id": "magazine",
+      "kind": "magazine",
+      "title": "Combined magazine",
+      "summary": "The visual companion component.",
+      "status": "available",
+      "version": "1.0.0",
+      "route": "magazine/",
+      "order": 20,
+      "source": {
+        "repository": "https://github.com/example/combined",
+        "revision": "4444444444444444444444444444444444444444"
+      },
+      "artifacts": [
+        {
+          "id": "magazine-pdf",
+          "label": "Magazine PDF",
+          "source": "artifacts/magazine.pdf",
+          "path": "downloads/combined-magazine.pdf",
+          "media_type": "application/pdf"
+        }
+      ]
+    }
+  ]
+}

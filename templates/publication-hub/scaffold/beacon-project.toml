@@ -1,0 +1,13 @@
+[beacon]
+schema_version = 1
+profile = "publication-hub"
+profile_version = "0.1.0"
+theme = "neutral"
+
+[provenance]
+source_repository = "https://github.com/OWNER/REPOSITORY"
+source_revision = "WORKING_TREE"
+
+[publication_hub]
+catalog = "publication-hub.json"
+output = "build/site"
