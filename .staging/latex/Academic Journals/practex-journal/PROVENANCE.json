@@ -1,0 +1,50 @@
+{
+  "schema": "beacon.reference-intake/v1",
+  "reviewed": "2026-10-25",
+  "status": "retained-reference",
+  "upstream": "http://tug.org/pracjourn",
+  "original_file_bytes_modified": false,
+  "license_notes": {
+    "class": "GPL-2.0-or-later; notice in pracjourn.dtx and pracjourn.ins",
+    "sample": "Copyright 2006 Will Roberton as printed; permission to distribute verbatim or modified copies with notice intact",
+    "other_files": "Preserve original notices and attribution; see original README and PDFs"
+  },
+  "files": [
+    {
+      "path": "README",
+      "sha256": "d7f84736699fed4a161ad7144e7befd23392322743855c330c37980f6855cc0f",
+      "git_blob_sha1": "48d4957f5f0332a161c33afac827f14f8948a61e",
+      "bytes": 1072
+    },
+    {
+      "path": "pracjourn.dtx",
+      "sha256": "5bd7525f4d828aa8ea5d955fb81def50aa5d7caa06e1d46a6ed69ae24a7f4555",
+      "git_blob_sha1": "423db39c8a91405de4cb58e2f73b9b3650691d93",
+      "bytes": 50011
+    },
+    {
+      "path": "pracjourn.pdf",
+      "sha256": "0afbec6eaac05c639cc763a47df4c97bcfd38ebd4cb0ec02061f7565b0e382fe",
+      "git_blob_sha1": "aae58c75376d1d83f9aa59decd499ec831ab1317",
+      "bytes": 301180
+    },
+    {
+      "path": "pjsample.ltx",
+      "sha256": "8cc145510251b3ef2501d107648d888a460843dbb81d3cf03093e6c17776e530",
+      "git_blob_sha1": "7f7b0f9b85445a9017719387b69c677c6859383f",
+      "bytes": 4545
+    },
+    {
+      "path": "pjsample.pdf",
+      "sha256": "aac6ab45dfb37c4ad7947da5ee393a89dc893c20cd29bfd1f577a1e99d51a0fc",
+      "git_blob_sha1": "015ba1b7be2fafa2debd25492a6e77c84405afb0",
+      "bytes": 122311
+    },
+    {
+      "path": "pracjourn.ins",
+      "sha256": "1d2fbfdc13632876505e40dcda83c7e5763ae8b856e78b8689db1c3b1733ed89",
+      "git_blob_sha1": "4fa932030c63c42750aacad80a85d57af3b6574f",
+      "bytes": 1490
+    }
+  ]
+}
