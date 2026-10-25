@@ -4,6 +4,9 @@ This directory contains governed source references that have not yet been
 transformed into active Beacon profiles or components. Nothing below
 `.staging/` participates in the runtime registry, normal builds, or releases.
 
+Browse the [LaTeX reference catalog](latex/CATALOG.md) for packages, examples,
+and recorded readiness. It is separate from the active template registry.
+
 ## Current contents
 
 The remaining `latex/` tree spans books, title pages, newsletters, conference
@@ -34,3 +37,4 @@ removed intake.
 The former staged Beacon CLI, contracts, tests, toolchain, and validator were
 promoted and adapted at the repository root through issue `#12`. Their history
 is summarized in [`../docs/core-provenance.md`](../docs/core-provenance.md).
+
